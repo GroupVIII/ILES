@@ -4,7 +4,7 @@
 Managing student internships is currently a chaotic, paper-heavy nightmare. Institutions still rely heavily on physical logbooks and email submissions, which frequently leads to lost records and delayed supervisor feedback. Academic supervisors waste hours manually calculating grades because there is no automated mechanism to compute weighted evaluations. Without a centralised tracking system, there is no reliable way to monitor real-time performance, track deadlines, or resolve missing marks efficiently. To solve this, a workflow-driven, role-based digital system is required.
 
 ## Project Scope
-We will develop the Internship Logging & Evaluation System (ILES), a web application built with Django for the backend (the brain) and React for the frontend (the user interface).
+We will develop the Internship Logging & Evaluation System (ILES), a web application built with Django for the backend and React for the frontend.
 
 ### In Scope
 * **Role Management:** Secure access control for four core users: Student Interns, Workplace Supervisors, Academic Supervisors, and Internship Administrators.
