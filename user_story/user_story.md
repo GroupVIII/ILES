@@ -38,8 +38,51 @@
 **US-204** | Priority: High
 > "As an intern, I want to view my total accumulated hours on my dashboard so that I know how close I am to completing tasks."
 
+
 **US-205** | Priority: Medium
 > "As an intern, I want to edit my log entries for the current week so that I can correct mistakes"
 
 **US-206** | Priority: Low
 > "As an intern, I want to add tags to my log entries so that I can organize my work"
+
+## WEEKLY REPORTS AND SUBMISSIONS 
+
+**US-301** | Priority: High 
+> "As an intern, I want to generate a weekly summary report that compiles all my log entries for the week so that I don’t have to retype everything." 
+
+**US-302** | Priority: Medium 
+> "As an intern, I want to add goals for the next week to my weekly report so that my supervisor knows my focus areas." 
+
+**US-303** | Priority: High 
+> "As an intern, I want to submit my weekly report to my supervisor for review with one click." 
+
+**US-304** | Priority: High 
+> "As a supervisor, I want to view a list of pending weekly reports submitted by my interns so that I know what needs my attention." 
+
+**US-305** | Priority: High 
+> "As a supervisor, I want to approve or reject a weekly report with optional comments so that interns know their work is acknowledged." 
+
+**US-306** | Priority: Medium 
+> "As an intern, I want to receive a notification when my supervisor approves or comments on my report." 
+
+---
+
+## MONITORING AND DASHBOARD 
+
+**US-401** | Priority: High 
+> "As a supervisor, I want to see a dashboard of all interns assigned to me so that I can monitor them briefly and immediately." 
+
+**US-402** | Priority: High 
+> "As a supervisor, I want to see who has not logged hours todays or this week so that I can follow up with them." 
+
+**US-403** | Priority: High 
+> "As a supervisor, I want to view an individual intern’s complete log history in chronological order." 
+
+**US-404** | Priority: Medium 
+> "As a supervisor, I want to filter logs by date range or tag so that I can focus on specific periods or activities." 
+
+**US-405** | Priority: High 
+> "As a supervisor, I want to add comments to any log entry so that I can provide timely feedback." 
+
+**US-406** | Priority: Low 
+> "As a supervisor, I want to receive alerts when an intern has not logged hours for 3 consecutive days." 
