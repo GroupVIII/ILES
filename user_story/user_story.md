@@ -108,7 +108,7 @@
 
 ---
 
-##SYSTEM CONFIGURATION
+## SYSTEM CONFIGURATION
 
 **US-801** | Priority: High
 >"As an admin, I want to define the internship period for each intern or cohort."
