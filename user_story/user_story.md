@@ -121,3 +121,84 @@
 
 **US-804** | Priority: High
 >"As an admin, I want to configure the evaluation rubric."
+
+---
+
+## FUNCTIONAL REQUIREMENTS
+
+### 1. Authentication and Access Control
+* The system should allow users to authenticate using their official company email and password.
+* The system should provide a secure, email-based password reset mechanism.
+* The system should empower administrators to provision new intern accounts and assign them to designated supervisors.
+* The system should enable administrators to deactivate user accounts upon the completion of an internship programme.
+* The system should permit users to update their personal profile information.
+
+### 2. Activity Logging and Timesheets
+* The system should capture daily log entries, including start times, end times, and automatically calculated total hours.
+* The system should require text descriptions for all logged tasks.
+* The system should support the attachment of files and external hyperlinks as proof of work.
+* The system should display real-time accumulated hours on the intern dashboard.
+* The system should allow interns to edit log entries within the current week's timeframe.
+* The system should support custom tagging for the categorisation of log entries.
+
+### 3. Reporting and Workflows
+* The system should automatically compile weekly log entries into a unified summary report.
+* The system should allow interns to append future goals to their weekly reports.
+* The system should facilitate a single-click submission workflow for weekly reports.
+* The system should provide supervisors with a queue of pending reports requiring review.
+* The system should grant supervisors the authority to approve or reject reports, with mandatory fields for explanatory comments.
+
+### 4. Monitoring and Dashboards
+* The system should generate a consolidated dashboard for supervisors to monitor all assigned interns.
+* The system should explicitly flag interns who fail to log hours on a daily or weekly basis.
+* The system should display individual intern log histories in strict chronological order.
+* The system should provide dynamic filtering capabilities based on date ranges and custom tags.
+* The system should allow supervisors to attach feedback comments to any specific daily log entry.
+
+### 5. Evaluation and Performance
+* The system should provide customisable evaluation templates featuring varied criteria, such as Technical Skills and Communication.
+* The system should require supervisors to execute structured mid-point and end-point evaluations.
+* The system should capture supervisor ratings on a numerical scale for each predefined criterion.
+* The system should allow supervisors to append final recommendation notes to evaluations.
+* The system should grant interns read-only access to their completed performance evaluations.
+* The system should allow administrators to configure evaluation due dates and trigger automated reminders.
+
+### 6. Notifications and Alerts
+* The system should dispatch automated email alerts for critical workflow events, such as report submissions and feedback delivery.
+* The system should maintain an in-app notification centre accessible via a top-navigation bell icon.
+* The system should instantly notify supervisors upon the submission of a weekly report.
+* The system should instantly notify interns when a supervisor approves a report or submits feedback.
+* The system should allow users to configure and customise their individual notification preferences.
+
+### 7. Reporting and Analytics
+* The system should generate aggregated reports of logged hours across specified date ranges.
+* The system should export analytical reports in CSV and Excel formats.
+* The system should display a high-level summary of all completed evaluations for administrative review.
+* The system should support data filtering by department, supervisor, or individual intern.
+* The system should maintain an immutable audit log detailing user access and modifications to intern records.
+
+### 8. System Configuration
+* The system should allow administrators to define specific date parameters for internship cohorts.
+* The system should allow administrators to establish the total required hours for programme completion.
+* The system should provide tools for the creation and management of distinct organisational departments.
+* The system should allow administrators to configure and modify the global evaluation rubric.
+
+---
+
+## NON-FUNCTIONAL REQUIREMENTS
+### 1. Security
+* All user passwords must be hashed and salted using industry-standard cryptographic protocols before database storage.
+* The system must strictly enforce permissions. An intern must never access administrative configuration panels. A supervisor must only view data for their assigned interns.
+* The system must automatically terminate user sessions after 30 minutes of absolute inactivity to prevent unauthorised access.
+
+### 2. Performance
+* Dashboard rendering and log submissions must execute in under 2 seconds under normal network conditions.
+* CSV/Excel report generation for up to 1,000 records must complete within 5 seconds.
+
+### 3. Usability
+* The user interface must adapt flawlessly to mobile, tablet, and desktop viewports. Interns will often log hours via mobile devices on their commute.
+* The core workflow (logging hours, submitting reports) must require zero formal training for a new user to comprehend.
+
+### 4. Reliability
+* The system must maintain a 99.9% uptime during standard business hours.
+* Automated, encrypted backups of the database must occur daily at midnight. No logged hour can ever be lost to a server fault.
