@@ -120,4 +120,4 @@
 >"As an admin, I want to create and manage departments."
 
 **US-804** | Priority: High
->"As an admin, I want to configure the evaljuation rubric."
+>"As an admin, I want to configure the evaluation rubric."
