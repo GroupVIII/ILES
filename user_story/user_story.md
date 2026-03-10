@@ -85,4 +85,39 @@
 > "As a supervisor, I want to add comments to any log entry so that I can provide timely feedback." 
 
 **US-406** | Priority: Low 
-> "As a supervisor, I want to receive alerts when an intern has not logged hours for 3 consecutive days." 
+> "As a supervisor, I want to receive alerts when an intern has not logged hours for 3 consecutive days."
+
+---
+
+## REPORTING AND ANALYTICS
+
+**US-701** | Priority: High
+>"As an admin, I want to generate a report of all logged hours for a specific date range so that I can process stipends or university credits."
+
+**US-702** | Priority: High
+>"As a admin, I want to export reports to CSV/Excel so that I can manipulate data in spreadsheets."
+
+**US-703** | Priority:Medium
+>"As an admin, I want to view a summsry of completed evaluatiion for all interns."
+
+**US-704** | Priority: Medium
+>"As an admin, I want to filter reports by department, supervisor, or intern so that I can narrow down results."
+
+**US-705** | Priority: Low
+>"As an admin, I want to see audit logs of who viewed or modified intern records."
+
+---
+
+##SYSTEM CONFIGURATION
+
+**US-801** | Priority: High
+>"As an admin, I want to define the internship period for each intern or cohort."
+
+**US-802** | Priority: High
+>"As an admin, I want to set the total required hours for the internship program."
+
+**US-803** | Priority: Medium
+>"As an admin, I want to create and manage departments."
+
+**US-804** | Priority: High
+>"As an admin, I want to configure the evaljuation rubric."
