@@ -14,7 +14,7 @@ class InternshipPlacement(models.Model):
   class Meta:
     constraints = [
       models.UniqueConstraint(
-        fields = ["student", "start_date"],
+        fields = ["student", "organization", "start_date"],
         name = "unique_placement_per_date"
       )
     ]
