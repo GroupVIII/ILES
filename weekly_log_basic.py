@@ -7,8 +7,9 @@ class Evaluation(models.Model):
   score = models.IntegerField(help_text = "Out of 100%")
   date = models.DateField(null = True)
 
-def __str__(self):
-  pass
+  def __str__(self):
+
+    return f""
   
   
     
