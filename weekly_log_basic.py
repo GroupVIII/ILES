@@ -1,6 +1,7 @@
 # 4. Evaluation criteria
 from django.db import models
 from django.core.exceptions import permission denied
+
 class EvaluationCriteria (models.model):
   name = models.charField(max_length=100)
   weight = models.IntegerField(help_text="percentage weight, e.g 40 for 40%)
