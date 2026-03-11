@@ -24,7 +24,13 @@ class UniversitySupervisor(User):
     print("1. View Student Logs")
     print("2. Evaluate Student")
     print("3. Provide Feedback")
-
+# Industry Supervisor class
+class IndustrySupervisor(User):
+  def industry_dashboard(self):
+    print("\n------ Supervisor Dashboard------")
+    print("1. Confirm Student Attendance")
+    print("2. Evaluate Intern Performance")
+    print("3. Approve Daily Logs")
 
 
 
