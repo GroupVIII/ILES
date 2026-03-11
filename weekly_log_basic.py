@@ -17,6 +17,14 @@ class Student(User):
     print("2. View Feedback")
     print("3. Submit report")
 
+# University SUpervisor class
+class UniversitySupervisor(User):
+  def supervisor_dashboard(self):
+    print("\n------University Supervisor------"):
+    print("1. View Student Logs")
+    print("2. Evaluate Student")
+    print("3. Provide Feedback")
+
 
 
 
