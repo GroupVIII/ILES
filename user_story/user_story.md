@@ -89,6 +89,52 @@
 
 ---
 
+## EVALUATION & PERFORMANCE 
+*Focus: Formal assessment of intern performance.* 
+
+**US-501** | Priority: High 
+> "As an admin, I want to create customizable evaluation templates with different criteria (e.g., Technical Skills, Communication, Punctuality)." 
+
+**US-502** | Priority: High 
+> "As a supervisor, I want to complete a mid-point evaluation for each intern using the defined template." 
+
+**US-503** | Priority: High 
+> "As a supervisor, I want to complete an end-point evaluation with final ratings and comments." 
+
+**US-504** | Priority: High 
+> "As a supervisor, I want to rate interns on a scale (e.g., 1-5) for each evaluation criterion." 
+
+**US-505** | Priority: Medium 
+> "As a supervisor, I want to add a final recommendation note (e.g., 'Would hire,' 'Needs improvement') to the evaluation." 
+
+**US-506** | Priority: Medium 
+> "As an intern, I want to view my completed evaluations so that I can see my performance feedback." 
+
+**US-507** | Priority: Low 
+> "As an admin, I want to set evaluation due dates and send reminders to supervisors." 
+
+---
+
+## NOTIFICATIONS & ALERTS 
+*Focus: Keeping everyone informed.* 
+
+**US-601** | Priority: High 
+> "As a user, I want to receive email notifications for important events (report submitted, feedback received)." 
+
+**US-602** | Priority: Medium 
+> "As a user, I want to see in-app notifications in a bell icon dropdown." 
+
+**US-603** | Priority: High 
+> "As a supervisor, I want to get notified immediately when an intern submits a weekly report." 
+
+**US-604** | Priority: High 
+> "As an intern, I want to get notified when my supervisor leaves feedback or approves my report." 
+
+**US-605** | Priority: Low 
+> "As a user, I want to customize my notification preferences (email vs. in-app only)." 
+
+---
+
 ## REPORTING AND ANALYTICS
 
 **US-701** | Priority: High
