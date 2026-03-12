@@ -9,7 +9,7 @@ class Evaluation(models.Model):
 
   def __str__(self):
 
-    return f""
+    return f"Evaluation for {self.placement.student.username} by {self.evaluator.username}"
   
   
     
