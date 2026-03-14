@@ -11,7 +11,8 @@ class Evaluation(models.Model):
 
     return f"Evaluation for {self.placement.student.username} by {self.evaluator.username}"
   
-  
+
+
     
   
 
