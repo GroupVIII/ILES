@@ -25,6 +25,8 @@ class UniversitySupervisor(User):
     print("2. Evaluate Student")
     print("3. Provide Feedback")
 
+# industry supervisor
+class 
 
 
 
