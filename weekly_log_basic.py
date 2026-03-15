@@ -6,6 +6,8 @@ class Evaluation(models.Model):
   criteria = models.ForeignKey(EvaluationCriteria, on_delete= models.CASCADE)
   score = models.IntegerField(help_text = "Out of 100%")
   date = models.DateField(null = True)
+  class Meta:
+    pass 
 
   def __str__(self):
 
