@@ -26,7 +26,10 @@ class UniversitySupervisor(User):
     print("3. Provide Feedback")
 
 # industry supervisor
-class 
+class IndustrySupervisor(User):
+  def industrysupervisor_dashboard(self):
+    print("\n-------Industry Supervisor-------"):
+    print("1. ")
 
 
 
