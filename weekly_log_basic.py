@@ -7,7 +7,7 @@ class Evaluation(models.Model):
   score = models.IntegerField(help_text = "Out of 100%")
   date = models.DateField(null = True)
   class Meta:
-    pass 
+    model = E
 
   def __str__(self):
 
