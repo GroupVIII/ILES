@@ -1,13 +1,10 @@
-# 4. Evaluation criteria
+# EVALUATION/models.py
 from django.db import models
-from django.core.exceptions import permission denied
-
-class EvaluationCriteria (models.model):
-  name = models.charField(max_length=100)
-  weight = models.IntegerField(help_text="percentage weight, e.g 40 for 40%)
-
-  def __str__(self):
-    return f"{self.name} ({self.weight}%)
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils import timezone
+from core.models import BaseModel
+from accounts. models import user
+from reports.models import WeeklyReport
   
 
                                
