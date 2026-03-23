@@ -19,6 +19,13 @@ class InternshipPlacement(models.Model):
   def __str__(self):
     return f"{self.student.username} at {self.company_name}"
 
+class EvaluationCriteria(models.Model):
+  name = models.CharField(max_length=255)
+  description = models.TextField()
+
+  def __str__(self):
+    return self.name
+
 # class IntrenshipLog(models.Model):
 class Evaluation(models.Model):
   placement = models.ForeignKey(InternshipPlacement, on_delete = models.CASCADE)
@@ -26,14 +33,22 @@ class Evaluation(models.Model):
   criteria = models.ForeignKey(EvaluationCriteria, on_delete= models.CASCADE)
   score = models.IntegerField(help_text = "Out of 100%")
   date = models.DateField(null = True)
-  class Meta:
-    model = Evaluation 
-    #fields = 
+  # class Meta:
+  #   model = Evaluation 
+  #   #fields = 
 
   def __str__(self):
 
     return f"Evaluation for {self.placement.student.username} by {self.evaluator.username}"
   
+
+class Issue(models.Model):
+
+  issue_type =  models.CharField(max_length = 200)
+  description = models.TextField()
+  resolve = models.BooleanField(default = False)
+  def __str__(self):
+    return self.issue_type
 
 
     
