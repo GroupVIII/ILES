@@ -51,11 +51,6 @@ class Issue(models.Model):
     return self.issue_type
 
 
-    
-  
-
-
-
 
 
 
