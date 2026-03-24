@@ -1,0 +1,119 @@
+:root {
+  --primary: #2563eb;
+  --success: #059669;
+  --danger: #dc2626;
+  --bg: #f8fafc;
+}
+
+.iles-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.issue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.issue-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  border-left: 5px solid var(--primary);
+  transition: transform 0.2s;
+}
+
+.issue-card:hover {
+  transform: translateY(-5px);
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Form on left, List on right */
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.log-form {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.log-form input, .log-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.login-card {
+    background: white;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 1rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #1e293b;
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.logout-btn {
+  background: #ef4444;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+}
