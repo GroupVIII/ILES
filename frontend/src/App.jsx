@@ -21,6 +21,7 @@ function App() {
   // DECODING THE ROLE
   // This is the "Identity Card" check for your security.
   const decoded = jwtDecode(token);
+  console.log("This is what is inside your token:", decoded);
   const userRole = decoded.role || 'STUDENT'; // Defaulting to STUDENT if not found
 
   return (
