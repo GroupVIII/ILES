@@ -1,10 +1,10 @@
 from django.db import models
 
 # Create your models here.
-from user.models import User
+from user.models import CustomUser
 
 class Log(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     action = models.CharField(max_length=255)
     timestamp = models.DateTimeField(auto_now_add=True)
 
