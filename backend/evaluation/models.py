@@ -1,6 +1,7 @@
 from datetime import timezone
 from django.db import models
 import uuid
+
 # import timezone
 
 # Create your models here.
@@ -13,3 +14,14 @@ class Evaluation(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Issue(models.Model):
+    ISSUE_LIST = [
+        ('bug', 'Bug'),
+        ('feature', 'Feature Request'),
+        ('improvement', 'Improvement')
+    ]
+    issue_type = models.CharField(max_length=30, choices=ISSUE_LIST, default='bug')
+    description = models.TextField(blank=True)
+    
