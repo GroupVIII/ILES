@@ -20,4 +20,5 @@ class User(AbstractUser):
     department = models.CharField(max_length=50, blank=True)
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    
+    role = models.CharField(max_length=20, choices=Role.choices, default=Role.INTERN)
+    gender = models.CharField(max_length=20, choices=Gender.choices, 
