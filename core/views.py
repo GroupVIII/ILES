@@ -3,6 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics, permissions
 from .models import WeeklyLog
 from .serializers import WeeklyLogSerializer # Ensure you have this in serializers.py
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import MyTokenObtainPairSerializer
 
 class WeeklyLogListCreateView(generics.ListCreateAPIView):
     serializer_class = WeeklyLogSerializer
@@ -19,3 +21,6 @@ class WeeklyLogListCreateView(generics.ListCreateAPIView):
 class IssueListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+    

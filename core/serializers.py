@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Issue
 from .models import Issue, WeeklyLog, InternshipPlacement
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class WeeklyLogSerializer(serializers.ModelSerializer):
     # These 'ReadOnly' fields pull extra info without needing extra API calls
@@ -24,3 +25,12 @@ class IssueSerializer(serializers.ModelSerializer):
         fields = ['id', 'reporter', 'title', 'description', 'issue_type', 'is_resolved', 'created_at']
         read_only_fields = ['reporter', 'created_at']
         
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        #Add custom claims (like Role)
+        token['role'] = user.role
+        token['username'] = user.username
+        return token
