@@ -26,7 +26,7 @@ class User(AbstractUser):
     email = models.EmailField(
         unique=True, 
         blank=False, 
-        validators=[models.EmailValidator(message="Enter a valid email address.")]
+        validators=[models.EmailValidator(message="Enter a valid email address.")],
         error_messages={
             'unique': "A user with that email already exists.",
             'blank': "Email field cannot be blank."
