@@ -36,14 +36,19 @@ function App() {
         </nav>
 
         {/* Try checking for the exact phrase from your Admin screen */}
-        {userRole === 'Workplace Supervisor' ? (
+        {userRole === 'WORKPLACE_SUP' ? (
           <div className="supervisor-dashboard">
             <h2>Supervisor Dashboard</h2>
             <SupervisorLogList />
           </div>
         ) : (
           <div className="dashboard-grid">
-            {/* Student stuff here */}
+            <aside className = "sidebar">
+              <LogEntryForm onLogAdded={() => window.location.reload()} />
+            </aside>
+            <main className="content">
+              <IssueList />
+            </main>
           </div>
         )}
       </div>
