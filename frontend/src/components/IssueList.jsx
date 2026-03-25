@@ -8,13 +8,24 @@ useEffect(() => {
     
     fetch('http://127.0.0.1:8000/api/issues/', {
         headers: {
-            'Authorization': `Bearer ${token}`, // This tells Django who you are!
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     })
-    .then(res => res.json())
-    .then(data => setIssues(data))
-    .catch(err => console.error("Auth Error:", err));
+    .then(res => {
+        // If the door is missing (404), this catches it before it crashes React
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+    })
+    .then(data => {
+        // Ensure 'data' is an array before setting state
+        if (Array.isArray(data)) {
+            setIssues(data);
+        } else {
+            console.error("Data received is not an array:", data);
+        }
+    })
+    .catch(err => console.error("ILES Fetch Error:", err));
 }, []);
 
     return (

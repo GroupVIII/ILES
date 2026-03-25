@@ -13,32 +13,32 @@
 }
 
 .issue-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .issue-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  border-left: 5px solid var(--primary);
-  transition: transform 0.2s;
-}
-
-.issue-card:hover {
-  transform: translateY(-5px);
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid #3b82f6; /* A stylish blue accent */
 }
 
 .badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #e5e7eb;
 }
+
+.badge.BUG { background: #fee2e2; color: #dc2626; } /* Red for bugs */
+.badge.ACCESS { background: #fef3c7; color: #d97706; } /* Yellow for access */
 
 .dashboard-grid {
     display: grid;

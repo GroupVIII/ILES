@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Issue
-from .models import Issue, WeeklyLog, InternshipPlacement
+from .models import Issue, WeeklyLog, InternshipPlacement # Combined into one line
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class WeeklyLogSerializer(serializers.ModelSerializer):

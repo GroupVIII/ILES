@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics, permissions
-from .models import WeeklyLog
-from .serializers import WeeklyLogSerializer # Ensure you have this in serializers.py
+from .models import WeeklyLog, Issue  # Added Issue here
+from .serializers import WeeklyLogSerializer, IssueSerializer, MyTokenObtainPairSerializer # Added IssueSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import MyTokenObtainPairSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -14,8 +13,8 @@ class ApproveLogView(APIView):
 
     def patch(self, request, pk):
         # 1. Security Check: Is the user actually a Supervisor?
-        if request.user.role != 'SUPERVISOR':
-            return Response({"error": "Unauthorized"}, status=status.HTTP_403_FORBIDDEN)
+        if request.user.role != 'WORKPLACE_SUP': # Match your model key
+                return Response({"error": "Unauthorized"}, status=status.HTTP_403_FORBIDDEN)
         
         try:
             log = WeeklyLog.objects.get(pk=pk)
@@ -36,8 +35,15 @@ class WeeklyLogListCreateView(generics.ListCreateAPIView):
         # Automatically link the log to the student's active placement
         serializer.save()
 
+# In your views.py, update this class:
 class IssueListCreateView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    queryset = Issue.objects.all() # Add this
+    serializer_class = IssueSerializer # Add this
+    permission_classes = [IsAuthenticated] #
+
+    def perform_create(self, serializer):
+        # Automatically set the reporter to the logged-in user
+        serializer.save(reporter=self.request.user)
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -48,7 +54,6 @@ class SupervisorLogListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        # Only allow access if the user is a SUPERVISOR
-        if self.request.user.role == 'SUPERVISOR':
+        if self.request.user.role == 'WORKPLACE_SUP': # Match your model key
             return WeeklyLog.objects.filter(status='SUBMITTED')
-        return WeeklyLog.objects.none() # Students see nothing here
+        return WeeklyLog.objects.none()
