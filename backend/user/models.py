@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
+from django.core.validators import EmailValidator
 # Create your models here.
 class User(AbstractUser):
     class Role(models.TextChoices):
@@ -26,7 +27,7 @@ class User(AbstractUser):
     email = models.EmailField(
         unique=True, 
         blank=False, 
-        validators=[models.EmailValidator(message="Enter a valid email address.")],
+        validators=[EmailValidator(message="Enter a valid email address.")],
         error_messages={
             'unique': "A user with that email already exists.",
             'blank': "Email field cannot be blank."
