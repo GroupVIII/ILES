@@ -23,4 +23,12 @@ class User(AbstractUser):
     role = models.CharField(max_length=20, choices=Role.choices, default=Role.INTERN)
     gender = models.CharField(max_length=20, choices=Gender.choices, default=Gender.PREFER_NOT_TO_SAY)      
     
-    
+    email = models.EmailField(
+        unique=True, 
+        blank=False, 
+        validators=[models.EmailValidator(message="Enter a valid email address.")]
+        error_messages={
+            'unique': "A user with that email already exists.",
+            'blank': "Email field cannot be blank."
+        }
+        )
