@@ -114,7 +114,7 @@ class Issue(models.Model):
         ('OTHER', 'Other'),
     ]
 
-    reporter = models.ForeignKey(settings.AUTH_USER_MODEL, on_backend=models.CASCADE)
+    reporter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     issue_type = models.CharField(max_length=10, choices=ISSUE_TYPES, default='BUG')
