@@ -10,3 +10,6 @@ class Log(models.Model):
 
     # def __str__(self):
     #     return f"{self.user.username} - {self.action} at {self.timestamp}"
+    # @property
+    # def username(self):
+    #     pass
