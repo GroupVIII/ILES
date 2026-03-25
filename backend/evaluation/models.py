@@ -1,7 +1,8 @@
 from datetime import timezone
 from django.db import models
 import uuid
-
+from django.utils import timezone
+from user.models import User
 # import timezone
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Evaluation(models.Model):
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return self.name
 
@@ -26,3 +27,5 @@ class Issue(models.Model):
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    resolve = models.BooleanField(default=False)
