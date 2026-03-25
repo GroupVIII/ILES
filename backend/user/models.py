@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 import uuid
 from django.core.validators import EmailValidator
 # Create your models here.
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     class Role(models.TextChoices):
         ADMIN = 'admin', 'Admin'
         INTERN = 'intern', 'Intern'
