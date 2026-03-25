@@ -24,4 +24,5 @@ class Issue(models.Model):
     ]
     issue_type = models.CharField(max_length=30, choices=ISSUE_LIST, default='bug')
     description = models.TextField(blank=True)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
