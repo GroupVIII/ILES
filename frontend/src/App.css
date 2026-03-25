@@ -117,3 +117,18 @@
   grid-template-columns: 350px 1fr;
   gap: 2rem;
 }
+
+.approve-btn {
+    background-color: #059669; /* Success Green */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.approve-btn:hover {
+    background-color: #047857;
+}
