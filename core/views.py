@@ -23,4 +23,14 @@ class IssueListCreateView(generics.ListCreateAPIView):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
-    
+
+class SupervisorLogListView(generics.ListAPIView):
+    queryset = WeeklyLog.objects.all()
+    serializer_class = WeeklyLogSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        # Only allow access if the user is a SUPERVISOR
+        if self.request.user.role == 'SUPERVISOR':
+            return WeeklyLog.objects.filter(status='SUBMITTED')
+        return WeeklyLog.objects.none() # Students see nothing here
