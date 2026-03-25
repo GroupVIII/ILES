@@ -44,3 +44,6 @@ class User(AbstractUser):
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
