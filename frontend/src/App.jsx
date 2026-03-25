@@ -25,37 +25,29 @@ function App() {
   const userRole = decoded.role || 'STUDENT'; // Defaulting to STUDENT if not found
 
   return (
-    <div className="iles-container">
-      <nav className="navbar">
-        <h1>ILES Portal</h1>
-        <div className="user-info">
-          <span>Welcome, <strong>{userRole}</strong></span>
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
-        </div>
-      </nav>
-      
-      <div className="dashboard-grid">
-        {userRole === 'STUDENT' ? (
-          <>
-            <aside className="sidebar">
-              {/* Only students see the submission form */}
-              <LogEntryForm onLogAdded={() => window.location.reload()} />
-            </aside>
-            <main className="content">
-              <IssueList />
-            </main>
-          </>
-        ) : (
-          <main className="content full-width">
-            {/* Supervisors see the list of all logs to approve */}
+      <div className="iles-container">
+        <nav className="navbar">
+          <h1>ILES Portal</h1>
+          <div className="user-info">
+            {/* Change this to see the actual raw role value */}
+            <span>Welcome, <strong>{userRole}</strong></span> 
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          </div>
+        </nav>
+
+        {/* Try checking for the exact phrase from your Admin screen */}
+        {userRole === 'Workplace Supervisor' ? (
+          <div className="supervisor-dashboard">
             <h2>Supervisor Dashboard</h2>
-            <p>Awaiting Weekly Logs for Approval...</p>
-            {/* We will create the SupervisorLogList next! */}
-          </main>
+            <SupervisorLogList />
+          </div>
+        ) : (
+          <div className="dashboard-grid">
+            {/* Student stuff here */}
+          </div>
         )}
       </div>
-    </div>
-  )
+  );
 }
 
 export default App;
