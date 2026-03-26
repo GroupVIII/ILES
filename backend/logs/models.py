@@ -8,3 +8,4 @@ class Weeklylog(models.Model):
     ('REVIEWED''Reviewed')
     ('APPROVED','Approved')
    )
+   
