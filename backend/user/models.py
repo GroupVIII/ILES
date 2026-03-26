@@ -4,6 +4,19 @@ import uuid
 from django.core.validators import EmailValidator
 # Create your models here.
 class CustomUser(AbstractUser):
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name= 'custom_user',
+        blank= True
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='custom_user_permissions',
+        blank=True
+    )
+
+
     class Role(models.TextChoices):
         ADMIN = 'admin', 'Admin'
         INTERN = 'intern', 'Intern'
