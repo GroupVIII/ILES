@@ -1,5 +1,6 @@
 from datetime import timezone
 from django.db import models
+
 import uuid
 from django.utils import timezone
 from user.models import CustomUser
