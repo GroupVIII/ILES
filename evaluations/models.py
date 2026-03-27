@@ -107,6 +107,17 @@ class EvaluationRubric(BaseModel):
             """Validate that total weight equals 100"""
             return self.total_weight == 100
         
+        class Evaluation(BaseModel):
+            """Performance evaluation for the intern"""
+
+            class Status(models.TextChoices):
+                DRAFT ='draft', 'Draft'
+                PENDING_REVIEW = 'pending_review', 'Pending Review'
+                COMPLETED = 'completed', 'Completed'
+                ACKNOWLEDGED = 'acknowledged', 'Acknowledged by Intern'
+                DISPUTED = 'disputed', 'Disputed'
+                
+        
         
 
 
