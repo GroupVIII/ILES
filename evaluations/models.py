@@ -103,7 +103,12 @@ class EvaluationRubric(BaseModel):
             criteria = self.structure.get('criteria', [])
             return sum(c.get('weight', 0)for c in criteria)
         
+        def validate_structure(self):
+            """Validate that total weight equals 100"""
+            return self.total_weight == 100
         
+        
+
 
         
         
