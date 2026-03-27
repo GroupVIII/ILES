@@ -97,6 +97,15 @@ class EvaluationRubric(BaseModel):
                 return self.is_active and self.valid_from <= today <= self.valid_until
             return self.is_active and self.valid_from <= today
         
+        @property
+        def total_weight(self):
+            """Calculate total weight of all criteria"""
+            criteria = self.structure.get('criteria', [])
+            return sum(c.get('weight', 0)for c in criteria)
+        
+        
+
+        
         
 
                         
