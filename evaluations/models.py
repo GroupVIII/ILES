@@ -90,6 +90,14 @@ class EvaluationRubric(BaseModel):
         def __str__(self):
             return f"{self.name} ({self.get_rubric_type_display()})"
         
+        def is_valid (self):
+            """check if the rubric is currently valid"""
+            today = timezone.now().date
+            if self.valid_until:
+                return self.is_active and self.valid_from <= today <= self.valid_until
+            return self.is_active and self.valid_from <= today
+        
+        
 
                         
                           
