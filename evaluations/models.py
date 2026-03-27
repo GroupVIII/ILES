@@ -17,4 +17,13 @@ class EvaluationRubric(BaseModel):
         MONTHLY = 'Monthly', 'Monthly Review'
         PROJECT = 'project', 'Project-Based Review'
         SKILL = 'skill', 'Skill Assessment'
+
+        name = models.CharField(max_length = 200, unique = True)
+        description = models.TextField()
         
+        rubric_type = models.CharField(
+            max_length=20,
+            choices=RubricType.TypeChoices,
+            default=Rubrictype.MIDPOINT,
+            db_index=True
+        )
