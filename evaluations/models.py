@@ -47,7 +47,14 @@ class EvaluationRubric(BaseModel):
                      },
                      {
                         "id": 2,
-                        }
+                        "name": "Communication",
+                        "description": "Clear communication with team",
+                         "weight": 20,
+                          "max_score": 5
+                         "
+
+                     }
+                ],
 
                         {
                           
