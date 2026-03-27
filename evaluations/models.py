@@ -124,6 +124,15 @@ class EvaluationRubric(BaseModel):
                 limit_choices_to={'role': User.Roles.INTERN}
 
             )
+
+            evaluator = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='evaluations_given',
+                limit_choices_to={'role__in': [User.Roles.SUPERVISOR,User.Roles.SUPERVISOR, User.Roles.ADMIN, User.Roles.HR]}
+                
+                
+            )
                 
         
         
