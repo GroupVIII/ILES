@@ -77,6 +77,15 @@ class EvaluationRubric(BaseModel):
             null=true,
             related_name='created rubrics'
         )
+
+        class Meta:
+            ordering = ['created_at']
+            indexes = [
+                models.Index(Fields=['rubric_type', 'is active']),
+                models.Index(fields=['valid_from', 'valid_until']),
+            ]
+            verbose_name = 'Evaluation Rubric'
+            verbose_name_plural = "Evaluation Rubrics'"
         
 
                         
