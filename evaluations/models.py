@@ -116,6 +116,14 @@ class EvaluationRubric(BaseModel):
                 COMPLETED = 'completed', 'Completed'
                 ACKNOWLEDGED = 'acknowledged', 'Acknowledged by Intern'
                 DISPUTED = 'disputed', 'Disputed'
+
+            intern = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='evaluation_received',
+                limit_choices_to={'role': User.Roles.INTERN}
+
+            )
                 
         
         
