@@ -27,3 +27,33 @@ class EvaluationRubric(BaseModel):
             default=Rubrictype.MIDPOINT,
             db_index=True
         )
+
+
+
+        #Rubric structure - JSON defining criteria, weights, and scoring
+        structure = models.JSONField(
+            default=dict,
+            help_text="""
+            JSON structure defining evaluation criteria.
+            Example:
+            {
+                "criteria": [
+                    {
+                        "id": 1,
+                        "name": "Technical Skills",
+                        "description": "Ability to write clean, efficient code",
+                        "weight": 30
+                        "max_score": 5
+                     },
+                     {
+                        "id": 2,
+                        }
+
+                        {
+                          
+                        
+
+            
+                        
+            }
+        )
