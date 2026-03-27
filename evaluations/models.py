@@ -85,7 +85,10 @@ class EvaluationRubric(BaseModel):
                 models.Index(fields=['valid_from', 'valid_until']),
             ]
             verbose_name = 'Evaluation Rubric'
-            verbose_name_plural = "Evaluation Rubrics'"
+            verbose_name_plural = 'Evaluation Rubrics'
+
+        def __str__(self):
+            return f"{self.name} ({self.get_rubric_type_display()})"
         
 
                         
