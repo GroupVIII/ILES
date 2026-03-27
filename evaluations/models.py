@@ -130,8 +130,14 @@ class EvaluationRubric(BaseModel):
                 on_delete=models.CASCADE,
                 related_name='evaluations_given',
                 limit_choices_to={'role__in': [User.Roles.SUPERVISOR,User.Roles.SUPERVISOR, User.Roles.ADMIN, User.Roles.HR]}
+
                 
-                
+            )
+
+            rubric = models.ForeignKey(
+                EvaluationRubric,
+                on_delete=models.PROTECT,
+                related_name='evaluations'
             )
                 
         
