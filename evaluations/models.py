@@ -69,6 +69,14 @@ class EvaluationRubric(BaseModel):
         is_active = models.BooleanField(default=true, db_index=true)
         valid_from = models.DateField(default=timezone.now)
         valid_until = models.DateField(null=true, blank=true)
+
+        #Metadata
+        created_by = models.ForeignKey(
+            User,
+            on delete=models.SET_NULL,
+            null=true,
+            related_name='created rubrics'
+        )
         
 
                         
