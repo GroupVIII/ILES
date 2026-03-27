@@ -44,8 +44,8 @@ class EvaluationRubric(BaseModel):
                         "description": "Ability to write clean, efficient code",
                         "weight": 30
                         "max_score": 5
-                     },
-                     {
+                    },
+                    {
                         "id": 2,
                         "name": "Communication",
                         "description": "Clear communication with team",
@@ -53,10 +53,20 @@ class EvaluationRubric(BaseModel):
                           "max_score": 5
                          "
 
-                     }
+                    }
                 ],
+                "scoring guide": {
+                    "1": "Needs Improvement",
+                    "2": "Developing",
+                    "3": "Meets Expectations",
+                    "4": "Outstanding"
+                }
+            }
+            """
+        )
+        
 
-                        {
+                        
                           
                         
 
