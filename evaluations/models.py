@@ -139,6 +139,11 @@ class EvaluationRubric(BaseModel):
                 on_delete=models.PROTECT,
                 related_name='evaluations'
             )
+
+            #Evaluation period
+            evaluation_date = models.DateField(default=timezone.now)
+            period_start = models.DateField()
+            period_end = models.DateField()
                 
         
         
