@@ -64,6 +64,11 @@ class EvaluationRubric(BaseModel):
             }
             """
         )
+
+        #Validity period
+        is_active = models.BooleanField(default=true, db_index=true)
+        valid_from = models.DateField(default=timezone.now)
+        valid_until = models.DateField(null=true, blank=true)
         
 
                         
