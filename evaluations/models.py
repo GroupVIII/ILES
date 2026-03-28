@@ -135,7 +135,7 @@ class EvaluationRubric(BaseModel):
             )
 
             rubric = models.ForeignKey(
-                EvaluationRubric,
+                Evaluation Rubric,
                 on_delete=models.PROTECT,
                 related_name='evaluations'
             )
@@ -144,6 +144,22 @@ class EvaluationRubric(BaseModel):
             evaluation_date = models.DateField(default=timezone.now)
             period_start = models.DateField()
             period_end = models.DateField()
+
+        #Scores stored as JSON
+        scores = models.JSONField(
+            default=dict,
+            help_text="JSON containing scores for each criterion"
+        )
+
+        # Overall score (calculated)
+        overall_score = models.DecimalField(
+            max_digits=5,
+            decimal_places=2,
+            null=True,
+            blank=True,
+            validators=[MinValueValidator(0),MaxValueValidator(100)]
+
+        )
                 
         
         
