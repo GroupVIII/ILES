@@ -252,6 +252,27 @@ class EvaluationRubric(BaseModel):
             if self.overall_score:
                 return f"{self.overall_score}%"
             return "N/A"
+        
+            score = float(self.overall_score)
+            if score >= 90:
+                return "A"
+            elif score >= 80:
+                return "B"
+            elif score >= 70:
+                return "C"
+            elif score >= 60:
+                return "D"  
+            else:
+                return "F"
+            
+    class EvaluatioGoal(BaseModel):
+            """Goals set during evaluation for intern to work on"""
+            evaluation = models.ForeignKey(
+                Evaluation,
+                on_delete=models.CASCADE,
+                related_name='goals'
+            )
+            
                     
 
 
