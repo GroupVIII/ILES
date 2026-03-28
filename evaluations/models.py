@@ -313,6 +313,22 @@ class EvaluationRubric(BaseModel):
             def __str__(self):
                 return f"Goal for {self.evaluation.intern.get_full_name()}: {self.goal_description[:50]}"
             
+            def complete(self, notes=""):
+                """Mark goal as completed"""
+                self.status = self.Status.COMPLETED
+                self.completed_at = timezone.now()
+                if notes:
+                    self.progress_notes = notes
+                self.save()
+
+            
+        class EvaluationSkill(BaseModel):
+            """track skill progression over time"""
+            intern = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='skills_progress'
+            )
 
                     
 
