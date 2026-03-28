@@ -160,6 +160,13 @@ class EvaluationRubric(BaseModel):
             validators=[MinValueValidator(0),MaxValueValidator(100)]
 
         )
+
+        #Comments and feedback
+        strengths = models.TextField(help_text="Key strenths observed")
+        areas_for_improvement = models.TextField(help_text="Areas needing improvement")
+        overall_comments = models.TextField(blank=True)
+
+        
                 
         
         
