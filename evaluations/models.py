@@ -245,6 +245,13 @@ class EvaluationRubric(BaseModel):
             self.intern_comments = intern_commented
             self.intern_acknowledged_at = timezone.now()
             self.save()
+
+        @property
+        def score_percentage(self):
+            """Return overall score as percentage"""
+            if self.overall_score:
+                return f"{self.overall_score}%"
+            return "N/A"
                     
 
 
