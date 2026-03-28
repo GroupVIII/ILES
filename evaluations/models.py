@@ -230,6 +230,21 @@ class EvaluationRubric(BaseModel):
                     normalized_score = (score / max_score) * 100 
                     total_weighted_score += normalized_score * (weight / 100)
                     total_weight += weight
+
+            if total_weight > 0:
+                self.overall_score = round(total_weighted_score, 2)
+
+        def complete(self):
+            """Mark evaluation as completed and set status"""
+            self.status = self.Status.COMPLETED
+            self.save()
+
+        def acknowledge(self, intern_commented=""):
+            """Intern acknowledges the evaluation"""
+            self.status = self.Status.ACKNOWLEDGED
+            self.intern_comments = intern_commented
+            self.intern_acknowledged_at = timezone.now()
+            self.save()
                     
 
 
