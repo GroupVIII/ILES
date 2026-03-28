@@ -218,7 +218,20 @@ class EvaluationRubric(BaseModel):
             criteria = self.rubric.structure.get('criteria', [])
             total_score = 0
             total_weight = 0
-            
+
+            for criterion in criteria:
+                criterion_id = str(criterion.get('id'))
+                weight = criterion.get('weight', 0)
+                max_score = criterion.get('max_score', 5)
+
+                if criterion_id in self.scores:
+                    score = self.scores[criterion_id]
+                    #normalize score to percentage
+                    normalized_score = (score / max_score) * 100 
+                    total_weighted_score += normalized_score * (weight / 100)
+                    total_weight += weight
+                    
+
 
 
                 
