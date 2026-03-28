@@ -181,6 +181,45 @@ class EvaluationRubric(BaseModel):
             db_index=True
         )
 
+        #Related reports (optional)
+        related_reports = models.ManyToManyField(
+            WeeklyReport,
+            blank=True,
+            related_name='evaluations'
+        )
+
+        #Next steps
+        recommended_next_steps = models.TextField(blank=True)
+
+        class Meta:
+            ordering = ['-evaluation_date', '-created_at']
+            indexes = [
+                models.IndexFields=['intern', 'status'],
+                models.Index(fields=['evaluator','evaluation_date']),
+                models.Index(fields=['status', 'evaluation_date']),
+            
+            ]
+            verbose_name = 'Evaluation'
+            verbose_name_plural = 'Evaluations'
+        def __str__(self):  
+             return f"Evaluation of {self.intern.get_full_name()} by {self.evaluator.get_full_name()} on {self.evaluation_date}"
+        
+        def save(self, *args, **kwargs):
+            #calculate overall score if scores exist
+            if self.scores and self.rubric:
+                self.calculate_overall_score()
+            super().save(*args, **kwargs)
+
+        def calculate_overall_score(self):
+            """calculate weighted overall score based on rubric and scores"""
+            if not self.rubric or not self.scores:
+                return
+            
+            criteria = self.rubric.structure.get('criteria', [])
+            total_score = 0
+            total_weight = 0
+            
+
 
                 
         
