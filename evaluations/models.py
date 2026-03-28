@@ -293,6 +293,27 @@ class EvaluationRubric(BaseModel):
                 COMPLETED = 'completed', 'Completed'
                 CANCELLED = 'cancelled', 'Cancelled'
 
+            status = models.CharField(
+                max_length=15,
+                choices=Status.choices,
+                default=Status.PENDING,
+                db_index=True
+
+            )
+
+            due_date = models.DateField(null=True, blank=True)
+            completed_at = models.DateTimeField(null=True, blank=True)
+
+            #progress tracking
+            progress_notes = models.TextField(blank=True)
+            
+            class Meta:
+                ordering = ['-priority', 'due_date']
+                
+            def __str__(self):
+                return f"Goal for {self.evaluation.intern.get_full_name()}: {self.goal_description[:50]}"
+            
+
                     
 
 
