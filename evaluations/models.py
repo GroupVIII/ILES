@@ -272,7 +272,27 @@ class EvaluationRubric(BaseModel):
                 on_delete=models.CASCADE,
                 related_name='goals'
             )
+
+            goal_description = models.TextField()
+
+            class Priority(models.TextChoices):
+                HIGH = 'high', 'High'
+                MEDIUM = 'medium', 'Medium'
+                LOW = 'low', 'Low'
+
+            priority = models.CharField(
+                max_length=10,
+                choices=Priority.choices,
+                default=Priority.MEDIUM,
+
+            )
             
+            class Status(models.TextChoices):
+                PENDING = 'pending', 'Pending'
+                IN_PROGRESS = 'in_progress', 'In Progress'
+                COMPLETED = 'completed', 'Completed'
+                CANCELLED = 'cancelled', 'Cancelled'
+
                     
 
 
