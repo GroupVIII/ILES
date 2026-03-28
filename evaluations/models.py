@@ -166,7 +166,22 @@ class EvaluationRubric(BaseModel):
         areas_for_improvement = models.TextField(help_text="Areas needing improvement")
         overall_comments = models.TextField(blank=True)
 
-        
+        #Intern's response 
+        intern_comments = models.TextField(
+            blank=True,
+            help_text="Intern's feedback on the evaluation"
+        )
+        intern_acknowledged_at = models.DateTimeField(null=True, blank=True)
+
+        #Status
+        status = models.CharField(
+            max_length=20,
+            choices=Status.Choices,
+            default=Status.DRAFT,
+            db_index=True
+        )
+
+
                 
         
         
