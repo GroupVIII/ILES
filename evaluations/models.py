@@ -374,7 +374,34 @@ class EvaluationRubric(BaseModel):
                 UPCOMING = 'upcoming', 'Upcoming Evaluation'
                 OVERDUE = 'overdue', 'Overdue Evaluation'
                 FOLLOW_UP = 'follow_up', 'Follow_up Required'
-                
+
+            intern = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='evaluation_reminders'
+            )
+            
+            evaluator = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='evaluation_reminders_sent'
+            )
+
+            reminder_type = models.CharField(
+                max_length=20,
+                choices=ReminderType.choices
+            )
+
+            due_date = models.DateField()
+            sent_at = models.DateTimeField(auto_now_add=True)
+            is_acknowledged = models.BooleanField(default=False)
+
+            class Meta:
+                ordering = ['-sent_at']
+
+            def __str__(self):
+                return f"{self.reminder_type} reminder for {self.intern.get_full_name()}"
+
                 
 
 
