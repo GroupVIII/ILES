@@ -353,7 +353,30 @@ class EvaluationRubric(BaseModel):
                 on_delete=models.SET_NULL,
                 null=True
                 related_name='assessed_skills'
-            )  
+            ) 
+
+            notes = models.TextField(blank=True)
+
+            class Meta:
+                unique_together = [['intern', 'skill_name']] 
+                indexes = [ 
+                    models.Index(fields=['intern', 'skill_category']),
+                ]
+                ordering = ['skill_category', 'skill_name']
+
+            def __str__(self):
+                return f"{self.intern.get.full_name()}"- {self.skill_name}: Level {self.current_level}"
+            
+            class EvaluationReminder(BaseModel):
+                """Reminders for upcoming or overdue evaluations"""
+
+            class RemindersType(models.TextChoices):
+                UPCOMING = 'upcoming', 'Upcoming Evaluation'
+                OVERDUE = 'overdue', 'Overdue Evaluation'
+                FOLLOW_UP = 'follow_up', 'Follow_up Required'
+                
+                
+
 
 
 
