@@ -330,7 +330,30 @@ class EvaluationRubric(BaseModel):
                 related_name='skills_progress'
             )
 
-                    
+            skill_name = models.CharField(max_length=100)
+            skill_category = models.CharField(max_length=50, blank=True)
+
+            #Current proficiency
+            current_level = models.IntegerField(
+                validators=[MinValueValidator(1),MaxValueValidator(5)]
+                help_text="Current skill level (1-5)"
+            )  
+            #Target level
+            target_level = models.IntegerField(
+                validators=[MinValueValidator(1), MaxValueValidator(5)]
+                null=True,
+                blank=True
+
+            ) 
+
+            #Assessment
+            last_assessed_at = models.DateTimeField(null=True,blank=True) 
+            last_assessed_by = models.ForeignKey(
+                User,
+                on_delete=models.SET_NULL,
+                null=True
+                related_name='assessed_skills'
+            )  
 
 
 
