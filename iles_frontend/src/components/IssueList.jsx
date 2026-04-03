@@ -21,9 +21,9 @@ function Issue({ issue }) {
                      <p><strong>Description:</strong> {issue.description}</p>
                      <p><strong>Status:</strong> {issue.status}</p>
                      <p><strong>Priority:</strong> {issue.priority}</p> *
-    //                 <p><strong>Assignee:</strong> {issue.assignee}</p>
+                     <p><strong>Assignee:</strong> {issue.assignee}</p>
     //             </div>
-    //         )}
+             )}
 //         </div>
 //     );
 // }
