@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import Issue from "../components/Issue.jsx";
 
 function Dashboard() {
   return (
