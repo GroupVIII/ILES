@@ -19,6 +19,17 @@ function LoginPage(){
         navigate('/dashboard');
     
     };
+    const handleLogIn = () => {
+        try {
+            // Send login request to the server
+            const response = axios.post('/api/login', { email, password }); 
+
+        } catch (error) {
+            alert("Login failed. Please check your credentials and try again.");
+            console.error("Login failed:", error);
+
+        }
+    };
 
     return(
         <form onSubmit={handleSubmit}>
