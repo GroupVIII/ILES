@@ -16,9 +16,9 @@ function Issue({ issue }) {
                 <h3>{issue.title}</h3>
                 <span>{isExpanded ? '-' : '+'}</span>
             </div>
-    //         {isExpanded && (
+    {/* //         {isExpanded && (
     //             <div className="issue-details">
-    //                 <p><strong>Description:</strong> {issue.description}</p>
+    //                 <p><strong>Description:</strong> {issue.description}</p> */}
     //                 <p><strong>Status:</strong> {issue.status}</p>
     //                 <p><strong>Priority:</strong> {issue.priority}</p>
     //                 <p><strong>Assignee:</strong> {issue.assignee}</p>
