@@ -32,3 +32,14 @@ function LoginPage(){
          </form>
     );
 }
+export default LoginPage;
+
+function handleSubmit(e){
+    e.preventDefault();
+    // // Perform login logic here, such as sending a request to the server
+    // console.log("Email:", email);
+    // console.log("Password:", password);
+    // // Reset form fields
+    // setEmail('');
+    // setPassword('');
+}
