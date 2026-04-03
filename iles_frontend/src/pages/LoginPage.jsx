@@ -25,9 +25,9 @@ function LoginPage(){
 
             />
 
-//             <button type="submit" diabled={!email || !password}>
-//             Login
-//             </button>
+             <button type="submit" diabled={!email || !password}>
+                Login
+             </button>
 
 //         </form>
 //     );
