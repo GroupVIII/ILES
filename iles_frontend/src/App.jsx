@@ -6,9 +6,9 @@ import LoginPage from "./pages/LoginPage.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-//     return (   
-//         <div className="App">
-//             {isLoggedIn ? (
+    return (   
+        <div className="App">
+            {isLoggedIn ? (
 //                 <h1>Welcome to the Dashboard!</h1>
 //             ) : (
 //                 <LoginPage onLogin={() => setIsLoggedIn(true)} />
