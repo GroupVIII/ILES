@@ -17,13 +17,13 @@ function LoginPage(){
 
             />
 
-//             <input
-//                 type="password"
-//                 value={password}
-//                 onChange={(e)=>setPassword(e.target.value)}
-//                 placeholder="Enter Password"
+            <input
+                type="password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                placeholder="Enter Password"
 
-//             />
+            />
 
 //             <button type="submit" diabled={!email || !password}>
 //             Login
