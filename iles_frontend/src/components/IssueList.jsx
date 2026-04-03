@@ -10,12 +10,12 @@ function Issue({ issue }) {
         setIsExpanded(!isExpanded);
     };
 
-    // return (
-    //     <div className="issue-container">
-    //         <div className="issue-header" onClick={toggleExpand}>
-    //             <h3>{issue.title}</h3>
-    //             <span>{isExpanded ? '-' : '+'}</span>
-    //         </div>
+    return (
+        <div className="issue-container">
+            <div className="issue-header" onClick={toggleExpand}>
+                <h3>{issue.title}</h3>
+                <span>{isExpanded ? '-' : '+'}</span>
+            </div>
     //         {isExpanded && (
     //             <div className="issue-details">
     //                 <p><strong>Description:</strong> {issue.description}</p>
