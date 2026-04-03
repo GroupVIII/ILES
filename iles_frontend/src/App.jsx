@@ -6,9 +6,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-//   const handleLogIn = ()=>{
-//     setIsLoggedIn(true);
-  }
+
+  
     return (   
         <div className="app-container">
             {isLoggedIn ? (
