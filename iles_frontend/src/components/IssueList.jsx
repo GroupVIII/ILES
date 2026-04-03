@@ -17,10 +17,10 @@ function Issue({ issue }) {
                 <span>{isExpanded ? '-' : '+'}</span>
             </div>
              {isExpanded && (
-    //             <div className="issue-details">
-    //                 <p><strong>Description:</strong> {issue.description}</p>
-    //                 <p><strong>Status:</strong> {issue.status}</p>
-    //                 <p><strong>Priority:</strong> {issue.priority}</p> *
+                 <div className="issue-details">
+                     <p><strong>Description:</strong> {issue.description}</p>
+                     <p><strong>Status:</strong> {issue.status}</p>
+                     <p><strong>Priority:</strong> {issue.priority}</p> *
     //                 <p><strong>Assignee:</strong> {issue.assignee}</p>
     //             </div>
     //         )}
