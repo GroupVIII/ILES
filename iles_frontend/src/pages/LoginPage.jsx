@@ -10,12 +10,12 @@ function LoginPage(){
             <input
              type="email"
              value={email}
-//              onChange={(e)=>setEmail(e.target.value)}
-//              placeholder="Email"
+             onChange={(e)=>setEmail(e.target.value)}
+             placeholder="Email"
 
              
 
-//             />
+            />
 
 //             <input
 //                 type="password"
