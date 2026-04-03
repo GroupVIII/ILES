@@ -32,30 +32,35 @@ function LoginPage(){
     };
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input
-             type="email"
-             value={email}
-             onChange={(e)=>setEmail(e.target.value)}
-             placeholder="Email"
+        <div className="login-container">
+            <div className="card">  
+                <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+                <input
+                type="email"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="Email"
 
-             
+                
 
-            />
+                />
 
-            <input
-                type="password"
-                value={password}
-                onChange={(e)=>setPassword(e.target.value)}
-                placeholder="Enter Password"
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
+                    placeholder="Enter Password"
 
-            />
+                />
 
-             <button type="submit" diabled={!email || !password}>
-                Login
-             </button>
+                <button type="submit" diabled={!email || !password}>
+                    Login
+                </button>
 
-         </form>
+            </form>
+            </div>
+        </div>
     );
 }
 export default LoginPage;
