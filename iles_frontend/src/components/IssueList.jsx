@@ -22,7 +22,7 @@ function Issue({ issue }) {
                      <p><strong>Status:</strong> {issue.status}</p>
                      <p><strong>Priority:</strong> {issue.priority}</p> *
                      <p><strong>Assignee:</strong> {issue.assignee}</p>
-    //             </div>
+                 </div>
              )}
 //         </div>
 //     );
