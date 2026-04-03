@@ -10,7 +10,7 @@ function App() {
     setIsLoggedIn(true);
   }
     return (   
-        <div className="App">
+        <div className="app-container">
             {isLoggedIn ? (
                 <Dashboard />
             ) : (
