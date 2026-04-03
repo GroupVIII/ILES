@@ -4,19 +4,10 @@ import './App.css';
 import LoginPage from "./pages/LoginPage.jsx";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
-  
-    return (   
-        <div className="app-container">
-            {isLoggedIn ? (
-                <Dashboard />
-            ) : (
-                <LoginPage onLogin={handleLogIn} />
-            )}
-        </div>
-    );
+  return(
+    <>
+      <LoginPage />
+    </>
+  );
 }
-
 export default App;
