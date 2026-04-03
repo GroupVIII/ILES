@@ -1,14 +1,17 @@
-// import React from "react";
+import { useState } from "react";
 import Issue from "../components/Issue.jsx";
-const [isExpanded, setIsExpanded] = useState(true);
+
 
 
 
 function Dashboard() {
+    const [isExpanded, setIsExpanded] = useState(true);
+
   return (
     <div>
       <h1>Welcome to the Dashboard!</h1>
     </div>
+
   );
 }
 
