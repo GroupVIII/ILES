@@ -6,6 +6,10 @@ import Issue from "../components/Issue.jsx";
 
 function Dashboard() {
     const [isExpanded, setIsExpanded] = useState(true);
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
+    
 
   return (
     <div className="intro">
