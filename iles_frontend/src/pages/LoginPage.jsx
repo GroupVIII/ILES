@@ -5,11 +5,11 @@ function LoginPage(){
     const [password, setPassword] = useState('');
 
 
-//     return(
-//         <form onSubmit={handleSubmit}>
-//             <input
-//              type="email"
-//              value={email}
+    return(
+        <form onSubmit={handleSubmit}>
+            <input
+             type="email"
+             value={email}
 //              onChange={(e)=>setEmail(e.target.value)}
 //              placeholder="Email"
 
