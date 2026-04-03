@@ -9,7 +9,7 @@ function App() {
     return (   
         <div className="App">
             {isLoggedIn ? (
-                <h1>Welcome to the Dashboard!</h1>
+                <Dashboard />
             ) : (
                 <LoginPage onLogin={() => setIsLoggedIn(true)} />
             )}
