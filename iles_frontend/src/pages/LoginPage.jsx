@@ -1,9 +1,24 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import './LoginPage.css';
+import axios from 'axios';
 
 function LoginPage(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Perform login logic here, such as sending a request to the server
+        console.log("Email:", email);
+        console.log("Password:", password);
+        // Reset form fields
+        setEmail('');   
+        setPassword('');
+        // Navigate to the dashboard after successful login
+        navigate('/dashboard');
+    
+    };
 
     return(
         <form onSubmit={handleSubmit}>
@@ -34,12 +49,12 @@ function LoginPage(){
 }
 export default LoginPage;
 
-function handleSubmit(e){
-    e.preventDefault();
-    // Perform login logic here, such as sending a request to the server
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Reset form fields
-    setEmail('');
-    setPassword('');
-}
+// function handleSubmit(e){
+//     e.preventDefault();
+//     // Perform login logic here, such as sending a request to the server
+//     console.log("Email:", email);
+//     console.log("Password:", password);
+//     // Reset form fields
+//     setEmail('');
+//     setPassword('');
+// }
