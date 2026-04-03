@@ -26,7 +26,7 @@ function LoginPage(){
 
         } catch (error) {
             alert("Login failed. Please check your credentials and try again.");
-            console.error("Login failed:", error);
+            // console.error("Login failed:", error);
 
         }
     };
