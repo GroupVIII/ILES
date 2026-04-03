@@ -24,8 +24,8 @@ function Issue({ issue }) {
                      <p><strong>Assignee:</strong> {issue.assignee}</p>
                  </div>
              )}
-//         </div>
-//     );
-// }
+         </div>
+     );
+ }
 
 export default Issue;   
