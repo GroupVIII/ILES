@@ -9,6 +9,7 @@ import os
 
 class LogEntry(BaseModel):
     Daily log entry for intern work.
+        pass
         
         class Status(models.TextChoices):
         DRAFT = 'draft', 'Draft'
@@ -16,4 +17,16 @@ class LogEntry(BaseModel):
         APPROVED = 'approved', 'Approved'
         REJECTED = 'rejected','Rejected'
         NEEDS_REVISION = 'needs_revision','Needs_Revision'
+    
+class Category(models.TextChoices):
+    DEVELOPMENT = 'development','Development'
+    DESIGN = 'design','Design'
+    RESEARCH = 'research','Research'
+    MEETING = 'meeting','Meeting'
+    DOCUMENTATION ='documentation','Documentation' 
+    TRAINING = 'training','Training'
+    ADMIN = 'admin','Admin'
+    OTHER = 'other','Other'
+        
+
         
