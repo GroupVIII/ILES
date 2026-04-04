@@ -34,6 +34,7 @@ class Category(models.TextChoices):
     end_time = models.TimeField()
     hours = models.DecimalField(max_digits=4,decimal_places=2)
     validators=[MinValueValidator(0.25)]
+    MaxValueValidator(24)
 
 
 
