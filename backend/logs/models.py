@@ -36,6 +36,8 @@ class Category(models.TextChoices):
     validators=[MinValueValidator(0.25)]
     MaxValueValidator(24)
 
+    titke = models.CharField(max_length=200)
+
 
 
 
