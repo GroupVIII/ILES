@@ -30,6 +30,8 @@ class Category(models.TextChoices):
 
     user = models.ForeignKey( User, on_delete=models.CASCADE,related_name='log_entries')
     date = models.DateField()
+    start_time = models.TimeField()
+
 
 
         
