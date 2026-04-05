@@ -132,3 +132,25 @@
 .approve-btn:hover {
     background-color: #047857;
 }
+
+.supervisor-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.supervisor-list th {
+    background: #1e293b;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.supervisor-list td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
