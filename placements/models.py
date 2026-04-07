@@ -35,4 +35,27 @@ class Department(BaseModel):
             models.Index(fields=['is_active']),
         ]
 
+        def __str__(self):
+            return f"{self.name} ({self.code})"
+        
+    class Placement(BaseModel):
+        """Tracks intern placements within deapartments."""
+
+        class Status(models.TextChoices):
+            PENDING = 'pending', 'Pending'
+            ACTIVE = 'active', 'Active'
+            COMPLETED = 'completed', 'Completed'
+            EXTENDED = 'extended', 'Extended'
+            TERMINATED = 'terminated', 'Terminated'
+
+        intern = models.ForeignKey(
+            User,
+            on_delete=models.CASCADE,
+            related_name='placements'
+            on_delete=models.PROTECT,
+            related_name='placements'
+        )
+
+
+
 # Create your models here.
