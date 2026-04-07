@@ -89,7 +89,9 @@ class Category(models.TextChoices):
         )
     ]
 
-    
+   verbose_name = 'Log Entry'
+   verbose_name_plural = 'Log Entries'
+ 
 
 
 
