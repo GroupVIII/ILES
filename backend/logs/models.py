@@ -74,7 +74,15 @@ class Category(models.TextChoices):
 
     class Meta:
         ordering = ['-date','-created_at']
-        
+
+    indexes = [
+        models.Index(fields=['user','-date']),
+        models.Index(fields=['status','date']),
+        models.Index(fields=['user','status']),
+        models.Index(fields=['category','date']),
+    ]
+    
+
 
 
 
