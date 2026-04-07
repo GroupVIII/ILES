@@ -42,10 +42,17 @@ class Category(models.TextChoices):
         max_length=20,
         choices = Category.choices,
         default = Category.DEVELOPMENT,
-        db_index=True
+        db_index = True
     )
 
     tags = models.JSONField(default=list, blank=True)
+
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.DRAFT,
+        db_index=True
+    )
     
 
 
