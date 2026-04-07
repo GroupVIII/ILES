@@ -1,6 +1,6 @@
-body{
+/* body{
     background-color: #f3f4f6;
-}
+} */
 .container{
     display: flex;
     flex-direction: column;
@@ -20,6 +20,7 @@ body{
     width: 100%;
     max-width: 400px;
     height: 100%;
+    backdrop-filter: blur(10px);
 }
 h2{
     margin-bottom: 1.5rem;
