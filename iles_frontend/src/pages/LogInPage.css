@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    margin: 0;
+    /* margin: 0; */
     /* background-color: #f3f4f6; */
     background: linear-gradient(to right,#4facfe,#00f2fe);
     height: 100vh;
@@ -24,6 +24,7 @@
     min-height: 100vh;
     align-items: center;
     justify-content: center;
+    display: vertical;
     min-width: 100vh;
 
 }
