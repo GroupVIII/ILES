@@ -91,6 +91,11 @@ class Category(models.TextChoices):
 
    verbose_name = 'Log Entry'
    verbose_name_plural = 'Log Entries'
+
+def __str__(self):
+    return f"{self.user.get_full_name()} - {self.date} - {self.hours}h"
+
+
  
 
 
