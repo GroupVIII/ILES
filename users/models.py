@@ -1,5 +1,5 @@
 # models.py
-from django.contrib.auth.models import AbstructUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.core.validators import RegexValidator, MinLengthValidator,EmailValidator
 from django.utils import timezone
@@ -44,3 +44,21 @@ class CustomUserManager(BaseUserManager):
          raise ValueError('Superuser must have is_superuser=True.')
       
       return self._create_user(email, password, **extra_fields)
+   
+#AbstractUser
+class User(AbstractUser, BaseModel):
+   """
+   Custgom User model with role-based authentication.
+   extends Django's AbstractUser for built-in auth features.
+   """
+   class Roles(models.TextChoices):
+      INTERN = 'intern','Intern'
+      SUPERVISOR = 'supervisor', 'Supervisor'
+      ADMIN = 'admin', 'Admin'
+      HR = 'hr', 'Human Resource'
+
+   class Gender(models.TextChoices):
+      MALE = 'male', 'Male'
+      FEMALE = 'female','Female'
+      OTHER = 'other', 'Other'
+      PREFER_NOT_TO_SAY = 'prefer_not_to_say','Preferf_Not_To_Say' 
