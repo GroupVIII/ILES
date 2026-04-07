@@ -21,4 +21,18 @@ class Department(BaseModel):
         limit_choices_to={'role__in' :[User.Roles.SUPERVISOR,User.Roles.ADMIN]}'
     )
 
+    # Department metaData
+    location = models.CharField(max_length=200, blank=True)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+
+    is_active = models.BooleanField(default=True)   
+
+    class Meta:
+        ordering = ['name']
+        indexes = [
+            models.Index(fields=['code']),
+            models.Index(fields=['is_active']),
+        ]
+
 # Create your models here.
