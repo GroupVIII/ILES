@@ -41,7 +41,7 @@ class Category(models.TextChoices):
     category = models.CharField(max_length=20)
     choices = category.choices
     default = category.DEVELOPMENT
-    tags = models.JSONField(default=list)
+    tags = models.JSONField(default=list, blank=True)
     
 
 
