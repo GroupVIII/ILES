@@ -106,7 +106,14 @@ def clean(self):
     def save(self,*args,**kwargs):
         self.clean()
         super().save(*args,**kwargs)
-        
+        def approve(self,reviewer,comments=""):
+            self.status = self.Status.APPROVED
+            self.reviewed_by = reviewer
+            self.reviewed_at = timezone.now()
+            self.review_comments = comments
+            self.save()
+            
+
     
     
     
