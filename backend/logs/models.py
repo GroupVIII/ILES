@@ -99,6 +99,9 @@ def clean(self):
     from django.core.exceptions import ValidationError
     if self.start_time and self.end_time and self.start_time >=self.end_time:
         raise ValidationError("End time must be after start time")
+    if self.date >timezone.now().date():
+        raise ValidationError("Cannot log future dates")
+    
     
     
 
