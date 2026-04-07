@@ -101,6 +101,9 @@ def clean(self):
         raise ValidationError("End time must be after start time")
     if self.date >timezone.now().date():
         raise ValidationError("Cannot log future dates")
+    if self.hours >24:
+        raise ValidationError("Hours cannot exceed 24 in a single day")
+    
     
     
     
