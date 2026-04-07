@@ -25,7 +25,7 @@ class Category(models.TextChoices):
     MEETING = 'meeting','Meeting'
     DOCUMENTATION ='documentation','Documentation' 
     TRAINING = 'training','Training'
-    ADMIN = 'admin','Admin'
+    ADMIN = 'admin','Administrative'
     OTHER = 'other','Other'
 
     user = models.ForeignKey( User, on_delete=models.CASCADE,related_name='log_entries')
@@ -38,9 +38,13 @@ class Category(models.TextChoices):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    category = models.CharField(max_length=20)
-    choices = category.choices
-    default = category.DEVELOPMENT
+    category = models.CharField(
+        max_length=20,
+        choices = Category.choices,
+        default = Category.DEVELOPMENT,
+        db_index=True
+    )
+
     tags = models.JSONField(default=list, blank=True)
     
 
