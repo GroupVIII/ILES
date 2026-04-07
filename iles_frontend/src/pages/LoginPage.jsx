@@ -1,68 +1,71 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-// import './LoginPage.css';
+import './LogInPage.css';
 import axios from 'axios';
 
-function LoginPage(){
+function LogInPage(){
+    // const [credentials, setCredentials] = useState({email:'', password:''});
+    // const handleChange = (e)=>{setCredentials({...credentials, [e.target.name]: e.target.value})};
+    // const handleSubmit = (e)=>{
+    //     e.preventDefault();
+    //     if(credentials.email && credentials.password){
+    //         onLogin(credentials.email);
+    //     }
+    // };
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Perform login logic here, such as sending a request to the server
-        console.log("Email:", email);
-        console.log("Password:", password);
-        // Reset form fields
-        setEmail('');   
-        setPassword('');
-        // Navigate to the dashboard after successful login
-        navigate('/dashboard');
-    
-    };
-    const handleLogIn = () => {
-        try {
-            // Send login request to the server
-            const response = axios.post('/api/login', { email, password }); 
+    // const navigate = useNavigate();
+    // const handleSubmit = async(e) => {
+    //     e.preventDefault();
+    //     try{
+    //         const response = await axios.post('/api/login', { email, password });
+    //         console.log("Login Successful:", response.data);
+    //         navigate('/dashboard');
+    //     }
+    //     catch(error){
+    //         alert("Login failed. Please check your credentials and try again.");
+    //         console.error("Login failed:", error);
 
-        } catch (error) {
-            alert("Login failed. Please check your credentials and try again.");
-            // console.error("Login failed:", error);
+    //     }
+        
+    // };
 
-        }
-    };
-
+    const handleSubmit = (e)=>{setEmail(e.target.value)}
     return(
         <div className="login-container">
             <div className="card">  
                 <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                type="email"
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
-                placeholder="Email"
+                <form onSubmit={handleSubmit}>
+                    <div className="group">
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.value)}
+                            placeholder="Email" 
+                            
+                        />
+                    </div>
 
-                
+                    <div className="group">
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
+                            placeholder="Enter Password"
 
-                />
+                        />
+                    </div>
+                   
 
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                    placeholder="Enter Password"
+                    <button type="submit" disabled={!email || !password} className="submit-button">
+                        LogIn
+                    </button>
 
-                />
-
-                <button type="submit" diabled={!email || !password}>
-                    Login
-                </button>
-
-            </form>
+                </form>
             </div>
         </div>
     );
 }
-export default LoginPage;
+export default LogInPage;
 
 
