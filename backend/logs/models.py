@@ -112,7 +112,13 @@ def clean(self):
             self.reviewed_at = timezone.now()
             self.review_comments = comments
             self.save()
-            
+            def reject(self,reviewer,comments=""):
+                self.status = self.Status.REJECTED
+                self.reviewed_by = reviewer
+                self.reviewed_at = timezone.now()
+                self.review_comments = comments
+                self.save()
+
 
     
     
