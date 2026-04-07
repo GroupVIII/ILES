@@ -72,6 +72,11 @@ class Category(models.TextChoices):
     is_billable = 
     models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['-date','-created_at']
+        
+
+
 
 
 
