@@ -95,6 +95,10 @@ class Category(models.TextChoices):
 def __str__(self):
     return f"{self.user.get_full_name()} - {self.date} - {self.hours}h"
 
+def clean(self):
+    from django.core.exceptions import ValidationError
+    
+
 
  
 
