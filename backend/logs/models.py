@@ -81,6 +81,14 @@ class Category(models.TextChoices):
         models.Index(fields=['user','status']),
         models.Index(fields=['category','date']),
     ]
+
+    constraints = [
+        models.UniqueConstraint(
+            fields=['user','date'],
+            name='unique_user_date_log'
+        )
+    ]
+
     
 
 
