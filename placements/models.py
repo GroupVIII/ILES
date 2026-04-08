@@ -80,6 +80,28 @@ class Department(BaseModel):
             default=Status.PENDING
             db_index=True
         )
+        #placement details
+        stipend = models.DecimalField(
+            max_digits=10,
+            decimal_places=2,
+            null=True,
+            blank=True,
+            help_text="Monthly stipend amount"
+        )
+
+        working_hours_per_week = models.IntegerField(
+            default=40,
+            validators=[MinValueValidator(1), MaxValueValidator(168)],
+        )
+
+        #Documents
+        offer_letter = models.FileField(
+            upload_to='placements/offer_letters/',
+            null=True,
+            blank=True
+        )
+
+
             
  
 
