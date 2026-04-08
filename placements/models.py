@@ -48,14 +48,27 @@ class Department(BaseModel):
             EXTENDED = 'extended', 'Extended'
             TERMINATED = 'terminated', 'Terminated'
 
-        intern = models.ForeignKey(
+        intern = models.foreignKey(
             User,
             on_delete=models.CASCADE,
-            related_name='placements'
+            related_name='placements',
             on_delete=models.PROTECT,
             related_name='placements'
         )
 
+        #placement details
+        title = models.CharField(max_length=200, help_text="Intern title/role")
+        description = models.TextField(blank=True)
+
+        #Supervisor (can be multiple)
+        supervisors = models.ManyToManyField(
+            User,
+            related_name='supervised_placements',
+            limit_choices_to={'role':User.Roles.SUPERVISOR,}
+            blank=True
+        )
+            
+ 
 
 
-# Create your models here.
+
