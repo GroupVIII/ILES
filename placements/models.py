@@ -124,6 +124,22 @@ class Department(BaseModel):
         def __str__(self):
             return f"{self.intern.get_full_name()} - {self.department.name} ({self.start_date})"
         
+        @property
+        def duration_days(self):
+            """Calculate the duration of the placement in days."""
+            if self.end_date and self.start_date:
+                return (self.end_date - self.start_date).days
+            return None
+         
+        @property
+        def is_active(self):
+            """Check if the placement is currently active."""
+            today = timezone.now().date()
+            return self.status == self.Status.ACTIVE and self.start_date <= self.end_date
+        
+        @property
+        
+        
 
 
             
