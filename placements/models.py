@@ -67,6 +67,19 @@ class Department(BaseModel):
             limit_choices_to={'role':User.Roles.SUPERVISOR,}
             blank=True
         )
+
+        #placement period
+        start_date = models.DateField()
+        end_date = models.DateField()
+        expected_end_date = models.DateField(blank=True, null=True)
+
+        #status
+        status = models.CharField(
+            max_length=20,
+            choices=Status.choices,
+            default=Status.PENDING
+            db_index=True
+        )
             
  
 
