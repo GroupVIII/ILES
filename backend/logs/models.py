@@ -123,6 +123,8 @@ def clean(self):
                     self.status = self.Status.SUBMITTED
                     self.save()
                     class LogAttachment(BaseModel):
+                        """Attachments for log entries (screenshots,documents,etc)"""
+                        
                         
 
 
