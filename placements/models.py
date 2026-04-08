@@ -101,6 +101,30 @@ class Department(BaseModel):
             blank=True
         )
 
+        #notes
+        notes = models.TextField(blank=True)
+
+        #MetaData
+        created_by = models.ForeignKey(
+            User,
+            on_delete=models.SET_NULL,
+            null=True,
+            related_name='created_placements'
+        )
+
+        class Meta:
+            ordering = ['-start_date', '-created_at']
+            indexes = [
+                models.Index(fields=['intern', 'status']),
+                models.Index(fields=['departments', 'status']),
+                models.Index(fields=['start_date', 'end_date']),
+            ]
+            unique_together = [('intern', 'start_date')]
+
+        def __str__(self):
+            return f"{self.intern.get_full_name()} - {self.department.name} ({self.start_date})"
+        
+
 
             
  
