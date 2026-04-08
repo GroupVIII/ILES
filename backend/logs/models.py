@@ -121,7 +121,9 @@ def clean(self):
                 def submit(self):
                     """Submit for review"""
                     self.status = self.Status.SUBMITTED
+                    self.save()
                     
+
 
                 
 
