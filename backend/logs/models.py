@@ -122,7 +122,9 @@ def clean(self):
                     """Submit for review"""
                     self.status = self.Status.SUBMITTED
                     self.save()
-                    
+                    class LogAttachment(BaseModel):
+                        
+
 
 
                 
