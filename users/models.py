@@ -45,6 +45,12 @@ class CustomUserManager(BaseUserManager):
       
       return self._create_user(email, password, **extra_fields)
    
+class Gender(models.TextChoices):
+      MALE = 'male', 'Male'
+      FEMALE = 'female','Female'
+      OTHER = 'other', 'Other'
+      PREFER_NOT_TO_SAY = 'prefer_not_to_say','Prefer_Not_To_Say'    
+   
 #AbstractUser
 class User(AbstractUser, BaseModel):
    """
@@ -57,8 +63,43 @@ class User(AbstractUser, BaseModel):
       ADMIN = 'admin', 'Admin'
       HR = 'hr', 'Human Resource'
 
-   class Gender(models.TextChoices):
-      MALE = 'male', 'Male'
-      FEMALE = 'female','Female'
-      OTHER = 'other', 'Other'
-      PREFER_NOT_TO_SAY = 'prefer_not_to_say','Preferf_Not_To_Say' 
+  
+
+#Override username to make email the primary identifier
+username = None
+email = models.EmailField(
+   unique=True,
+   db_index=True,
+   validators=[EmailValidator(message="Enter a valid email address.")],
+   error_messages={
+      'unique': 'A user with this email already exists.',
+      'invalid': 'Enter a valid email address.'
+   }
+)
+
+#Personal information
+first_name = models.CharField(max_length=150)
+last_name = models.CharField(max_length=150)
+middle_name = models.CharField(max_length=150)
+
+phone_number = models.CharField(
+   max_length=15,
+   validators=[
+      RegexValidator(
+         regex=r'^\?1?\d{9,15}$',
+         messages="Phone number must bes entered informat:'+999999999'.Up to 15 digits allowed"
+
+      )
+   ],
+   blank=True,
+   help_text="Contact phone number"
+)
+
+gender = models.CharField(
+   max_length=20,
+   choices=Gender.choices,
+   default=Gender.PREFER_NOT_TO_SAY,
+   blank=True
+) 
+
+date_of_birth = models.DateField(null=True, blank=True)
