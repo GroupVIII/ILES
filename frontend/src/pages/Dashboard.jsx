@@ -12,7 +12,7 @@ const Dashboard = () => {
         window.location.href = '/login';
     };
 
-    if (!role) return <div className="loading">Checking credentials...</div>;
+    if (!role) return <div className="loading">Verifying Session...</div>;
 
     return (
         <div className="iles-portal">
@@ -22,7 +22,6 @@ const Dashboard = () => {
                 </div>
                 <div className="nav-user">
                     <span>Logged in as: <strong>{username}</strong></span>
-                    <span className="role-badge">{role}</span>
                     <button onClick={handleLogout} className="logout-btn">Logout</button>
                 </div>
             </nav>
@@ -39,12 +38,9 @@ const Dashboard = () => {
                     ) : (
                         <>
                             <h3>Student Portal</h3>
-                            <p className="subtitle">Submit and Track Your Weekly Progress</p>
+                            <p className="subtitle">Weekly Progress Tracker</p>
                             <hr style={{margin: '20px 0', borderColor: '#334155'}} />
-                            <div className="placeholder-card">
-                                <h4>📝 Weekly Log Form</h4>
-                                <p style={{marginTop: '10px'}}>Log Submission Form Coming Soon</p>
-                            </div>
+                            <p>Student forms coming soon.</p>
                         </>
                     )}
                 </div>
