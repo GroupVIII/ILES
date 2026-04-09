@@ -53,13 +53,9 @@ class SupervisorLogListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        # We explicitly grab the user from the request
-        user = self.request.user
-        
-        # We check the role. Ensure this matches your CustomUser model field exactly.
-        if hasattr(user, 'role') and user.role == 'WORKPLACE_SUP':
-            # Return all logs that are currently in 'SUBMITTED' status
+        # Explicitly checking the CustomUser role field
+        if self.request.user.role == 'WORKPLACE_SUP':
             return WeeklyLog.objects.filter(status='SUBMITTED')
         
-        # If the user isn't a supervisor, return nothing
+        # Security: return nothing if the user isn't a supervisor
         return WeeklyLog.objects.none()
