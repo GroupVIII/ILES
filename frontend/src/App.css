@@ -1,19 +1,60 @@
-/* FORCE RESET */
-html, body, #root {
+/* Global Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, #root {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+/* Perfect Center Login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
     width: 100%;
-    min-height: 100vh;
-    background-color: #0f172a !important; /* Forces dark background */
-    color: white !important;
-    font-family: sans-serif;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
-.iles-portal {
-    background-color: #0f172a;
-    min-height: 100vh;
+.login-card h2 { color: #1e293b; margin-bottom: 24px; }
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #1e293b;
 }
 
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Dashboard Layout */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -26,25 +67,25 @@ html, body, #root {
 .logout-btn {
     background: #ef4444;
     color: white;
-    border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
 }
 
 .dashboard-content {
-    padding: 40px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .view-container {
     background: #1e293b;
     padding: 30px;
     border-radius: 12px;
+    border: 1px solid #334155;
 }
 
-/* Table Styles */
 .log-table {
     width: 100%;
     border-collapse: collapse;
@@ -54,11 +95,20 @@ html, body, #root {
 .log-table th {
     text-align: left;
     color: #94a3b8;
+    padding: 12px;
     border-bottom: 2px solid #334155;
-    padding: 10px;
 }
 
 .log-table td {
-    padding: 10px;
+    padding: 12px;
     border-bottom: 1px solid #334155;
+}
+
+.approve-btn {
+    background: #10b981;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
