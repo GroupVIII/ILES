@@ -1,114 +1,58 @@
-/* Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Update these specific sections in your App.css */
 
-body, #root {
-    background-color: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: 'Inter', system-ui, sans-serif;
-    min-height: 100vh;
-}
-
-/* Perfect Center Login */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.login-card {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-}
-
-.login-card h2 { color: #1e293b; margin-bottom: 24px; }
-
-.login-card input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 16px;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    background: #f8fafc;
-    color: #1e293b;
-}
-
-.login-card button {
-    width: 100%;
-    padding: 12px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* Dashboard Layout */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes brand to left, user to right */
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.75rem 5%;
     background: #1e293b;
     border-bottom: 1px solid #334155;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between "Logged in as" and Logout button */
+}
+
+.nav-user span {
+    color: #94a3b8;
+    font-size: 0.9rem;
 }
 
 .logout-btn {
     background: #ef4444;
     color: white;
-    padding: 8px 16px;
+    padding: 6px 16px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
 }
 
-.dashboard-content {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
+.logout-btn:hover {
+    background: #dc2626;
 }
 
-.view-container {
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
+/* Ensure the login card doesn't look like a generic document */
+.login-card {
+    background: #1e293b; /* Matching the dark theme */
     border: 1px solid #334155;
-}
-
-.log-table {
+    padding: 40px;
+    border-radius: 16px;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.log-table th {
-    text-align: left;
-    color: #94a3b8;
-    padding: 12px;
-    border-bottom: 2px solid #334155;
-}
-
-.log-table td {
-    padding: 12px;
-    border-bottom: 1px solid #334155;
-}
-
-.approve-btn {
-    background: #10b981;
+.login-card h2 { color: #f8fafc; }
+.login-card input {
+    background: #0f172a;
+    border: 1px solid #334155;
     color: white;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
