@@ -49,11 +49,17 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 class SupervisorLogListView(generics.ListAPIView):
-    queryset = WeeklyLog.objects.all()
     serializer_class = WeeklyLogSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        if self.request.user.role == 'WORKPLACE_SUP': # Match your model key
+        # We explicitly grab the user from the request
+        user = self.request.user
+        
+        # We check the role. Ensure this matches your CustomUser model field exactly.
+        if hasattr(user, 'role') and user.role == 'WORKPLACE_SUP':
+            # Return all logs that are currently in 'SUBMITTED' status
             return WeeklyLog.objects.filter(status='SUBMITTED')
+        
+        # If the user isn't a supervisor, return nothing
         return WeeklyLog.objects.none()
