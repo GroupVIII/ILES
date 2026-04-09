@@ -7,6 +7,11 @@ from user.models import CustomUser
 # import timezone
 
 # Create your models here.
+
+class EvaluationRubric(models.Model):
+    pass
+
+
 class Evaluation(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='evaluations')
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -19,15 +24,19 @@ class Evaluation(models.Model):
         return self.name
 
 
-class Issue(models.Model):
-    ISSUE_LIST = [
-        ('bug', 'Bug'),
-        ('feature', 'Feature Request'),
-        ('improvement', 'Improvement')
-    ]
-    issue_type = models.CharField(max_length=30, choices=ISSUE_LIST, default='bug')
-    description = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    # updated_at = models.DateTimeField(auto_now=True)
-    resolve = models.BooleanField(default=False)
+    class Issue(models.Model):
+        ISSUE_LIST = [
+            ('bug', 'Bug'),
+            ('feature', 'Feature Request'),
+            ('improvement', 'Improvement')
+        ]
+        issue_type = models.CharField(max_length=30, choices=ISSUE_LIST, default='bug')
+        description = models.TextField(blank=True)
+        created_at = models.DateTimeField(auto_now_add=True)
+        updated_at = models.DateTimeField(auto_now=True)
+        # updated_at = models.DateTimeField(auto_now=True)
+        resolve = models.BooleanField(default=False)
+
+    class Status(models.Model):
+        PENDIMG = 'pending', 'Pending'
+        UNDER_REVIEW = 'uner'
