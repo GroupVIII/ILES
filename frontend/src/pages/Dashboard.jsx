@@ -8,48 +8,46 @@ const Dashboard = () => {
 
     const handleLogout = () => {
         localStorage.clear();
-        // Force a full refresh to clear React state and trigger App.jsx redirect
         window.location.href = '/login';
     };
 
-    if (!role) {
-        return <div className="loading">Verifying Session...</div>;
-    }
+    if (!role) return <div className="loading">Checking credentials...</div>;
 
     return (
         <div className="iles-portal">
             <nav className="navbar">
                 <div className="nav-brand">
-                    <h2>ILES Portal</h2>
+                    <h2 style={{color: '#60a5fa'}}>ILES</h2>
                 </div>
                 <div className="nav-user">
-                    <span>Welcome, <strong>{username}</strong> ({role})</span>
+                    <span>Logged in as: <strong>{username}</strong></span>
+                    <span className="role-badge">{role}</span>
                     <button onClick={handleLogout} className="logout-btn">Logout</button>
                 </div>
             </nav>
 
             <main className="dashboard-content">
-                {role === 'WORKPLACE_SUP' ? (
-                    <div className="view-container">
-                        <h3>Supervisor Dashboard</h3>
-                        <p className="subtitle">Pending Weekly Logs for Approval</p>
-                        <hr style={{margin: '20px 0', borderColor: '#334155'}} />
-                        {/* Placeholder for SupervisorLogList component */}
-                        <div className="placeholder-card">
-                            Waiting for Student Submissions...
-                        </div>
-                    </div>
-                ) : (
-                    <div className="view-container">
-                        <h3>Student Dashboard</h3>
-                        <p className="subtitle">Submit Your Weekly Progress</p>
-                        <hr style={{margin: '20px 0', borderColor: '#334155'}} />
-                        {/* Placeholder for WeeklyLogForm component */}
-                        <div className="placeholder-card">
-                            Log Submission Form Coming Soon
-                        </div>
-                    </div>
-                )}
+                <div className="view-container">
+                    {role === 'WORKPLACE_SUP' ? (
+                        <>
+                            <h3>Supervisor Dashboard</h3>
+                            <p className="subtitle">Management Portal for Internship Logs</p>
+                            <div className="placeholder-card">
+                                <h4>📋 Logs Awaiting Approval</h4>
+                                <p style={{marginTop: '10px'}}>We will fetch the live logs from your backend next.</p>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <h3>Student Portal</h3>
+                            <p className="subtitle">Submit and Track Your Weekly Progress</p>
+                            <div className="placeholder-card">
+                                <h4>📝 Weekly Log Form</h4>
+                                <p style={{marginTop: '10px'}}>Ready to document your week at True Vine Farm?</p>
+                            </div>
+                        </>
+                    )}
+                </div>
             </main>
         </div>
     );
