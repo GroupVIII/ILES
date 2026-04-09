@@ -8,15 +8,21 @@ const Dashboard = () => {
 
     const handleLogout = () => {
         localStorage.clear();
-        navigate('/login');
-        window.location.reload();
+        // Force a full refresh to clear React state and trigger App.jsx redirect
+        window.location.href = '/login';
     };
 
+    if (!role) {
+        return <div className="loading">Verifying Session...</div>;
+    }
+
     return (
-        <div className="iles-dashboard">
-            <nav className="top-bar">
-                <h2>ILES Portal</h2>
-                <div className="user-info">
+        <div className="iles-portal">
+            <nav className="navbar">
+                <div className="nav-brand">
+                    <h2>ILES Portal</h2>
+                </div>
+                <div className="nav-user">
                     <span>Welcome, <strong>{username}</strong> ({role})</span>
                     <button onClick={handleLogout} className="logout-btn">Logout</button>
                 </div>
@@ -24,14 +30,24 @@ const Dashboard = () => {
 
             <main className="dashboard-content">
                 {role === 'WORKPLACE_SUP' ? (
-                    <div className="supervisor-view">
-                        <h3>Pending Weekly Logs</h3>
-                        {/* We will render the SupervisorLogList here */}
+                    <div className="view-container">
+                        <h3>Supervisor Dashboard</h3>
+                        <p className="subtitle">Pending Weekly Logs for Approval</p>
+                        <hr style={{margin: '20px 0', borderColor: '#334155'}} />
+                        {/* Placeholder for SupervisorLogList component */}
+                        <div className="placeholder-card">
+                            Waiting for Student Submissions...
+                        </div>
                     </div>
                 ) : (
-                    <div className="student-view">
-                        <h3>Your Weekly Progress</h3>
-                        {/* We will render the WeeklyLogForm here */}
+                    <div className="view-container">
+                        <h3>Student Dashboard</h3>
+                        <p className="subtitle">Submit Your Weekly Progress</p>
+                        <hr style={{margin: '20px 0', borderColor: '#334155'}} />
+                        {/* Placeholder for WeeklyLogForm component */}
+                        <div className="placeholder-card">
+                            Log Submission Form Coming Soon
+                        </div>
                     </div>
                 )}
             </main>
