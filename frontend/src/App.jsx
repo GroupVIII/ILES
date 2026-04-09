@@ -1,34 +1,33 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Login from './components/Login';
 import Dashboard from './pages/Dashboard';
-import './App.css';
+import './App.css'; // Ensure this file exists in the same folder!
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('access_token'));
 
-  // This function is passed to Login.jsx to update the state here
-  const handleLoginSuccess = (newToken) => {
-    setToken(newToken);
-  };
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setToken(localStorage.getItem('access_token'));
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   return (
     <Router>
-      <div className={!token ? "login-container" : ""}>
-        <Routes>
-          <Route 
-            path="/login" 
-            element={!token ? <Login setToken={handleLoginSuccess} /> : <Navigate to="/dashboard" />} 
-          />
-          
-          <Route 
-            path="/dashboard" 
-            element={token ? <Dashboard /> : <Navigate to="/login" />} 
-          />
-
-          <Route path="/" element={<Navigate to="/dashboard" />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route 
+          path="/login" 
+          element={!token ? <Login setToken={setToken} /> : <Navigate to="/dashboard" />} 
+        />
+        <Route 
+          path="/dashboard" 
+          element={token ? <Dashboard /> : <Navigate to="/login" />} 
+        />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+      </Routes>
     </Router>
   );
 }
