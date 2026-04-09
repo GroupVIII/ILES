@@ -1,6 +1,7 @@
 import React from 'react';
 import { getAuthData } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
+import SupervisorLogList from '../components/SupervisorLogList';
 
 const Dashboard = () => {
     const { role, username } = getAuthData();
@@ -32,18 +33,17 @@ const Dashboard = () => {
                         <>
                             <h3>Supervisor Dashboard</h3>
                             <p className="subtitle">Management Portal for Internship Logs</p>
-                            <div className="placeholder-card">
-                                <h4>📋 Logs Awaiting Approval</h4>
-                                <p style={{marginTop: '10px'}}>We will fetch the live logs from your backend next.</p>
-                            </div>
+                            <hr style={{margin: '20px 0', borderColor: '#334155'}} />
+                            <SupervisorLogList />
                         </>
                     ) : (
                         <>
                             <h3>Student Portal</h3>
                             <p className="subtitle">Submit and Track Your Weekly Progress</p>
+                            <hr style={{margin: '20px 0', borderColor: '#334155'}} />
                             <div className="placeholder-card">
                                 <h4>📝 Weekly Log Form</h4>
-                                <p style={{marginTop: '10px'}}>Ready to document your week at True Vine Farm?</p>
+                                <p style={{marginTop: '10px'}}>Log Submission Form Coming Soon</p>
                             </div>
                         </>
                     )}
