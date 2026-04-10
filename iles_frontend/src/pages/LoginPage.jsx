@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, Loader2, AlertCircle, LogIn } from 'lucide-react';
 import './LogInPage.css';
 
-function LogInPage() {
+function LogInPage({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -11,8 +11,6 @@ function LogInPage() {
     // Interactive states
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-    
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,8 +27,8 @@ function LogInPage() {
             } else {
                 // Success
                 setIsLoading(false);
-                // We're navigating directly for the demo
-                navigate('/dashboard'); 
+                // We're logging in directly for the demo
+                onLogin(email);
             }
         }, 1500);
 
