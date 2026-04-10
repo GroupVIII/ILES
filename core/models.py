@@ -57,9 +57,9 @@ class WeeklyLog(models.Model):
     placement = models.ForeignKey(InternshipPlacement, on_delete=models.CASCADE)
     week_number = models.IntegerField()
     activities = models.TextField()
+    # Fixed: Only one status definition allowed here
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='DRAFT')
     supervisor_comments = models.TextField(blank=True, null=True)
-    # Added to match Serializer expectations
     created_at = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
@@ -80,7 +80,7 @@ class WeeklyLog(models.Model):
                 raise PermissionError("This log is approved and cannot be edited.")
         super().save(*args, **kwargs)
 
-# 4. EvaluationCriteria (The Grading Rubric)
+# 4. EvaluationCriteria
 class EvaluationCriteria(models.Model):
     name = models.CharField(max_length=100)
     weight = models.IntegerField(help_text="Percentage weight, e.g., 40 for 40%")
@@ -88,7 +88,7 @@ class EvaluationCriteria(models.Model):
     def __str__(self):
         return f"{self.name} ({self.weight}%)"
 
-# 5. Evaluation (The Final Scores)
+# 5. Evaluation
 class Evaluation(models.Model):
     placement = models.ForeignKey(InternshipPlacement, on_delete=models.CASCADE)
     evaluator = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
