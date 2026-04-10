@@ -25,7 +25,7 @@ body, #root {
 .nav-user {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 20px; /* Staccato spacing */
 }
 
 .logout-btn {
