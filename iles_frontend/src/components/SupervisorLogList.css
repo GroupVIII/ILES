@@ -1,5 +1,4 @@
-SupervisorLogList.css - Modern,
-glassmorphism-inspired design styling @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 
 .loglist-container {
     font-family: 'Inter', sans-serif;
@@ -9,6 +8,7 @@ glassmorphism-inspired design styling @import url('https://fonts.googleapis.com/
     background-color: #f8fafc;
     min-height: 100vh;
     color: #1e293b;
+    
 }
 
 .loglist-header {
