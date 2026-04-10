@@ -8,7 +8,6 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WeeklyLog
-        # 'challenges' is removed to stop the crash!
         fields = [
             'id', 'placement', 'student_name', 'week_number', 
             'activities', 'status', 'status_display', 
@@ -16,17 +15,16 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['status', 'created_at']
 
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['role'] = user.role
+        token['username'] = user.username
+        return token
+
 class IssueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Issue
         fields = ['id', 'reporter', 'title', 'description', 'issue_type', 'is_resolved', 'created_at']
         read_only_fields = ['reporter', 'created_at']
-
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        # Custom claims for the Dashboard logic
-        token['role'] = user.role
-        token['username'] = user.username
-        return token

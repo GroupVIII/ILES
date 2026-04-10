@@ -1,58 +1,76 @@
-/* Update these specific sections in your App.css */
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body, #root {
+    background-color: #0f172a !important; /* Dark aesthetic */
+    color: #f8fafc !important;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+/* Flexbox Horizontal Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Pushes brand to left, user to right */
+    justify-content: space-between; 
     align-items: center;
-    padding: 0.75rem 5%;
+    padding: 1rem 5%;
     background: #1e293b;
     border-bottom: 1px solid #334155;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 .nav-user {
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between "Logged in as" and Logout button */
-}
-
-.nav-user span {
-    color: #94a3b8;
-    font-size: 0.9rem;
+    gap: 20px;
 }
 
 .logout-btn {
     background: #ef4444;
     color: white;
-    padding: 6px 16px;
+    padding: 8px 16px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
-    transition: background 0.2s;
 }
 
-.logout-btn:hover {
-    background: #dc2626;
+/* Dashboard Content Container */
+.dashboard-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* Ensure the login card doesn't look like a generic document */
-.login-card {
-    background: #1e293b; /* Matching the dark theme */
+.view-container {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
     border: 1px solid #334155;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Login Card Styling */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-card {
+    background: #1e293b;
     padding: 40px;
     border-radius: 16px;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-.login-card h2 { color: #f8fafc; }
-.login-card input {
-    background: #0f172a;
     border: 1px solid #334155;
-    color: white;
 }
