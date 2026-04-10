@@ -7,7 +7,7 @@ function LogInPage({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    
+
     // Interactive states
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
@@ -48,7 +48,7 @@ function LogInPage({ onLogin }) {
         <div className="login-container">
             <div className="login-card">
                 <div className="login-header">
-                    <h2>Welcome Back</h2>
+                    <h2>Internship Logging And Evaluation System</h2>
                     <p>Enter your credentials to access your account.</p>
                 </div>
 
@@ -69,7 +69,7 @@ function LogInPage({ onLogin }) {
                                 value={email}
                                 onChange={(e) => {
                                     setEmail(e.target.value);
-                                    if(error) setError('');
+                                    if (error) setError('');
                                 }}
                                 placeholder="name@example.com"
                                 required
@@ -86,7 +86,7 @@ function LogInPage({ onLogin }) {
                                 value={password}
                                 onChange={(e) => {
                                     setPassword(e.target.value);
-                                    if(error) setError('');
+                                    if (error) setError('');
                                 }}
                                 placeholder="Enter your password"
                                 required
@@ -102,8 +102,8 @@ function LogInPage({ onLogin }) {
                         </div>
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         className={`submit-button ${isLoading ? 'loading' : ''}`}
                         disabled={!email || !password || isLoading}
                     >
