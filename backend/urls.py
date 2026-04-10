@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # This prefix is CRITICAL for your Login.jsx 'http://127.0.0.1:8000/api/token/' call
-    path('api/', include('core.urls')), 
+    # Changed from 'row' to 'urls'
+    path('admin/', admin.site.urls), 
+    path('api/', include('core.urls')),
 ]
