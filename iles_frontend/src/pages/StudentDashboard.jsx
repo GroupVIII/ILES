@@ -10,4 +10,4 @@ function StudentDashboard() {
         </div>
     );
 }
-export default StudentDashboard();
+export default StudentDashboard;

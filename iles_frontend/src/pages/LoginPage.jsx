@@ -1,71 +1,130 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Mail, Lock, Eye, EyeOff, Loader2, AlertCircle, LogIn } from 'lucide-react';
 import './LogInPage.css';
-import axios from 'axios';
 
-function LogInPage(){
-    // const [credentials, setCredentials] = useState({email:'', password:''});
-    // const handleChange = (e)=>{setCredentials({...credentials, [e.target.name]: e.target.value})};
-    // const handleSubmit = (e)=>{
-    //     e.preventDefault();
-    //     if(credentials.email && credentials.password){
-    //         onLogin(credentials.email);
-    //     }
-    // };
+function LogInPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const navigate = useNavigate();
-    // const handleSubmit = async(e) => {
-    //     e.preventDefault();
-    //     try{
-    //         const response = await axios.post('/api/login', { email, password });
-    //         console.log("Login Successful:", response.data);
-    //         navigate('/dashboard');
-    //     }
-    //     catch(error){
-    //         alert("Login failed. Please check your credentials and try again.");
-    //         console.error("Login failed:", error);
+    const [showPassword, setShowPassword] = useState(false);
+    
+    // Interactive states
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    
+    const navigate = useNavigate();
 
-    //     }
-        
-    // };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        setIsLoading(true);
 
-    const handleSubmit = (e)=>{setEmail(e.target.value)}
-    return(
+        // --- Mock Login Flow ---
+        // Simulating network delay for interactivity
+        setTimeout(() => {
+            if (email === 'admin@admin.com') {
+                // Example of a mock failure
+                setError('Invalid credentials for this demo. Try a different email.');
+                setIsLoading(false);
+            } else {
+                // Success
+                setIsLoading(false);
+                // We're navigating directly for the demo
+                navigate('/dashboard'); 
+            }
+        }, 1500);
+
+        // --- Real Login Flow (Commented out for now) ---
+        // try {
+        //     const response = await axios.post('/api/login', { email, password });
+        //     console.log("Login Successful:", response.data);
+        //     navigate('/dashboard');
+        // } catch (err) {
+        //     setError("Login failed. Please check your credentials and try again.");
+        // } finally {
+        //     setIsLoading(false);
+        // }
+    };
+
+    return (
         <div className="login-container">
-            <div className="card">  
-                <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="group">
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e)=>setEmail(e.target.value)}
-                            placeholder="Email" 
-                            
-                        />
+            <div className="login-card">
+                <div className="login-header">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your credentials to access your account.</p>
+                </div>
+
+                {error && (
+                    <div className="error-alert">
+                        <AlertCircle size={18} />
+                        <span>{error}</span>
+                    </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="input-group">
+                        <label>Email Address</label>
+                        <div className="input-wrapper">
+                            <Mail className="input-icon" size={20} />
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    if(error) setError('');
+                                }}
+                                placeholder="name@example.com"
+                                required
+                            />
+                        </div>
                     </div>
 
-                    <div className="group">
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e)=>setPassword(e.target.value)}
-                            placeholder="Enter Password"
-
-                        />
+                    <div className="input-group">
+                        <label>Password</label>
+                        <div className="input-wrapper">
+                            <Lock className="input-icon" size={20} />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    if(error) setError('');
+                                }}
+                                placeholder="Enter your password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="toggle-password"
+                                onClick={() => setShowPassword(!showPassword)}
+                                tabIndex="-1"
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                        </div>
                     </div>
-                   
 
-                    <button type="submit" disabled={!email || !password} className="submit-button">
-                        LogIn
+                    <button 
+                        type="submit" 
+                        className={`submit-button ${isLoading ? 'loading' : ''}`}
+                        disabled={!email || !password || isLoading}
+                    >
+                        {isLoading ? (
+                            <>
+                                <Loader2 className="spinner" size={20} />
+                                Signing in...
+                            </>
+                        ) : (
+                            <>
+                                <LogIn size={20} />
+                                Sign In
+                            </>
+                        )}
                     </button>
-
                 </form>
             </div>
         </div>
     );
 }
+
 export default LogInPage;
-
-
