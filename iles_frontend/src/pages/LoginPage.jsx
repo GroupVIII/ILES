@@ -20,15 +20,21 @@ function LogInPage({ onLogin }) {
         // --- Mock Login Flow ---
         // Simulating network delay for interactivity
         setTimeout(() => {
-            if (email === 'admin@admin.com') {
+            if (email === 'fail@demo.com') {
                 // Example of a mock failure
                 setError('Invalid credentials for this demo. Try a different email.');
                 setIsLoading(false);
             } else {
                 // Success
                 setIsLoading(false);
-                // We're logging in directly for the demo
-                onLogin(email);
+                
+                // Assign a mock role based on the email string
+                let role = 'student'; // Default role
+                if (email.includes('admin')) role = 'admin';
+                else if (email.includes('supervisor')) role = 'supervisor';
+
+                // Pass the new user object to App.jsx
+                onLogin({ email, role });
             }
         }, 1500);
 
