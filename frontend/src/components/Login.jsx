@@ -12,22 +12,20 @@ const Login = ({ setToken }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            // Ensure this URL matches your Django project-level urls.py configuration
+            // Precise endpoint alignment
             const res = await axios.post('http://127.0.0.1:8000/api/token/', { 
                 username, 
                 password 
             });
             
-            // Store the raw tokens
+            // Storing session data
             localStorage.setItem('access_token', res.data.access);
             localStorage.setItem('refresh_token', res.data.refresh);
             
-            // Update the app state and move to dashboard
             setToken(res.data.access);
             navigate('/dashboard');
         } catch (err) {
             alert("The portal remains shut. Check credentials or server status.");
-            console.error(err);
         } finally {
             setLoading(false);
         }
