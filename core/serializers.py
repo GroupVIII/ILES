@@ -11,7 +11,7 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
         model = WeeklyLog
         fields = [
             'id', 'placement', 'student_name', 'week_number', 
-            'activities', 'challenges', 'status', 'status_display', 
+            'activities', 'status', 'status_display', 
             'created_at'
         ]
         # We make 'status' read-only for students so they can't 'Approve' their own logs!
