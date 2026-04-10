@@ -15,7 +15,7 @@ body, #root {
 /* Flexbox Horizontal Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between; /* Horizontal separation */
     align-items: center;
     padding: 1rem 5%;
     background: #1e293b;
