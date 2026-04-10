@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function StudentDashboard() {
 
-    const [] = useState('');
+    const [form, setForm] = useState('');
 
     return (
         <div>
