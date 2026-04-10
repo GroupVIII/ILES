@@ -6,6 +6,8 @@ from .models import WeeklyLog, Issue
 from .serializers import WeeklyLogSerializer, IssueSerializer, MyTokenObtainPairSerializer
 
 class MyTokenObtainPairView(TokenObtainPairView):
+    # Public endpoint to get keys
+    permission_classes = [permissions.AllowAny]
     serializer_class = MyTokenObtainPairSerializer
 
 class WeeklyLogListCreateView(generics.ListCreateAPIView):
@@ -13,6 +15,7 @@ class WeeklyLogListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
+        # Students see their own logs
         return WeeklyLog.objects.filter(placement__student=self.request.user)
 
     def perform_create(self, serializer):
@@ -23,7 +26,7 @@ class SupervisorLogListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        # Filtering for Submitted logs so the Supervisor can act
+        # RBAC: Supervisors see submitted logs
         if self.request.user.role == 'WORKPLACE_SUP' or self.request.user.is_staff:
             return WeeklyLog.objects.filter(status='SUBMITTED')
         return WeeklyLog.objects.none()
@@ -42,11 +45,3 @@ class ApproveLogView(APIView):
             return Response({"message": "Log approved!"}, status=status.HTTP_200_OK)
         except WeeklyLog.DoesNotExist:
             return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
-
-class IssueListCreateView(generics.ListCreateAPIView):
-    queryset = Issue.objects.all()
-    serializer_class = IssueSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(reporter=self.request.user)
