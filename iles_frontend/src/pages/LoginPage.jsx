@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, Loader2, AlertCircle, LogIn } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, Loader2, AlertCircle, LogIn, GraduationCap } from 'lucide-react';
 import './LogInPage.css';
 
 function LogInPage({ onLogin }) {
@@ -54,6 +54,9 @@ function LogInPage({ onLogin }) {
         <div className="login-container">
             <div className="login-card">
                 <div className="login-header">
+                    <div className="logo-container">
+                        <GraduationCap className="logo-icon" size={44} />
+                    </div>
                     <h2>Internship Logging And Evaluation System</h2>
                     <p>Enter your credentials to access your account.</p>
                 </div>
