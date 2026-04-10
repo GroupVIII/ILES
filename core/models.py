@@ -5,7 +5,6 @@ from django.core.exceptions import ValidationError
 
 # 1. CustomUser (Our 4 Core Players!)
 class CustomUser(AbstractUser):
-    # We use 'choices' to make a dropdown menu for the roles [4]
     ROLE_CHOICES = (
         ('STUDENT', 'Student Intern'),
         ('WORKPLACE_SUP', 'Workplace Supervisor'),
@@ -19,7 +18,6 @@ class CustomUser(AbstractUser):
 
 # 2. InternshipPlacement (Where the student goes)
 class InternshipPlacement(models.Model):
-    # ForeignKeys link the placement to our CustomUser table [5]
     student = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='student_placements')
     workplace_supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='workplace_supervisions')
     academic_supervisor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='academic_supervisions')
@@ -30,29 +28,26 @@ class InternshipPlacement(models.Model):
 
     def __str__(self):
         return f"{self.student.username}'s placement at {self.organization}"
-    # Add this inside your InternshipPlacement class in models.py
+
     class Meta:
         constraints = [
-            # Prevents a student from having two different placements 
-            # starting on the same exact day. [cite: 98, 125]
             models.UniqueConstraint(
                 fields=['student', 'start_date'], 
                 name='unique_placement_date'
             )
         ]
+
     def clean(self):
-        # Check if dates exist before comparing them
         if self.start_date and self.end_date:
             if self.start_date >= self.end_date:
                 raise ValidationError("The end date must be after the start date.")
     
     def save(self, *args, **kwargs):
-        self.full_clean() # This ensures clean() is called even in the admin panel
+        self.full_clean() 
         super().save(*args, **kwargs)
 
 # 3. WeeklyLog (The Quests!)
 class WeeklyLog(models.Model):
-    # These are the exact 4 states Dr. Wakholi asked for in Week 2! [6]
     STATUS_CHOICES = (
         ('DRAFT', 'Draft'),
         ('SUBMITTED', 'Submitted'),
@@ -63,35 +58,32 @@ class WeeklyLog(models.Model):
     week_number = models.IntegerField()
     activities = models.TextField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='DRAFT')
-    supervisor_comments = models.TextField(blank=True, null=True) # Blank allows it to be empty initially [7]
+    supervisor_comments = models.TextField(blank=True, null=True)
+    # Added to match Serializer expectations
+    created_at = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
         return f"Week {self.week_number} Log for {self.placement.student.username}"
+
     class Meta:
         constraints = [
-            # Prevents a student from submitting two logs for the same week 
-            # within a single placement. 
             models.UniqueConstraint(
                 fields=['placement', 'week_number'], 
                 name='unique_week_per_placement'
             )
         ]
+
     def save(self, *args, **kwargs):
-        # Check if the log already exists in the database
         if self.pk:
-            # Fetch the version currently stored in the database
             original_status = WeeklyLog.objects.get(pk=self.pk).status
-            
-            # If the stored version is already 'APPROVED', block the save
             if original_status == 'APPROVED':
                 raise PermissionError("This log is approved and cannot be edited.")
         super().save(*args, **kwargs)
-        
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='DRAFT')
+
 # 4. EvaluationCriteria (The Grading Rubric)
 class EvaluationCriteria(models.Model):
-    name = models.CharField(max_length=100) # e.g., "Workplace Evaluation"
-    weight = models.IntegerField(help_text="Percentage weight, e.g., 40 for 40%") # [8]
+    name = models.CharField(max_length=100)
+    weight = models.IntegerField(help_text="Percentage weight, e.g., 40 for 40%")
 
     def __str__(self):
         return f"{self.name} ({self.weight}%)"
@@ -106,6 +98,7 @@ class Evaluation(models.Model):
     def __str__(self):
         return f"Evaluation for {self.placement.student.username} by {self.evaluator.username}"
 
+# 6. Issue (Bug Reporting)
 class Issue(models.Model):
     ISSUE_TYPES = [
         ('BUG', 'Technical Bug'),
