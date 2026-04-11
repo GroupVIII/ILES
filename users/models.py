@@ -103,3 +103,32 @@ gender = models.CharField(
 ) 
 
 date_of_birth = models.DateField(null=True, blank=True)
+
+#Professional information
+role = models.CharField(
+   max_length=20,
+   choices=Roles.choices,
+   default=Roles.INTERN,
+   db_index=True,
+   help_text="User roel determines permissions and access"
+)
+
+employee = models.CharField(
+   max_length=50,
+   unique=True,
+   null=True,
+   blank=True,
+   help_text="company employee/student ID"
+)
+
+department = models.CharField(
+   max_length=100,
+   blank=True,
+   help_text="Department or team"
+)
+
+position = models.CharField(
+   max_length=100,
+   blank=True,
+   help_text="Job title or position"
+)
