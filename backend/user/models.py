@@ -62,4 +62,6 @@ class CustomUser(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
-    
+    def is_active(self):
+        pass
+        

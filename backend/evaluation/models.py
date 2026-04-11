@@ -39,4 +39,4 @@ class Evaluation(models.Model):
 
     class Status(models.Model):
         PENDIMG = 'pending', 'Pending'
-        UNDER_REVIEW = 'uner'
+        UNDER_REVIEW = 'under'
