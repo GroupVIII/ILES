@@ -484,3 +484,36 @@ class SupervisorAssignment(BaseModel):
         self.ended_at = timezone.now()
         self.save()
         logger.info(f"Supervisor assignment ended: {self}")
+class Invitation(BaseModel):
+    """
+    Track invitations sent to new users.
+    """
+    email = models.EmailField()
+    role = models.CharField(max_length=20, choices=User.Roles.choices)
+    invited_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='sent_invitations'
+    )
+    token = models.CharField(max_length=100, unique=True)
+    expires_at = models.DateTimeField()
+    accepted_at = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['token']),
+            models.Index(fields=['email', 'accepted_at']),
+        ]
+    
+    def __str__(self):
+        return f"Invitation for {self.email}"
+    
+    def is_valid(self):
+        """Check if invitation is still valid"""
+        return not self.accepted_at and self.expires_at > timezone.now()
+    
+    def accept(self):
+        """Mark invitation as accepted"""
+        self.accepted_at = timezone.now()
+        self.save()
