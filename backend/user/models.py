@@ -47,8 +47,8 @@ class CustomUser(AbstractUser):
         }
         )
     
-    # USERNAME_FIELD = 'email'  # Use email as the unique identifier for authentication
-    # REQUIRED_FIELDS = ['first_name', 'last_name']  # Fields required when creating a superuser  
+    USERNAME_FIELD = 'email'  # Use email as the unique identifier for authentication
+    REQUIRED_FIELDS = ['first_name', 'last_name']  # Fields required when creating a superuser  
 
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -61,7 +61,3 @@ class CustomUser(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-
-    def is_active(self):
-        pass
-        
