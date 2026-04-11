@@ -439,3 +439,48 @@ class UserSession(models.Model):
         self.logout_time = timezone.now()
         self.save()
 
+
+class SupervisorAssignment(BaseModel):
+    """
+    Track which supervisors are assigned to which interns.
+    Allows for historical tracking of assignments.
+    """
+    supervisor = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name='supervising_assignments',
+        limit_choices_to={'role': User.Roles.SUPERVISOR}
+    )
+    intern = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name='supervisor_assignments',
+        limit_choices_to={'role': User.Roles.INTERN}
+    )
+    assigned_at = models.DateTimeField(auto_now_add=True)
+    assigned_by = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        related_name='created_assignments'
+    )
+    ended_at = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True, db_index=True)
+    
+    class Meta:
+        unique_together = [['supervisor', 'intern', 'is_active']]
+        indexes = [
+            models.Index(fields=['supervisor', 'is_active']),
+            models.Index(fields=['intern', 'is_active']),
+        ]
+        ordering = ['-assigned_at']
+    
+    def __str__(self):
+        return f"{self.supervisor.get_full_name()} -> {self.intern.get_full_name()}"
+    
+    def end_assignment(self, ended_by=None):
+        """End the current assignment"""
+        self.is_active = False
+        self.ended_at = timezone.now()
+        self.save()
+        logger.info(f"Supervisor assignment ended: {self}")
