@@ -351,3 +351,50 @@ class User(AbstractUser, BaseModel):
         
         return self.role in access_matrix.get(module_name, [])
 
+class UserProfile(BaseModel):
+    """
+    Extended user profile for additional information.
+    One-to-one relationship with User.
+    """
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='profile'
+    )
+    
+    # Emergency Contact
+    emergency_contact_name = models.CharField(max_length=200, blank=True)
+    emergency_contact_phone = models.CharField(max_length=15, blank=True)
+    emergency_contact_relation = models.CharField(max_length=50, blank=True)
+    
+    # Address
+    address_line1 = models.CharField(max_length=255, blank=True)
+    address_line2 = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    state = models.CharField(max_length=100, blank=True)
+    country = models.CharField(max_length=100, blank=True)
+    postal_code = models.CharField(max_length=20, blank=True)
+    
+    # Skills & Interests
+    skills = models.JSONField(default=list, blank=True)
+    interests = models.JSONField(default=list, blank=True)
+    certifications = models.JSONField(default=list, blank=True)
+    
+    # Social Links
+    linkedin_url = models.URLField(max_length=500, blank=True)
+    github_url = models.URLField(max_length=500, blank=True)
+    portfolio_url = models.URLField(max_length=500, blank=True)
+    
+    # Documents
+    resume = models.FileField(
+        upload_to='resumes/',
+        null=True,
+        blank=True
+    )
+    
+    class Meta:
+        verbose_name = 'User Profile'
+        verbose_name_plural = 'User Profiles'
+    
+    def __str__(self):
+        return f"Profile for {self.user.email}"
