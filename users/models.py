@@ -398,3 +398,44 @@ class UserProfile(BaseModel):
     
     def __str__(self):
         return f"Profile for {self.user.email}"
+    
+
+
+class UserSession(models.Model):
+    """
+    Track user sessions for security auditing.
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name='sessions'
+    )
+    session_key = models.CharField(max_length=40, db_index=True)
+    ip_address = models.GenericIPAddressField()
+    user_agent = models.TextField()
+    
+    # Device info parsed from user agent
+    device_info = models.JSONField(default=dict)
+    
+    login_time = models.DateTimeField(auto_now_add=True)
+    last_activity = models.DateTimeField(auto_now=True)
+    logout_time = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['user', '-login_time']),
+            models.Index(fields=['session_key', 'is_active']),
+        ]
+        ordering = ['-login_time']
+    
+    def __str__(self):
+        return f"{self.user.email} - {self.login_time}"
+    
+    def end_session(self):
+        """End the user session"""
+        self.is_active = False
+        self.logout_time = timezone.now()
+        self.save()
+
