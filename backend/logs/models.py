@@ -57,5 +57,5 @@ class LogEnt(models.Model):
     tags = models.JSONField(default = list, blank = True)
 
     class Meta:
-        ordering = ['-date', '-created_at']
+        ordering = ['-date', '-timestamp']
         
