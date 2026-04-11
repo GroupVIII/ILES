@@ -1,6 +1,5 @@
-
-from user.views import CustomUserViewSet
 from django.urls import path
+from user.views import CustomUserViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
