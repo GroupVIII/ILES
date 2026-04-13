@@ -129,7 +129,11 @@ def clean(self):
                             on_delete=models.CASCADE,
                             related_name='attachments'
                         )
+                        file = models.FileField(
+                            upload_to = 'log_attachments/%Y/%m/%d/'
+                        )
                         
+
 
 
 
