@@ -124,7 +124,11 @@ def clean(self):
                     self.save()
                     class LogAttachment(BaseModel):
                         """Attachments for log entries (screenshots,documents,etc)"""
+                         
+
+
                         
+
                         
 
 
