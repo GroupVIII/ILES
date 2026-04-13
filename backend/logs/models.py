@@ -138,7 +138,9 @@ def clean(self):
                         uploaded_at = models.DateField(auto_now_add=True)
                         class Meta: 
                             ordering = ['-uploaded_at']
-                            
+                            def __str__(self):
+                              return f"{self.filename} for {self.log_entry}" 
+                              
 
 
 
