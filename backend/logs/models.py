@@ -135,6 +135,7 @@ def clean(self):
                         filename = models.CharField(max_length=255)
                         file_size = models.IntegerField(help_text="File size in bytes")
                         content_type = models.CharField(max_length=100)
+                        uploaded_at = models.DateField(auto_now_add=True)
                         
 
 
