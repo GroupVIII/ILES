@@ -143,7 +143,8 @@ def clean(self):
                             def save(self,*args,**kwargs):
                               if self.file and not self.filename:
                                   self.filename = os.path.basename(self.file.name)
-                                  
+                            super().save(*args,**kwargs) 
+                              
 
 
 
