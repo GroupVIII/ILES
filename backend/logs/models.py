@@ -124,7 +124,13 @@ def clean(self):
                     self.save()
                     class LogAttachment(BaseModel):
                         """Attachments for log entries (screenshots,documents,etc)"""
-                         
+                        log_entry = models.ForeignKey(
+                            LogEntry,
+                            on_delete=models.CASCADE,
+                            related_name='attachments'
+                        )
+                        
+
 
 
                         
