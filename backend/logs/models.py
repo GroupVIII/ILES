@@ -132,6 +132,7 @@ def clean(self):
                         file = models.FileField(
                             upload_to = 'log_attachments/%Y/%m/%d/'
                         )
+                        filename = models.CharField(max_length=255)
                         
 
 
