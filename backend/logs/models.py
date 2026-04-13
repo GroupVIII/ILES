@@ -141,7 +141,10 @@ def clean(self):
                             def __str__(self):
                               return f"{self.filename} for {self.log_entry}" 
                             def save(self,*args,**kwargs):
+                              if self.file and not self.filename:
+                                  self.filename = os.path.basename(self.file.name)
                                   
+
 
 
 
