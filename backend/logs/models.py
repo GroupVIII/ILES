@@ -140,7 +140,8 @@ def clean(self):
                             ordering = ['-uploaded_at']
                             def __str__(self):
                               return f"{self.filename} for {self.log_entry}" 
-                              
+                            def save(self,*args,**kwargs):
+                                  
 
 
 
