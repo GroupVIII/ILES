@@ -145,7 +145,13 @@ def clean(self):
                                   self.filename = os.path.basename(self.file.name)
                             super().save(*args,**kwargs) 
                             class TimeOff(BaseModel):
+                                """
+                                Track intern time off (vacation, sick leave,etc.)
+                                """
                                 
+
+
+
 
 
 
