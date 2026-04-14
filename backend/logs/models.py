@@ -3,6 +3,12 @@ from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
 from django.contrib.auth import validators
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils import timezone
+from django.conf import BaseModel
+from core.models import BaseModel
+from accounts.models import User
+import os
 
 # Create your models here.
 from user.models import CustomUser
