@@ -166,6 +166,12 @@ class Department(BaseModel):
                 related_name='history'
             )
 
+            changed_by = models.ForeignKey(
+                User,
+                on_delete=models.SET_NULL,
+                null=True,
+            )
+
                 
                 
                 
