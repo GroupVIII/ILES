@@ -150,6 +150,16 @@ class Department(BaseModel):
             """Mark the placement as completed."""
             self.status = self.Status.COMPLETED
             self.save()
+
+        def extend(self, new_end_date):
+            """Extend the placement end_date"""
+            self.status = self.Status.EXTENDED
+            self.expected_end_date = self.end_date
+            self.end_date = new_end_date
+            self.save()
+                
+                
+                
         
         
         
