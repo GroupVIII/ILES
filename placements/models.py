@@ -146,6 +146,11 @@ class Department(BaseModel):
                 return max(0, remaining)
             return None
         
+        def complete(self):
+            """Mark the placement as completed."""
+            self.status = self.Status.COMPLETED
+            self.save()
+        
         
         
 
