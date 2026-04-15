@@ -5,11 +5,14 @@ import LogInPage from "./pages/LoginPage.jsx";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const handleLogIn = (email)=>{
-    setCurrentUser(email);
 
+  const handleLogIn = (user) => {
+    setCurrentUser(user); // user = { email, role }
   };
-  const handleLogOut = ()=>{
+
+  const handleLogOut = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     setCurrentUser(null);
   };
   return(
