@@ -157,6 +157,15 @@ class Department(BaseModel):
             self.expected_end_date = self.end_date
             self.end_date = new_end_date
             self.save()
+
+        class PlacementHistory(BaseModel):
+            """Tracks changes in placements(history/audit log)"""
+            placement = models.ForeignKey(
+                Placement,
+                on_delete=models.CASCADE,
+                related_name='history'
+            )
+
                 
                 
                 
