@@ -138,6 +138,14 @@ class Department(BaseModel):
             return self.status == self.Status.ACTIVE and self.start_date <= self.end_date
         
         @property
+        def days_remaining(self):
+            """Calculates days remaining in placement"""
+            if self.is_active and self.end_date:
+                today = timezone.now().date()
+                remaining = (self.end_date - today).days
+                return max(0, remaining)
+            return None
+        
         
         
 
