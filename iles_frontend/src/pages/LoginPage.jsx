@@ -17,37 +17,35 @@ function LogInPage({ onLogin }) {
         setError('');
         setIsLoading(true);
 
-        // --- Mock Login Flow ---
-        // Simulating network delay for interactivity
-        setTimeout(() => {
-            if (email === 'fail@demo.com') {
-                // Example of a mock failure
-                setError('Invalid credentials for this demo. Try a different email.');
-                setIsLoading(false);
-            } else {
-                // Success
-                setIsLoading(false);
+        // --- Real Login Flow ---
+        try {
+            const response = await fetch('/api/token/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("Login Successful:", data);
+                // Store tokens in localStorage
+                localStorage.setItem('access_token', data.access);
+                localStorage.setItem('refresh_token', data.refresh);
                 
-                // Assign a mock role based on the email string
-                let role = 'student'; // Default role
+                // For now, default role to student unless we decode the JWT to get the exact role.
+                let role = 'student';
                 if (email.includes('admin')) role = 'admin';
                 else if (email.includes('supervisor')) role = 'supervisor';
-
-                // Pass the new user object to App.jsx
+                
                 onLogin({ email, role });
+            } else {
+                setError(data.detail || "Login failed. Please check your credentials and try again.");
             }
-        }, 1500);
-
-        // --- Real Login Flow (Commented out for now) ---
-        // try {
-        //     const response = await axios.post('/api/login', { email, password });
-        //     console.log("Login Successful:", response.data);
-        //     navigate('/dashboard');
-        // } catch (err) {
-        //     setError("Login failed. Please check your credentials and try again.");
-        // } finally {
-        //     setIsLoading(false);
-        // }
+        } catch (err) {
+            setError("Network error. Ensure the backend server is running.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
