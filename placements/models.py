@@ -172,6 +172,22 @@ class Department(BaseModel):
                 null=True,
             )
 
+            field_name = models.CharField(max_length=50)
+            old_value = models.TextField(blank=True)
+            new_value = models.TextField(blank=True)    
+
+            changed_at = models.DateTimeField(auto_now_add=True)
+
+            class Meta:
+                ordering = ['-changed_at']
+                indexes = [
+                    models.Index(fields=['placement', '-changed_at']),
+                ]
+
+            def __str__(self):
+                return f"{self.placement} - {self.field_name} changed at {self.changed_at}"
+
+
                 
                 
                 
