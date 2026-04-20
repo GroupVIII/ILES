@@ -156,6 +156,8 @@ def clean(self):
                                     OTHER = 'other','Other'
                                     class Status(models.TextChoices):
                                         PENDING = 'pending','Pending'
+                                        APPROVED = 'approved','Approved'
+                                        
 
 
 
