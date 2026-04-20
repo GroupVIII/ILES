@@ -166,7 +166,9 @@ def clean(self):
         help_text = "Number of days (e.g 1.5 for 1.5 days)"
         reason = models.TextField()
         status = models.CharField(max_length=20,choices=Status.choices)
+        default = Status.PENDING
         
+
 
 
 
