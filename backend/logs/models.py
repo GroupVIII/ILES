@@ -170,7 +170,9 @@ def clean(self):
         db_index=True
         approved_by = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True,related_name='approved_time_off')
         approved_at = models.DateField(null=True,blank=True)
+        rejection_reason = models.TextField(blank=True)
         
+
 
 
 
