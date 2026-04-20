@@ -165,7 +165,9 @@ def clean(self):
         days = models.DecimalField(max_digits=4,decimal_places=1)
         help_text = "Number of days (e.g 1.5 for 1.5 days)"
         reason = models.TextField()
+        status = models.CharField(max_length=20,choices=Status.choices)
         
+
 
 
 
