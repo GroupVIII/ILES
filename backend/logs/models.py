@@ -163,6 +163,7 @@ def clean(self):
         start_date = models.DateField()
         end_date = models.DateField()
         days = models.DecimalField(max_digits=4,decimal_places=1)
+        help_text = "Number of days (e.g 1.5 for 1.5 days)"
         
 
 
