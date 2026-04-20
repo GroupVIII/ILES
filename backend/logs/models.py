@@ -152,7 +152,9 @@ def clean(self):
                                     VACATION = 'vacation','Vacation'
                                     SICK = 'sick','Sick Leave'
                                     HOLIDAY = 'holiday','Public Holiday'
+                                    BEREAVEMENT = 'bereavement','Bereavement'
                                     
+
 
 
                                     
