@@ -173,7 +173,9 @@ def clean(self):
         rejection_reason = models.TextField(blank=True)
         
         class Meta: ordering = ['-created_at']
+        models.Index(fields=['user','status'])
         
+
 
 
 
