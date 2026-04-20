@@ -159,7 +159,10 @@ def clean(self):
                                         APPROVED = 'approved','Approved'
                                         REJECTED = 'rejected','Rejected'
         user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='time_off_requests')
-                                               
+        type = models.CharField(max_lenth=20,choices=TimeOffType.choices)
+        
+
+
 
 
 
