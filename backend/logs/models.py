@@ -181,6 +181,7 @@ def clean(self):
             self.status = self.Status.APPROVED
             self.approved_by = approver
             self.approved_at = timezone.now()
+            self.save()
             
 
         
