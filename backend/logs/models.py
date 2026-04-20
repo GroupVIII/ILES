@@ -162,6 +162,7 @@ def clean(self):
         type = models.CharField(max_lenth=20,choices=TimeOffType.choices)
         start_date = models.DateField()
         end_date = models.DateField()
+        days = models.DecimalField(max_digits=4,decimal_places=1)
         
 
 
