@@ -158,7 +158,8 @@ def clean(self):
                                         PENDING = 'pending','Pending'
                                         APPROVED = 'approved','Approved'
                                         REJECTED = 'rejected','Rejected'
-                                        
+        user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='time_off_requests')
+                                               
 
 
 
