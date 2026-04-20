@@ -172,6 +172,8 @@ def clean(self):
         approved_at = models.DateField(null=True,blank=True)
         rejection_reason = models.TextField(blank=True)
         
+        class Meta: ordering = ['-created_at']
+        
 
 
 
