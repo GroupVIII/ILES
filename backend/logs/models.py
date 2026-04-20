@@ -185,6 +185,7 @@ def clean(self):
             def reject(self,approver,reason=""):
                 self.status = self.Status.REJECTED
                 self.approved_by = approver
+                self.approved_at = timezone.now()
                 
 
         
