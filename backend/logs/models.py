@@ -184,6 +184,7 @@ def clean(self):
             self.save()
             def reject(self,approver,reason=""):
                 self.status = self.Status.REJECTED
+                self.approved_by = approver
                 
 
         
