@@ -154,7 +154,8 @@ def clean(self):
                                     HOLIDAY = 'holiday','Public Holiday'
                                     BEREAVEMENT = 'bereavement','Bereavement'
                                     OTHER = 'other','Other'
-                                    
+                                    class Status(models.TextChoices):
+                                        PENDING = 'pending','Pending'
 
 
 
