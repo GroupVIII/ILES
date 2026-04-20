@@ -160,6 +160,7 @@ def clean(self):
                                         REJECTED = 'rejected','Rejected'
         user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='time_off_requests')
         type = models.CharField(max_lenth=20,choices=TimeOffType.choices)
+        _start_date = models.DateField()
         
 
 
