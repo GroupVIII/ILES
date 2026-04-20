@@ -179,7 +179,9 @@ def clean(self):
             return f"{self.user.get_full_name()} - {self.type} ({self.days}days)"
         def approve(self,approver):
             self.status = self.Status.APPROVED
+            self.approved_by = approver
             
+
         
 
 
