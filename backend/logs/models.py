@@ -150,6 +150,9 @@ def clean(self):
                                 """
                                 class TimeOffType(models.TextChoices):
                                     VACATION = 'vacation','Vacation'
+                                    SICK = 'sick','Sick Leave'
+                                    
+
                                     
 
 
