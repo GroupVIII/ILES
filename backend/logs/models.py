@@ -168,6 +168,7 @@ def clean(self):
         status = models.CharField(max_length=20,choices=Status.choices)
         default = Status.PENDING
         db_index=True
+        approved_by = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True,related_name='approved_time_off')
         
 
 
