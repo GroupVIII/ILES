@@ -186,6 +186,28 @@ class Department(BaseModel):
 
             def __str__(self):
                 return f"{self.placement} - {self.field_name} changed at {self.changed_at}"
+            
+        class Rotation(BaseModel):
+            """Tracks intern rotations through different departments."""
+            intern = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='rotations',
+                limit_choices_to={'role':User.Roles.INTERN}
+            )
+
+            from Department = models.ForeignKey(
+                Department,
+                on_delete=models.PROTECT,
+                related_name='rotation_from'
+            )
+            to_department = models.ForeignKey(
+                Department,
+                on_delete=models.PROTECT,
+                related_name='rotation_to'
+            )
+
+
 
 
                 
