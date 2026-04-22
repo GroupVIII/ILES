@@ -206,6 +206,15 @@ class Department(BaseModel):
                 on_delete=models.PROTECT,
                 related_name='rotation_to'
             )
+            rotation_date = models.DateField()
+            reason = models.TextField(blank=True)
+
+            approved_by = models.ForeignKey(
+                User,
+                on_delete=models.SET_NULL,
+                null=True,
+                related_name='approved_rotations'
+            )
 
 
 
