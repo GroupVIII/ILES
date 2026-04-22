@@ -215,6 +215,14 @@ class Department(BaseModel):
                 null=True,
                 related_name='approved_rotations'
             )
+            class Meta:
+                ordering = ['-rotation_date']
+                indexes = [
+                    models.Index(fields=['intern', '-rotation_date']),
+                ]
+
+            def __str__(self):
+                return f"{self.intern.get_full_name()}: {self.from_department.code} -> {self.to_department.code}"
 
 
 
