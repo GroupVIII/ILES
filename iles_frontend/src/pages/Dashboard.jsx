@@ -12,10 +12,10 @@ const Dashboard =({currentuser, setAuthData})=>{
     case 'STUDENT':
       return <StudentDashboard user={currentuser} onLogOut = {handleLogOut} />
 
-    case '':
+    case 'ADMIN':
       return <AdminDashboard user = {currentuser} onLogOut = {handleLogOut} />
 
-    case '':
+    case 'SUPERVISOR':
       return <SupervisorDashboard user = {currentuser} onLogOut = {handleLogOut} />
 
     default:
