@@ -53,7 +53,7 @@ function LogInPage({ onLogin }) {
             <div className="login-card">
                 <div className="login-header">
                     <div className="logo-container">
-                        <GraduationCap className="logo-icon" size={44} />
+                        <GraduationCap className="logo-icon" size={40} />
                     </div>
                     <h2>Internship Logging And Evaluation System</h2>
                     <p>Enter your credentials to access your account.</p>
