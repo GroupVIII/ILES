@@ -14,3 +14,15 @@ class EvaluationSerializer(serializer.ModelSerializer):
     class Meta:
         model = Evaluation
         fields = '__all__'
+
+class EvaluationGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EvaluationGoal
+        fields = '__all__'
+
+class EvaluationSkillSerializer(serializers.ModelSerializer):
+    intern_details = UserSerializer(source='intern', read_only=True)
+
+    class Meta:
+        model = EvaluationSkill
+        fields = '__all__'
