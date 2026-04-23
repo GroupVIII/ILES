@@ -2,35 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './SupervisorLogList.css'; // Make sure the CSS is imported
 
 // Mock data array to simulate fetching from a backend
-const MOCK_LOGS = [
-    {
-        id: 101,
-        internName: "Alice Johnson",
-        date: "2023-11-10T10:00:00Z",
-        type: "Weekly Review",
-        summary: "Completed all frontend assignments successfully. Needs work on CSS Grid but overall great progress.",
-        rating: 4,
-        status: "Acknowledged"
-    },
-    {
-        id: 102,
-        internName: "Alice Johnson",
-        date: "2023-11-17T11:30:00Z",
-        type: "Task Approval",
-        summary: "Approved 15 hours of work for week 3. All tasks meet expectations.",
-        rating: 5,
-        status: "Submitted"
-    },
-    {
-        id: 103,
-        internName: "Bob Smith",
-        date: "2023-11-18T09:15:00Z",
-        type: "Mid-Term Evaluation",
-        summary: "Bob is struggling with backend integrations but excels at documentation. Scheduling a 1-on-1.",
-        rating: 3,
-        status: "Draft"
-    }
-];
 
 function SupervisorLogList() {
     const [logs, setLogs] = useState([]);
