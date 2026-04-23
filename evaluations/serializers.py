@@ -26,3 +26,11 @@ class EvaluationSkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = EvaluationSkill
         fields = '__all__'
+
+class EvaluationReminderSerializer(serializers.ModelSerializer):
+    intern_details = UserSerializer(source='intern', read_only=True)
+    evaluator_details = UserSerializer(source='evaluator', read_only=True)
+
+    class Meta:
+        model = EvaluationReminder
+        fields = '__all__'
