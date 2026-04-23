@@ -3,6 +3,8 @@ import { useState } from 'react';
 function StudentDashboard() {
 
     const [form, setForm] = useState('');
+    const[loading, setLoding] = useState(true);
+    
 
     return (
         <div>
