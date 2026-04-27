@@ -1,11 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect, use } from 'react';
 
 function StudentDashboard() {
 
     const [form, setForm] = useState('');
     const[loading, setLoading] = useState(true);
     
+    useEffect(() => {
+        // Simulate loading data
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
+    useEffect(() => {
+        if (loading) {
+            console.log("Loading student data..."); 
+        } else {
+            console.log("Student data loaded.");
+        }
+    }, [loading]);
+
+    useEffect(() => {
     return (
         <div>
             <h2>Student Dashboard</h2>
@@ -21,5 +37,6 @@ function StudentDashboard() {
             <button onClick={() => setLoading(!loading)}>Toggle Loading</button>
         </div>
     );
-}
+};
+
 export default StudentDashboard;
