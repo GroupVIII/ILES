@@ -23,6 +23,25 @@ class EvaluationRubricViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
+       # Filter rubrics based on user role
+       if self.request.user.is_admin_or_hr:
+          return EvaluationRubric.objects.all()
+       return EvaluationRubric.objects.filter(is_active=True)
+    
+class EvaluationViewSet(viewsets.ModelViewSet):
+   """ViewSet for managing evaluations."""
+   queryset = Evaluation.objects.all()
+   serializer_class = EvaluationSerializer
+   permission_classes = [permissions.isAuthenticated]
+
+   def get_queryset(self):
+      user = self.request.user
+      if user.is_admin_or_hr:
+         return Evaluation.objects.all()
+      elif user.is_supervisor:
+         #supervisors see evaluations they created
+         return Evaluation.objects.filter(evaluator=user)
+
        
 
 
