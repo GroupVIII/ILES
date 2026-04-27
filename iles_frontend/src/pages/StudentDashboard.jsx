@@ -37,6 +37,6 @@ function StudentDashboard() {
             <button onClick={() => setLoading(!loading)}>Toggle Loading</button>
         </div>
     );
-};
+}
 
 export default StudentDashboard;
