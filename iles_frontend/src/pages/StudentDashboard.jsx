@@ -11,6 +11,8 @@ function StudentDashboard() {
             <h2>Student Dashboard</h2>
             <p>Welcome to your dashboard!</p>
             <span>Here you can view your progress, submit reports, and communicate with your supervisor.</span>
+
+            
             <form>
                 <label htmlFor="report">Submit your report:</label>
                 <textarea id="report" value={form} onChange={(e) => setForm(e.target.value)} placeholder="Write your report here..."></textarea>
