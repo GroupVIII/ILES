@@ -14,6 +14,16 @@ from .serializers import (
     EvaluationReminderSerializer
 )
 import logging
+ logger = logging.getLogger(__name__)
+
+class EvaluationRubricViewSet(viewsets.ModelViewSet):
+    """ViewSet for managing evaluation rubrics."""
+    queryset = EvaluationRubric.objects.all()
+    serializer_class = EvaluationRubicSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+       
 
 
 
