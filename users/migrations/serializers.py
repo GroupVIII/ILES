@@ -18,3 +18,26 @@ class UserProfileSerializer(BaseModelSerializer):
             'portfolio_url', 'resume', 'created_at', 'updated_at'
         ]
 
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """Custom JWT serializer that includes user data"""
+    
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        
+        # Add custom claims
+        token['email'] = user.email
+        token['role'] = user.role
+        token['full_name'] = user.get_full_name()
+        
+        return token
+    
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        # Add user data to response
+        data['user'] = UserSerializer(self.user).data
+        data['role'] = self.user.role
+        
+        return data
