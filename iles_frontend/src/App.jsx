@@ -12,6 +12,8 @@ function App() {
     setCurrentUser(null);
   };
 
+  
+
   return(
     <div>
       {currentUser ? (
