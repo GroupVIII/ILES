@@ -41,6 +41,28 @@ class EvaluationViewSet(viewsets.ModelViewSet):
       elif user.is_supervisor:
          #supervisors see evaluations they created
          return Evaluation.objects.filter(evaluator=user)
+        else:
+         #interns see their own evaluations
+         return EValuation.objecs.filter(intern=user)
+      
+class EvaluationGoalViewSet(viewsets.ModelViewSet):
+    """ViewSet for managing evaluation goals"""
+    queryset = EvaluationGoal.objects.all()
+    serializer_class = EvaluationGoalSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_admin_or_hr:
+            return EvaluationGoal.objects.all()
+        elif user.is_supervisor:
+            # Supervisors see goals for evaluations they created
+            return EvaluationGoal.objects.filter(evaluation__evaluator=user)
+        else:
+            # Interns see goals for their own evaluations
+            return EvaluationGoal.objects.filter(evaluation__intern=user)
+
+      
 
        
 
