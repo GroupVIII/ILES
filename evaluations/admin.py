@@ -58,4 +58,17 @@ class EvaluationAdmin(admin.ModelAdmin):
         }),
         ('Intern Response', {
             'fields': ('intern_comments', 'intern_acknowledged_at')
+        }),
+        ('Status', {
+            'fields': ('status',)
+        }),
+        ('Related', {
+            'fields': ('related_reports',)
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at')
+        }),
+    )
+    readonly_fields = ('overall_score', 'intern_acknowledged_at', 'created_at', 'updated_at')
+    filter_horizontal = ('related_reports',)
         
