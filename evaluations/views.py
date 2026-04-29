@@ -61,6 +61,26 @@ class EvaluationGoalViewSet(viewsets.ModelViewSet):
         else:
             # Interns see goals for their own evaluations
             return EvaluationGoal.objects.filter(evaluation__intern=user)
+        
+class EvaluationSkillViewSet(viewsets.ModelViewSet):
+   """ViewSet for managing skills"""
+   queryset = EvaluationSkill.object.all()
+   serializer_class = EvaluationSkillSerializer
+   permission_class = [permissions.IsAuthenticated]
+
+   def get_queryset(self):
+      user = self.request.user
+
+      if user.is_admin_or_hr:
+         return EvaluationSkill.objects.all()
+      elif user.is_sypervisor:
+         intern_ids = user.supervising_assignments.filter(
+            is_active=True
+         ).values_list('intern_id', flat=True)
+         return EvaluationSkill.objects.filter(intern__in=intern_ids)
+      else:
+         return EvaluationSkill.objects.filter(intern=user)
+
 
       
 
