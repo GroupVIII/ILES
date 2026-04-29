@@ -47,3 +47,35 @@ class UserSerializer(BaseModelSerializer):
     def get_internship_status(self, obj):
         return obj.internship_status
 
+class UserCreateSerializer(BaseModelSerializer):
+    """Serializer for creating new users"""
+    password = serializers.CharField(
+        write_only=True,
+        required=True,
+        validators=[validate_password]
+    )
+    password2 = serializers.CharField(write_only=True, required=True)
+    
+    class Meta:
+        model = User
+        fields = [
+            'email', 'password', 'password2', 'first_name', 'last_name',
+            'middle_name', 'role', 'phone_number', 'department', 'position',
+            'university', 'major', 'graduation_year'
+        ]
+    
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password2']:
+            raise serializers.ValidationError({
+                "password": "Password fields didn't match."
+            })
+        return attrs
+    
+    def create(self, validated_data):
+        validated_data.pop('password2')
+        user = User.objects.create_user(**validated_data)
+        
+        # Create default profile
+        UserProfile.objects.create(user=user)
+        
+        return user
