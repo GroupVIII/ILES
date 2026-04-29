@@ -11,4 +11,10 @@ class LogEntry(BaseModel):
      Daily log entry for intern work.
      """
     
- 
+    class Status(models.TextChoices):
+        DRAFT = 'draft', 'Draft'
+        SUBMITTED = 'submitted', 'Submitted'
+        APPROVED = 'approve', 'Approved'
+        REJECTED = 'rejected','Rejected'
+        NEEDS_REVISION = 'needs_revision','Needs_Revision'
+         
