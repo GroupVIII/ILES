@@ -79,3 +79,15 @@ class UserCreateSerializer(BaseModelSerializer):
         UserProfile.objects.create(user=user)
         
         return user
+
+class UserUpdateSerializer(BaseModelSerializer):
+    """Serializer for updating users"""
+    class Meta:
+        model = User
+        fields = [
+            'first_name', 'last_name', 'middle_name', 'phone_number',
+            'gender', 'date_of_birth', 'department', 'position',
+            'university', 'major', 'graduation_year', 'profile_picture',
+            'bio', 'email_notifications', 'in_app_notifications',
+            'theme_preference', 'language', 'timezone'
+        ]
