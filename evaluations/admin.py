@@ -77,9 +77,15 @@ class EvaluationGoalAdmin(admin.ModelAdmin):
     list_display = ('evaluation', 'goal_description', 'priority', 'status', 'due_date')
     list_filter = ('priority', 'status', 'due_date')
     search_fields = ('goal_description', 'evaluation__intern__email')
-    
+
 @admin.register(EvaluationSkill)
 class EvaluationSkillAdmin(admin.ModelAdmin):
     list_display = ('intern', 'skill_name', 'skill_category', 'current_level', 'target_level', 'last_assessed_at')
     list_filter = ('skill_category', 'current_level')
     search_fields = ('intern__email', 'skill_name')
+
+@admin.register(EvaluationReminder)
+class EvaluationReminderAdmin(admin.ModelAdmin):
+    list_display = ('intern', 'evaluator', 'reminder_type', 'due_date', 'sent_at', 'is_acknowledged')
+    list_filter = ('reminder_type', 'is_acknowledged', 'sent_at')
+    search_fields = ('intern__email', 'evaluator__email')
