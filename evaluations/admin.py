@@ -34,4 +34,12 @@ class EvaluationRubricAdmin(admin.ModelAdmin):
     )
     readonly_fields = ('created_at', 'updated_at')
 
+
+@admin.register(Evaluation)
+class EvaluationAdmin(admin.ModelAdmin):
+    list_display = ('intern', 'evaluator', 'evaluation_date', 'rubric', 'overall_score', 'status')
+    list_filter = ('status', 'evaluation_date', 'rubric__rubric_type')
+    search_fields = ('intern__email', 'intern__first_name', 'intern__last_name', 'evaluator__email')
+    inlines = [EvaluationGoalInline]
+    
         
