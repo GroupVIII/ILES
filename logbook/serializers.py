@@ -15,7 +15,9 @@ class LogAttachmentSerializer(BaseModelSerializer):
         fields +=['file_url']
         fields +=['filename']
         fields +=['file_size']
-        
+        fields +=['content_type']
+
+
 
 
 
