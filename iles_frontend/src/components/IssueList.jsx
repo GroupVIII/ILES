@@ -27,7 +27,7 @@ function Issue({ issue }) {
         // Here you would typically make an API call to get the issue details
     };
 
-    
+
     return (
         <div className="issue-container">
             <div className="issue-header" onClick={toggleExpand}>
