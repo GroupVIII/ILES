@@ -12,7 +12,9 @@ class LogAttachmentSerializer(BaseModelSerializer):
         model = LogAttachment
         fields = ['log_entry']
         fields +=['file']
+        fields +=['file_url']
         
+
 
 
 
