@@ -17,6 +17,7 @@ class LogAttachmentSerializer(BaseModelSerializer):
         fields +=['file_size']
         fields +=['content_type']
         fields +=['uploaded_at']
+        read_only_fields = ['uploaded_at']
         
 
 
