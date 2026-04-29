@@ -9,6 +9,7 @@ class LogAttachmentSerializer(BaseModelSerializer):
     file_url = serializers.SerializerMethodField()
 
     class Meta:
-        
+        model = LogAttachment
+
 
 
