@@ -80,6 +80,21 @@ class EvaluationSkillViewSet(viewsets.ModelViewSet):
          return EvaluationSkill.objects.filter(intern__in=intern_ids)
       else:
          return EvaluationSkill.objects.filter(intern=user)
+      
+class EvaluationReminderViewSet(viewsets.ModelViewSet):
+   """ViewSet for managing evaluation reminders"""
+   queryset = EvaluationReminder.objects.all()
+   serializer_class = EvaluationReminderSerializer
+   permission_classes = [permissions.IsAuthenticated]
+
+   def get_queryset(self):
+      user = self.request.user
+      if user.is_admin_or_hr:
+         return EvaluationReminder.objects.all()
+      elif user.is_supervisor:
+         return EvaluationReminder.objects.filter(evaluator=user)
+      else:
+         return EvaluationReminder.objects.filter(intern=user)
 
 
       
