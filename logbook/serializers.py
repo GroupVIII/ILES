@@ -11,7 +11,9 @@ class LogAttachmentSerializer(BaseModelSerializer):
     class Meta:
         model = LogAttachment
         fields = ['log_entry']
+        fields +=['file']
         
+
 
 
 
