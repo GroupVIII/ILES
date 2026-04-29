@@ -7,3 +7,8 @@ from .models import (
     EvaluationSkill, EvaluationReminder
 )
 
+class EvaluationGoalInline(admin.TabularInline):
+    model = EvaluationGoal
+    extra = 1
+    fields = ('goal_description', 'priority', 'status', 'due_date')
+
