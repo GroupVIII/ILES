@@ -42,4 +42,20 @@ class EvaluationAdmin(admin.ModelAdmin):
     search_fields = ('intern__email', 'intern__first_name', 'intern__last_name', 'evaluator__email')
     inlines = [EvaluationGoalInline]
     
+    fieldsets = (
+        ('Participants', {
+            'fields': ('intern', 'evaluator')
+        }),
+        ('Evaluation Details', {
+            'fields': ('rubric', 'evaluation_date', 'period_start', 'period_end')
+        }),
+        ('Scores', {
+            'fields': ('scores', 'overall_score'),
+            'description': 'Scores should match the rubric criteria'
+        }),
+        ('Feedback', {
+            'fields': ('strengths', 'areas_for_improvement', 'overall_comments', 'recommended_next_steps')
+        }),
+        ('Intern Response', {
+            'fields': ('intern_comments', 'intern_acknowledged_at')
         
