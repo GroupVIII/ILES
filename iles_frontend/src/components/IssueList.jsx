@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 /* import './Issue.css'; */
 
 function Issue({ issue }) {
@@ -16,6 +16,18 @@ function Issue({ issue }) {
         console.log("Issue component mounted.");   
     
     }, []);
+
+    useEffect(() => {
+        console.log(`Issue details updated: ${JSON.stringify(issue)}`);
+    }, [issue]);
+
+    const fetchIssueDetails = (id) => {
+        // Simulate fetching issue details from an API
+        console.log(`Fetching details for issue ID: ${id}`);
+        // Here you would typically make an API call to get the issue details
+    };
+
+    
     return (
         <div className="issue-container">
             <div className="issue-header" onClick={toggleExpand}>
