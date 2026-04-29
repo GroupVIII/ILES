@@ -72,3 +72,8 @@ class EvaluationAdmin(admin.ModelAdmin):
     readonly_fields = ('overall_score', 'intern_acknowledged_at', 'created_at', 'updated_at')
     filter_horizontal = ('related_reports',)
         
+@admin.register(EvaluationGoal)
+class EvaluationGoalAdmin(admin.ModelAdmin):
+    list_display = ('evaluation', 'goal_description', 'priority', 'status', 'due_date')
+    list_filter = ('priority', 'status', 'due_date')
+    search_fields = ('goal_description', 'evaluation__intern__email')
