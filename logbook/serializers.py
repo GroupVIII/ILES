@@ -5,4 +5,7 @@ from accounts.serializers import UserSerializer
 from core.api import BaseModelSerializer
 
 class LogAttachmentSerializer(BaseModelSerializer):
+    """Serializer for log attachments"""
+    file_url = serializers.SerializerMethodField()
+
     
