@@ -21,3 +21,17 @@ class EvaluationRubricAdmin(admin.ModelAdmin):
         ('Basic Information', {
             'fields': ('name', 'description', 'rubric_type')
         }),
+         ('Rubric Structure', {
+            'fields': ('structure',),
+            'description': 'Define criteria, weights, and scoring in JSON format'
+        }),
+        ('Validity', {
+            'fields': ('is_active', 'valid_from', 'valid_until')
+        }),
+        ('Metadata', {
+            'fields': ('created_by', 'created_at', 'updated_at')
+        }),
+    )
+    readonly_fields = ('created_at', 'updated_at')
+
+        
