@@ -19,3 +19,31 @@ class UserProfileSerializer(BaseModelSerializer):
             'portfolio_url', 'resume', 'created_at', 'updated_at'
         ]
 
+class UserSerializer(BaseModelSerializer):
+    """Serializer for user model"""
+    profile = UserProfileSerializer(read_only=True)
+    full_name = serializers.SerializerMethodField()
+    internship_status = serializers.SerializerMethodField()
+    role_display = serializers.CharField(source='get_role_display', read_only=True)
+    
+    class Meta:
+        model = User
+        fields = [
+            'id', 'email', 'first_name', 'last_name', 'middle_name',
+            'full_name', 'role', 'role_display', 'phone_number', 'gender',
+            'date_of_birth', 'employee_id', 'department', 'position',
+            'university', 'major', 'graduation_year', 'profile_picture',
+            'bio', 'start_date', 'end_date', 'total_required_hours',
+            'internship_status', 'days_remaining', 'email_notifications',
+            'in_app_notifications', 'theme_preference', 'language',
+            'timezone', 'is_active', 'date_joined', 'last_login',
+            'profile', 'created_at', 'updated_at'
+        ]
+        read_only_fields = ['id', 'date_joined', 'last_login', 'created_at', 'updated_at']
+    
+    def get_full_name(self, obj):
+        return obj.get_full_name()
+    
+    def get_internship_status(self, obj):
+        return obj.internship_status
+
