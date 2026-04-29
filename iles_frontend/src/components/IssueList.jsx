@@ -10,6 +10,12 @@ function Issue({ issue }) {
         setIsExpanded(!isExpanded);
     };
 
+
+    useEffect(() => {
+        fetchIssueDetails(issue.id);
+        console.log("Issue component mounted.");   
+    
+    }, []);
     return (
         <div className="issue-container">
             <div className="issue-header" onClick={toggleExpand}>
