@@ -1,4 +1,4 @@
-# accounts/apps.py
+# Users/apps.py
 from django.apps import AppConfig
 
 
