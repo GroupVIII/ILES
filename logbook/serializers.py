@@ -26,7 +26,9 @@ class LogAttachmentSerializer(BaseModelSerializer):
     
 class LogEntrySerializer(BaseModelSerializer):
     user_name = serializers.CharField(source='user.get_full_name', read_only=True)
-            
+    user_email = serializers.EmailField(source='user.email', read_only=True)
+    
+
             
                 
         
