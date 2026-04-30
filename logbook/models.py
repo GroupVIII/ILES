@@ -27,6 +27,14 @@ class LogEntry(BaseModel):
             TRAINING = 'training', 'Training'
             ADMIN = 'admin', 'Admin'
             OTHER = 'other', 'Other'
+
+        user = models.ForeignKey(
+            User,
+            on_delete=models.CASCADE,
+            related_name='log_entries'
+        )
+
+        
             
 
 
