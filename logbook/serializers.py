@@ -24,7 +24,9 @@ class LogAttachmentSerializer(BaseModelSerializer):
             return obj.file.url
         return None
     
-class LogEntrySerializer(BaseModelSerializer):        
+class LogEntrySerializer(BaseModelSerializer):
+    user_name = serializers.CharField(source='user.get_full_name', read_only=True)
+            
             
                 
         
