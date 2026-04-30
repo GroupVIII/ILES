@@ -173,3 +173,19 @@ class LoginSerializer(serializers.Serializer):
         
         data['user'] = user
         return data
+
+
+class SupervisorAssignmentSerializer(BaseModelSerializer):
+    """Serializer for supervisor assignments"""
+    supervisor_name = serializers.CharField(source='supervisor.get_full_name', read_only=True)
+    intern_name = serializers.CharField(source='intern.get_full_name', read_only=True)
+    supervisor_email = serializers.EmailField(source='supervisor.email', read_only=True)
+    intern_email = serializers.EmailField(source='intern.email', read_only=True)
+    
+    class Meta:
+        model = SupervisorAssignment
+        fields = [
+            'id', 'supervisor', 'supervisor_name', 'supervisor_email',
+            'intern', 'intern_name', 'intern_email', 'assigned_at',
+            'ended_at', 'is_active', 'created_at', 'updated_at'
+        ]
