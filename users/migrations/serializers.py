@@ -202,3 +202,16 @@ class InvitationSerializer(BaseModelSerializer):
             'created_at', 'updated_at'
         ]
         read_only_fields = ['token', 'accepted_at']
+
+class ChangePasswordSerializer(serializers.Serializer):
+    """Serializer for password change"""
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True, validators=[validate_password])
+    confirm_password = serializers.CharField(required=True)
+    
+    def validate(self, attrs):
+        if attrs['new_password'] != attrs['confirm_password']:
+            raise serializers.ValidationError({
+                "confirm_password": "New passwords didn't match."
+            })
+        return attrs
