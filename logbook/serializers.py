@@ -20,6 +20,8 @@ class LogAttachmentSerializer(BaseModelSerializer):
         read_only_fields = ['uploaded_at']
 
         def get_file_url(self, obj):
+            if obj.file:
+                
         
 
 
