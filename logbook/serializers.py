@@ -30,7 +30,9 @@ class LogEntrySerializer(BaseModelSerializer):
     attachments = LogAttachmentSerializer(many=True, read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     category_display = serializers.CharField(source='get_category_display', read_only=True)
-    
+
+    class Meta:
+
 
 
 
