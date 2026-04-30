@@ -189,3 +189,16 @@ class SupervisorAssignmentSerializer(BaseModelSerializer):
             'intern', 'intern_name', 'intern_email', 'assigned_at',
             'ended_at', 'is_active', 'created_at', 'updated_at'
         ]
+
+class InvitationSerializer(BaseModelSerializer):
+    """Serializer for invitations"""
+    invited_by_name = serializers.CharField(source='invited_by.get_full_name', read_only=True)
+    
+    class Meta:
+        model = Invitation
+        fields = [
+            'id', 'email', 'role', 'invited_by', 'invited_by_name',
+            'token', 'expires_at', 'accepted_at', 'is_valid',
+            'created_at', 'updated_at'
+        ]
+        read_only_fields = ['token', 'accepted_at']
