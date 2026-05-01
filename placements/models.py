@@ -204,6 +204,49 @@ class PlacementHistory(BaseModel):
 
 
 
+class Rotation(BaseModel):
+    """
+    Track intern rotations through different departments.
+    """
+    intern = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='rotations',
+        limit_choices_to={'role': User.Roles.INTERN}
+    )
+    
+    from_department = models.ForeignKey(
+        Department,
+        on_delete=models.PROTECT,
+        related_name='rotations_from'
+    )
+    
+    to_department = models.ForeignKey(
+        Department,
+        on_delete=models.PROTECT,
+        related_name='rotations_to'
+    )
+    
+    rotation_date = models.DateField()
+    
+    reason = models.TextField(blank=True)
+    
+    approved_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='approved_rotations'
+    )
+    
+    class Meta:
+        ordering = ['-rotation_date']
+        indexes = [
+            models.Index(fields=['intern', 'rotation_date']),
+        ]
+    
+    def __str__(self):
+        return f"{self.intern.get_full_name()}: {self.from_department.code} -> {self.to_department.code}"
+
 
             
  
