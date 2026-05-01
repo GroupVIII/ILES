@@ -104,3 +104,4 @@ def get_queryset(self):
         if not user.is_authenticated:
             return EvaluationCriteria.objects.none()
         return EvaluationCriteria.objects.all()
+    
