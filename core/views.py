@@ -81,4 +81,5 @@ class EvaluationViewSet(viewsets.ModelViewSet):
         if not user.is_authenticated:
             return Evaluation.objects.none()
         
+        role = str(getattr(user, 'role', '')).upper()
         
