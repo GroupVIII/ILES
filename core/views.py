@@ -29,3 +29,7 @@ class IsRole(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_authenticated and request.user.role in self.allowed_roles)
+    
+class InternshipPlacementViewSet(viewsets.ModelViewSet):
+    queryset = InternshipPlacement.objects.all()
+    serializer_class = InternshipPlacementSerializer
