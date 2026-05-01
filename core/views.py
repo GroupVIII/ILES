@@ -96,3 +96,11 @@ class EvaluationViewSet(viewsets.ModelViewSet):
 class EvaluationCriteriaViewSet(viewsets.ModelViewSet):
     queryset = EvaluationCriteria.objects.all()
     serializer_class = EvaluationCriteriaSerializer
+    
+def get_queryset(self):
+        # We want everyone (Students, Supervisors, Admins) to be able to see the 
+        # grading criteria so they know the rules, so we return all of them safely.
+        user = self.request.user
+        if not user.is_authenticated:
+            return EvaluationCriteria.objects.none()
+        return EvaluationCriteria.objects.all()
