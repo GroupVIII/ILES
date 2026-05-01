@@ -190,3 +190,39 @@ class PlacementViewSet(MultiSerializerViewSet):
         history = PlacementHistory.objects.filter(placement=placement)
         serializer = PlacementHistorySerializer(history, many=True)
         return Response(serializer.data)
+
+class RotationViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for managing rotations.
+    """
+    queryset = Rotation.objects.filter(is_deleted=False)
+    serializer_class = RotationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        user = self.request.user
+        
+        if user.is_admin_or_hr:
+            return Rotation.objects.all()
+        elif user.is_supervisor:
+            return Rotation.objects.filter(
+                Q(from_department__in=user.supervised_placements.values('department')) |
+                Q(to_department__in=user.supervised_placements.values('department'))
+            ).distinct()
+        else:
+            return Rotation.objects.filter(intern=user)
+    
+    def perform_create(self, serializer):
+        rotation = serializer.save()
+        
+        # Notify intern
+        NotificationService.send_notification(
+            recipient=rotation.intern,
+            category='rotation_created',
+            title="Department Rotation",
+            message=f"You are being rotated from {rotation.from_department.name} to {rotation.to_department.name}.",
+            sender=self.request.user,
+            notification_type='info',
+            data={'rotation_id': str(rotation.id)},
+            action_url=f"/rotations/{rotation.id}"
+        )
