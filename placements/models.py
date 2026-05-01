@@ -101,6 +101,78 @@ class Department(BaseModel):
             blank=True
         )
 
+        # Documents
+    offer_letter = models.FileField(
+        upload_to='placements/offer_letters/',
+        null=True,
+        blank=True
+    )
+    
+    contract = models.FileField(
+        upload_to='placements/contracts/',
+        null=True,
+        blank=True
+    )
+    
+    # Notes
+    notes = models.TextField(blank=True)
+    
+    # Metadata
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='created_placements'
+    )
+    
+    class Meta:
+        ordering = ['-start_date', '-created_at']
+        indexes = [
+            models.Index(fields=['intern', 'status']),
+            models.Index(fields=['department', 'status']),
+            models.Index(fields=['start_date', 'end_date']),
+        ]
+        unique_together = [['intern', 'start_date']]
+    
+    def __str__(self):
+        return f"{self.intern.get_full_name()} - {self.department.name} ({self.start_date})"
+    
+    @property
+    def duration_days(self):
+        """Calculate placement duration in days"""
+        if self.end_date:
+            return (self.end_date - self.start_date).days
+        return None
+    
+    @property
+    def is_active(self):
+        """Check if placement is currently active"""
+        today = timezone.now().date()
+        return self.status == self.Status.ACTIVE and self.start_date <= today <= self.end_date
+    
+    @property
+    def days_remaining(self):
+        """Calculate days remaining in placement"""
+        if self.is_active and self.end_date:
+            today = timezone.now().date()
+            remaining = (self.end_date - today).days
+            return max(0, remaining)
+        return None
+    
+    def complete(self):
+        """Mark placement as completed"""
+        self.status = self.Status.COMPLETED
+        self.save()
+    
+    def extend(self, new_end_date):
+        """Extend placement end date"""
+        self.status = self.Status.EXTENDED
+        self.expected_end_date = self.end_date
+        self.end_date = new_end_date
+        self.save()
+
+
+
 
             
  
