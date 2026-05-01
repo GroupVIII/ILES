@@ -110,3 +110,5 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     
 class NotificationListView(generics.ListAPIView):
     serializer_class = NotificationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
