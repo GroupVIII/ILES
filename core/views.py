@@ -46,11 +46,11 @@ class ApproveLogView(APIView):
             return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
 
 # This is the view the terminal says is missing!
+# core/views.py
 class IssueListCreateView(generics.ListCreateAPIView):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        # Automatically set the reporter to the logged-in user
         serializer.save(reporter=self.request.user)
