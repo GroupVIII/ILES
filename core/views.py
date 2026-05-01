@@ -83,3 +83,13 @@ class EvaluationViewSet(viewsets.ModelViewSet):
         
         role = str(getattr(user, 'role', '')).upper()
         
+        # --- THE GATEKEEPER FIX ---
+        if role == 'STUDENT':
+            # Allow the student to see grades linked to their placement
+            return Evaluation.objects.filter(placement__student=user)
+        elif role in ['ACADEMIC_SUPERVISOR', 'ACADEMIC_SUP']:
+            # Allow the supervisor to see the grades they authored
+            return Evaluation.objects.filter(evaluator=user)
+            
+        return Evaluation.objects.all()
+        
