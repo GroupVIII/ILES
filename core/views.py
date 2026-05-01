@@ -93,3 +93,6 @@ class EvaluationViewSet(viewsets.ModelViewSet):
             
         return Evaluation.objects.all()
         
+class EvaluationCriteriaViewSet(viewsets.ModelViewSet):
+    queryset = EvaluationCriteria.objects.all()
+    serializer_class = EvaluationCriteriaSerializer
