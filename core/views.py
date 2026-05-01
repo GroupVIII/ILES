@@ -107,3 +107,4 @@ def get_queryset(self):
     
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    
