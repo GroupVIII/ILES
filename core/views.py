@@ -75,3 +75,10 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
 class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
+    
+    def get_queryset(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return Evaluation.objects.none()
+        
+        
