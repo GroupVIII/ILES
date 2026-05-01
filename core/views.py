@@ -19,3 +19,13 @@ class UserViewSet(viewsets.ModelViewSet):
         # We can enforce basic authentication here. 
         # In a fully strict system, you'd check `self.request.user.role == 'ADMIN'`
         return [permissions.IsAuthenticated()]
+    
+class IsRole(permissions.BasePermission):
+    def __init__(self, allowed_roles):
+        self.allowed_roles = allowed_roles
+
+    def __call__(self):
+        return self
+
+    def has_permission(self, request, view):
+        return bool(request.user and request.user.is_authenticated and request.user.role in self.allowed_roles)
