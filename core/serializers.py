@@ -11,7 +11,7 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'placement', 'student_name', 'week_number', 
             'activities', 'status', 'status_display', 
-            'created_at'
+            'cr2c945fc855d8d26fd4e70d3e9363fc9a916e3ff7eated_at'
         ]
         read_only_fields = ['status', 'created_at']
 
