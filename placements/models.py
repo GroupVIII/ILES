@@ -171,6 +171,37 @@ class Department(BaseModel):
         self.end_date = new_end_date
         self.save()
 
+class PlacementHistory(BaseModel):
+    """
+    Track changes in placements (history/audit log).
+    """
+    placement = models.ForeignKey(
+        Placement,
+        on_delete=models.CASCADE,
+        related_name='history'
+    )
+    
+    changed_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+    
+    field_name = models.CharField(max_length=50)
+    old_value = models.TextField(blank=True)
+    new_value = models.TextField(blank=True)
+    
+    changed_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-changed_at']
+        indexes = [
+            models.Index(fields=['placement', '-changed_at']),
+        ]
+    
+    def __str__(self):
+        return f"{self.placement} - {self.field_name} changed at {self.changed_at}"
+
 
 
 
