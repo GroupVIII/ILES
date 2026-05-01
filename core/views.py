@@ -53,3 +53,21 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
             return InternshipPlacement.objects.filter(academic_supervisor=user)
             
         return InternshipPlacement.objects.all()
+    
+class WeeklyLogViewSet(viewsets.ModelViewSet):
+    queryset = WeeklyLog.objects.all()
+    serializer_class = WeeklyLogSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return WeeklyLog.objects.none()
+
+        role = str(getattr(user, 'role', '')).upper()
+
+        if role == 'STUDENT':
+            return WeeklyLog.objects.filter(placement__student=user)
+        elif role in ['WORKPLACE_SUPERVISOR', 'WORKPLACE_SUP']:
+            return WeeklyLog.objects.filter(placement__workplace_supervisor=user)
+            
+        return WeeklyLog.objects.all()
