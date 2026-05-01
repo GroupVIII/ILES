@@ -39,3 +39,17 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
         if not user.is_authenticated:
             return InternshipPlacement.objects.none()
         
+        # Standardise the role to uppercase to prevent sneaky mismatch bugs
+        role = str(getattr(user, 'role', '')).upper()
+        
+        # 🚨 DIAGNOSTIC TRACER: This will print directly to your Django server terminal!
+        print(f"--- ILES DIAGNOSTIC --- User: {user.username} | Role: {role}")
+            
+        if role == 'STUDENT':
+            return InternshipPlacement.objects.filter(student=user)
+        elif role in ['WORKPLACE_SUPERVISOR', 'WORKPLACE_SUP']:
+            return InternshipPlacement.objects.filter(workplace_supervisor=user)
+        elif role in ['ACADEMIC_SUPERVISOR', 'ACADEMIC_SUP']:
+            return InternshipPlacement.objects.filter(academic_supervisor=user)
+            
+        return InternshipPlacement.objects.all()
