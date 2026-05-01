@@ -105,3 +105,5 @@ def get_queryset(self):
             return EvaluationCriteria.objects.none()
         return EvaluationCriteria.objects.all()
     
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
