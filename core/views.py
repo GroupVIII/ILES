@@ -71,3 +71,7 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
             return WeeklyLog.objects.filter(placement__workplace_supervisor=user)
             
         return WeeklyLog.objects.all()
+    
+class EvaluationViewSet(viewsets.ModelViewSet):
+    queryset = Evaluation.objects.all()
+    serializer_class = EvaluationSerializer
