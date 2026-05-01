@@ -112,3 +112,7 @@ class NotificationListView(generics.ListAPIView):
     serializer_class = NotificationSerializer
     permission_classes = [permissions.IsAuthenticated]
     
+    def get_queryset(self):
+        # DEFENSE POINT: Notice how we filter by `self.request.user`!
+        # This guarantees a student can NEVER see another student's notifications.
+        return Notification.objects.filter(user=self.request.user, is_read=False)
