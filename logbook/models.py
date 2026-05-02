@@ -75,7 +75,11 @@ class LogEntry(BaseModel):
 
     project_code = models.CharField(max_length=50, blank=True)
     is_billable = models.BooleanField(default=True)
-    
+
+
+    class Meta:
+        ordering = ['-date']
+        
 
 
 
