@@ -39,7 +39,9 @@ class LogEntry(BaseModel):
     start_time = models.TimeField()
     end_time = models.TimeField()
     hours = models.DecimalField(max_digits=4, decimal_places=2)
+    validators = [MinValueValidator(0.25)]
     
+
 
 
 
