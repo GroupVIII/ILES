@@ -34,12 +34,17 @@ class LogEntry(BaseModel):
         related_name='log_entries'
     )
     
-    date = models.DateField()
-    db_index = True
+    date = models.DateField(db_index=True)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    hours = models.DecimalField(max_digits=4, decimal_places=2)
-    validators = [MinValueValidator(0.25), MaxValueValidator(24)]
+    hours = models.DecimalField(
+        max_digits=4, 
+        decimal_places=2, 
+        validators = [MinValueValidator(0.25),MaxValueValidator(24)], 
+        help_text="Hours worked (e.g., 4.5 for 4 hours 30 minutes)"
+    )
+
+    
 
 
 
