@@ -78,8 +78,9 @@ class LogEntry(BaseModel):
 
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['-date', '-created_at']
         
+
 
 
 
