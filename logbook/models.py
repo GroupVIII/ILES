@@ -54,7 +54,11 @@ class LogEntry(BaseModel):
     )
     
     tags = models.JSONField(default=list, blank=True)
-    
+
+    status = models.CharField(
+        max_length=20,
+        
+    )
 
 
 
