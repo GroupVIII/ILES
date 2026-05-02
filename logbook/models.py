@@ -83,7 +83,7 @@ class LogEntry(BaseModel):
             models.Index(fields=['user','-date']),
             models.Index(fields=['status', 'date']),
             models.Index(fields=['user', 'status']),
-            
+            models.Index(fields=['category', 'date'])
 
         ]
 
