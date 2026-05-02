@@ -36,7 +36,9 @@ class LogEntry(BaseModel):
     
     date = models.DateField()
     db_index = True
+    start_time = models.TimeField()
     
+
 
 
         
