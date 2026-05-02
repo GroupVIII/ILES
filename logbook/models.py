@@ -18,21 +18,24 @@ class LogEntry(BaseModel):
         REJECTED = 'rejected','Rejected'
         NEEDS_REVISION = 'needs_revision','Needs_Revision'
 
-        class Category(models.TextChoices):
-            DEVELOPMENT = 'development', 'Development'
-            DESIGN = 'design', 'Design'
-            RESEARCH = 'research', 'Research'
-            MEETING = 'meeting', 'Meeting'
-            DOCUMENTATION = 'documentation', 'Documentation'
-            TRAINING = 'training', 'Training'
-            ADMIN = 'admin', 'Admin'
-            OTHER = 'other', 'Other'
+    class Category(models.TextChoices):
+        DEVELOPMENT = 'development', 'Development'
+        DESIGN = 'design', 'Design'
+        RESEARCH = 'research', 'Research'
+        MEETING = 'meeting', 'Meeting'
+        DOCUMENTATION = 'documentation', 'Documentation'
+        TRAINING = 'training', 'Training'
+        ADMIN = 'admin', 'Admin'
+        OTHER = 'other', 'Other'
 
-        user = models.ForeignKey(
-            User,
-            on_delete=models.CASCADE,
-            related_name='log_entries'
-        )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='log_entries'
+    )
+    
+    date = models.DateField()
+
 
         
             
