@@ -71,10 +71,8 @@ class LogEntry(BaseModel):
     )
 
     reviewed_at = models.DateTimeField(null=True, blank=True)
+    review_comments =  models.TextField(blank=True)
     
-
-
-
 
 
 
