@@ -57,7 +57,8 @@ class LogEntry(BaseModel):
 
     status = models.CharField(
         max_length=20,
-        
+        choices=Status.choices,
+
     )
 
 
