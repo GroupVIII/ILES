@@ -70,6 +70,9 @@ class LogEntry(BaseModel):
         related_name='reviewed_logs'
     )
 
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    
+
 
 
 
