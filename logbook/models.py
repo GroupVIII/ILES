@@ -53,8 +53,9 @@ class LogEntry(BaseModel):
         db_index=True,
     )
     
-    tags = models.JSONField(default=list)
+    tags = models.JSONField(default=list, blank=True)
     
+
 
 
 
