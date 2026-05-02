@@ -46,6 +46,7 @@ class LogEntry(BaseModel):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
+    category = models.CharField(max_length=20)
     
 
 
