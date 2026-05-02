@@ -38,7 +38,9 @@ class LogEntry(BaseModel):
     db_index = True
     start_time = models.TimeField()
     end_time = models.TimeField()
+    hours = models.DecimalField(max_digits=4, decimal_places=2)
     
+
 
 
 
