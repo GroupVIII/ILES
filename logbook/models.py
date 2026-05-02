@@ -62,7 +62,12 @@ class LogEntry(BaseModel):
         db_index=True
     )
 
-
+    reviewed_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        
+    )
 
 
 
