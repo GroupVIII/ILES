@@ -74,6 +74,7 @@ class LogEntry(BaseModel):
     review_comments =  models.TextField(blank=True)
 
     project_code = models.CharField(max_length=50, blank=True)
+    is_billable = models.BooleanField(default=True)
     
 
 
