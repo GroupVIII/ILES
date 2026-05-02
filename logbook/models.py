@@ -92,6 +92,7 @@ class LogEntry(BaseModel):
             )
         ]
         verbose_name = 'Log Entry'
+        verbose_name_plural = 'Log Entries'
         
 
 
