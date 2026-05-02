@@ -80,8 +80,11 @@ class LogEntry(BaseModel):
     class Meta:
         ordering = ['-date', '-created_at']
         indexes = [
-            models.Index(fields=['user','-date'])
-            models.Index(fields=['status', 'date'])
+            models.Index(fields=['user','-date']),
+            models.Index(fields=['status', 'date']),
+            models.Index(fields=['user', 'status']),
+            
+
         ]
 
 
