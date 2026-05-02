@@ -59,7 +59,7 @@ class LogEntry(BaseModel):
         max_length=20,
         choices=Status.choices,
         default=Status.DRAFT,
-        
+        db_index=True
     )
 
 
