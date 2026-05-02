@@ -44,6 +44,7 @@ class LogEntry(BaseModel):
         help_text="Hours worked (e.g., 4.5 for 4 hours 30 minutes)"
     )
 
+    title = models.CharField(max_length=200)
     
 
 
