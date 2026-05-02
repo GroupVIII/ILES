@@ -91,6 +91,7 @@ class LogEntry(BaseModel):
                 name='unique_user_date_log'
             )
         ]
+        verbose_name = 'Log Entry'
         
 
 
