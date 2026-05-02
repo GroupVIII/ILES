@@ -46,10 +46,12 @@ class LogEntry(BaseModel):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    category = models.CharField(max_length=20)
-    choices = category.choices
-    default = category.DEVELOPMENT
-    
+    category = models.CharField(
+        max_length=20,
+        choices=Category.choices,
+        default=Category.DEVELOPMENT,
+        db_index=True,
+    )
     
 
 
