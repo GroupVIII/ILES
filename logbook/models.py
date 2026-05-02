@@ -81,7 +81,7 @@ class LogEntry(BaseModel):
         ordering = ['-date', '-created_at']
         indexes = [
             models.Index(fields=['user','-date'])
-            
+            models.Index(fields=['status', 'date'])
         ]
 
 
