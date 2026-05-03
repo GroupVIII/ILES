@@ -106,7 +106,8 @@ class LogEntry(BaseModel):
         if self.date > timezone.now().date():
             raise ValidationError("Cannot log future dates")
         
-        
+        if self.hours > 24:
+            
 
 
         
