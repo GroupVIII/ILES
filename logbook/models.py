@@ -167,6 +167,11 @@ class LogAttachment(BaseModel):
     class Meta:
         ordering = ['uploaded_at']
 
+    def __str__(self):
+        pass
+
+    
+
 
 
 
