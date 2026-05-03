@@ -162,6 +162,10 @@ class LogAttachment(BaseModel):
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        pass
+    
+
 
 
 
