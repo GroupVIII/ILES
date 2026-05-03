@@ -116,6 +116,8 @@ class LogEntry(BaseModel):
     def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
+    def approve(self, reviewer , comments=""):
+        pass
         
 
 
