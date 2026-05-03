@@ -153,7 +153,7 @@ class LogAttachment(BaseModel):
     )
 
     file = models.FileField(
-        
+        upload_to='log_attachments/%Y/%m/%d'
     )
 
 
