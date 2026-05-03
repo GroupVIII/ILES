@@ -127,6 +127,7 @@ class LogEntry(BaseModel):
     def reject(self, reviewer, comments=""):
       """Reject this log entry"""
       self.status = self.Status.REJECTED
+      self.reviewed_by = self.reviewer
 
                
 
