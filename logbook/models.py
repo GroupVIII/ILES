@@ -104,7 +104,11 @@ class LogEntry(BaseModel):
             raise ValidationError("End time must be after start time")
         
         if self.date > timezone.now().date():
-            
+            raise ValidationError("Cannot log future dates")
+        
+        
+
+
         
 
     
