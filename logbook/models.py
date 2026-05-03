@@ -146,7 +146,10 @@ class LogAttachment(BaseModel):
     """
     Attachments for log entries
     """
-    
+    log_entry = models.ForeignKey(
+        LogEntry,
+        on_delete=models.CASCADE,
+    )
 
 
 
