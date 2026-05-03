@@ -118,7 +118,9 @@ class LogEntry(BaseModel):
         super().save(*args, **kwargs)
     def approve(self, reviewer , comments=""):
         pass
-        
+    def approve(self, reviewer, comments=""):
+        """Approve this log entry"""
+
 
 
 
