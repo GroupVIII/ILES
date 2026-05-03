@@ -156,6 +156,9 @@ class LogAttachment(BaseModel):
         upload_to='log_attachments/%Y/%m/%d'
     )
 
+    filename = models.CharField(max_length=255)
+    
+
 
 
 
