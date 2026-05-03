@@ -124,6 +124,7 @@ class LogEntry(BaseModel):
         """Approve this log entry"""
         self.status = self.Status.APPROVED
         self.reviewed_by = self.reviewer 
+        self.reviewed_at = timezone.now()
         
 
 
