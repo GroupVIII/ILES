@@ -96,6 +96,8 @@ class LogEntry(BaseModel):
 
     def __str__(self):
         return f"{self.user.get_full_name()} - {self.date} - {self.hours}h"
+    def clean(self):
+        
     
     
     
