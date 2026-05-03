@@ -128,6 +128,8 @@ class LogEntry(BaseModel):
       """Reject this log entry"""
       self.status = self.Status.REJECTED
       self.reviewed_by = self.reviewer
+      self.reviewed_at = timezone.now()
+      
 
                
 
