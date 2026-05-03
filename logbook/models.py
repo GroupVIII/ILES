@@ -152,6 +152,10 @@ class LogAttachment(BaseModel):
         related_name='attachments'
     )
 
+    file = models.FileField(
+        
+    )
+
 
 
 
