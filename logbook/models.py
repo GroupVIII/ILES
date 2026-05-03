@@ -134,7 +134,10 @@ class LogEntry(BaseModel):
 
     def submit(self):
         pass
-    
+    def submit(self):
+        """Submit for view"""
+        
+
 
 
                
