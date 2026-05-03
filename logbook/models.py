@@ -100,7 +100,7 @@ class LogEntry(BaseModel):
         """validate log entry"""
         from django.core.exceptions import ValidationError
 
-        
+        if self.start_time and self.end_time and self.start_time >= self.end_time:
         
 
     
