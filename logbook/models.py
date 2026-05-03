@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from gjango.utils import timezone
+from django.utils import timezone
 from django.conf import settings
 from core.models import BaseModel
 from accounts.models import User
@@ -170,7 +170,12 @@ class LogAttachment(BaseModel):
     def __str__(self):
         pass
 
-    
+    def __str__(self):
+        return f"{self.filename} for {self.log_entry}"
+
+
+
+
 
 
 
