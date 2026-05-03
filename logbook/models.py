@@ -130,6 +130,7 @@ class LogEntry(BaseModel):
       self.reviewed_by = self.reviewer
       self.reviewed_at = timezone.now()
       self.review_comments = comments
+      self.save()
 
 
                
