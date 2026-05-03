@@ -160,6 +160,8 @@ class LogAttachment(BaseModel):
     file_size = models.IntegerField(help_text="File size in bytes")
     content_type = models.CharField(max_length=100)
 
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
 
 
 
