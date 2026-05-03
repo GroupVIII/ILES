@@ -149,6 +149,7 @@ class LogAttachment(BaseModel):
     log_entry = models.ForeignKey(
         LogEntry,
         on_delete=models.CASCADE,
+        related_name='attachments'
     )
 
 
