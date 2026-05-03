@@ -110,23 +110,16 @@ class LogEntry(BaseModel):
             raise ValidationError("Hours cannot exceed 24 in a single day")
         
     def save(self, *args, **kwargs):
-        pass
-    def save(self, *args, **kwargs):
-        self.clean()
-    def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
-    def approve(self, reviewer , comments=""):
-        pass
-    def approve(self, reviewer, comments=""):
-        """Approve this log entry"""
+
     def approve(self, reviewer, comments=""):
         """Approve this log entry"""
         self.status = self.Status.APPROVED
         self.reviewed_by = self.reviewer 
         self.reviewed_at = timezone.now()
         self.review_comments = comments
-        
+        self.save()
 
 
 
