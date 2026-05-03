@@ -157,7 +157,7 @@ class LogAttachment(BaseModel):
     )
 
     filename = models.CharField(max_length=255)
-    file_size = models.IntegerField()
+    file_size = models.IntegerField(help_text="File size in bytes")
 
 
 
