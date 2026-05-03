@@ -123,7 +123,9 @@ class LogEntry(BaseModel):
     def approve(self, reviewer, comments=""):
         """Approve this log entry"""
         self.status = self.Status.APPROVED
+        self.reviewed_by = self.reviewer 
         
+
 
 
 
