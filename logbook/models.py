@@ -121,6 +121,10 @@ class LogEntry(BaseModel):
         self.review_comments = comments
         self.save()
 
+    def reject(self, reviewer, comments=""):
+        pass
+    
+
 
 
 
