@@ -129,7 +129,8 @@ class LogEntry(BaseModel):
       self.status = self.Status.REJECTED
       self.reviewed_by = self.reviewer
       self.reviewed_at = timezone.now()
-      
+      self.review_comments = comments
+
 
                
 
