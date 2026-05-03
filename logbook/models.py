@@ -113,7 +113,11 @@ class LogEntry(BaseModel):
         pass
     def save(self, *args, **kwargs):
         self.clean()
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
         
+
 
 
         
