@@ -123,7 +123,11 @@ class LogEntry(BaseModel):
 
     def reject(self, reviewer, comments=""):
         pass
-    
+
+    def reject(self, reviewer, comments=""):
+      """Reject this log entry"""
+      
+               
 
 
 
