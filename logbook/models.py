@@ -136,7 +136,8 @@ class LogEntry(BaseModel):
         pass
     def submit(self):
         """Submit for view"""
-        
+        self.status = self.Status.SUBMITTED
+
 
 
 
