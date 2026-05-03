@@ -142,6 +142,11 @@ class LogEntry(BaseModel):
 class LogAttachment(BaseModel):
     pass
 
+class LogAttachment(BaseModel):
+    """
+    Attachments for log entries
+    """
+    
 
 
 
