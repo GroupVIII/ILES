@@ -139,6 +139,10 @@ class LogEntry(BaseModel):
         self.status = self.Status.SUBMITTED
         self.save()
 
+class LogAttachment(BaseModel):
+    pass
+
+
 
 
 
