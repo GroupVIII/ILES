@@ -107,7 +107,9 @@ class LogEntry(BaseModel):
             raise ValidationError("Cannot log future dates")
         
         if self.hours > 24:
-            
+            raise ValidationError("Hours cannot exceed 24 in a single day")
+        
+        
 
 
         
