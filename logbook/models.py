@@ -175,7 +175,9 @@ class LogAttachment(BaseModel):
     
     def save(self, *args, **kwargs):
         pass 
-    
+    def save(self, *args, **kwargs):
+        if self.file:
+            pass 
 
 
 
