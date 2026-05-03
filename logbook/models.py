@@ -132,6 +132,10 @@ class LogEntry(BaseModel):
       self.review_comments = comments
       self.save()
 
+    def submit(self):
+        pass
+    
+
 
                
 
