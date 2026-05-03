@@ -110,7 +110,11 @@ class LogEntry(BaseModel):
             raise ValidationError("Hours cannot exceed 24 in a single day")
         
     def save(self, *args, **kwargs):
+        pass
+    def save(self, *args, **kwargs):
+        self.clean()
         
+
 
         
         
