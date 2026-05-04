@@ -39,3 +39,8 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
         if self.instance and self.instance.status == 'APPROVED':
             raise serializers.ValidationError("Cannot modify an approved log.")
         return data
+
+class EvaluationCriteriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EvaluationCriteria
+        fields = '__all__'
