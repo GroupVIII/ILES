@@ -230,7 +230,7 @@ class TimeOff(BaseModel):
         related_name='approved_time_off' 
     )
     approved_at = models.DateTimeField(null=True, blank=True)
-    
+    rejection_reason = models.TextField(blank=True)
 
 
 
