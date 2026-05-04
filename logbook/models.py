@@ -198,7 +198,14 @@ class TimeOff(BaseModel):
         User,
         on_delete=models.CASCADE,
         related_name='time_off_requests'
-    )    
+    ) 
+
+    type = models.CharField(
+        max_length=20,
+        choices=TimeOffType.choices
+    ) 
+    
+      
 
 
 
