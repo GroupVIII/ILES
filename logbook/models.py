@@ -177,7 +177,11 @@ class LogAttachment(BaseModel):
         pass 
     def save(self, *args, **kwargs):
         if self.file:
-            pass 
+            pass
+    def save(self, *args, **kwargs):
+        if self.file and not self.filename:
+            self.filename = os.path.basename(self.file.name)
+
 
 
 
