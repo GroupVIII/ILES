@@ -188,6 +188,9 @@ class TimeOff(BaseModel):
         HOLIDAY = 'holiday', 'Holiday'
         BEREAVEMENT = 'bereavement', 'Bereavement'
         OTHER = 'other', 'Other'
+
+    class Status(models.TextChoices):
+        PENDING = 'pending', 'Pending'
         
 
 
