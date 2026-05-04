@@ -207,7 +207,11 @@ class TimeOff(BaseModel):
 
     start_date = models.DateField() 
     end_date = models.DateField()
+    days = models.DecimalField(
+       max_digits=4,
+       decimal_places=1,
 
+    )
 
 
 
