@@ -33,3 +33,5 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = WeeklyLog
         fields = '__all__'
+        read_only_fields = ['supervisor_comment'] if 'request' in globals() and getattr(request.user, 'role', '') == 'STUDENT' else []
+        
