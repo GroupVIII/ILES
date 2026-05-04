@@ -12,3 +12,5 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = CustomUser.objects.create(
             username=validated_data['username'],
+            role=validated_data.get('role', 'STUDENT'),
+            password=make_password(validated_data['password'])
