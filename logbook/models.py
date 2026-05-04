@@ -1,3 +1,4 @@
+# logs/models.py
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
@@ -5,6 +6,7 @@ from django.conf import settings
 from core.models import BaseModel
 from accounts.models import User
 import os 
+
 
 class LogEntry(BaseModel):
     """
@@ -25,7 +27,7 @@ class LogEntry(BaseModel):
         MEETING = 'meeting', 'Meeting'
         DOCUMENTATION = 'documentation', 'Documentation'
         TRAINING = 'training', 'Training'
-        ADMIN = 'admin', 'Admin'
+        ADMIN = 'admin', 'Administrative'
         OTHER = 'other', 'Other'
 
     user = models.ForeignKey(
@@ -33,7 +35,8 @@ class LogEntry(BaseModel):
         on_delete=models.CASCADE,
         related_name='log_entries'
     )
-    
+
+    # Core fields
     date = models.DateField(db_index=True)
     start_time = models.TimeField()
     end_time = models.TimeField()
@@ -44,6 +47,7 @@ class LogEntry(BaseModel):
         help_text="Hours worked (e.g., 4.5 for 4 hours 30 minutes)"
     )
 
+    # Context
     title = models.CharField(max_length=200)
     description = models.TextField()
     category = models.CharField(
@@ -52,9 +56,11 @@ class LogEntry(BaseModel):
         default=Category.DEVELOPMENT,
         db_index=True,
     )
-    
+
+    # Tags for better organisation (stored as JSON array)
     tags = models.JSONField(default=list, blank=True)
 
+    # Status workflow
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
@@ -62,6 +68,7 @@ class LogEntry(BaseModel):
         db_index=True
     )
 
+    # Review tracking
     reviewed_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
@@ -69,13 +76,12 @@ class LogEntry(BaseModel):
         blank=True,
         related_name='reviewed_logs'
     )
-
     reviewed_at = models.DateTimeField(null=True, blank=True)
     review_comments =  models.TextField(blank=True)
 
+    #Additional metadata
     project_code = models.CharField(max_length=50, blank=True)
     is_billable = models.BooleanField(default=True)
-
 
     class Meta:
         ordering = ['-date', '-created_at']
@@ -96,16 +102,20 @@ class LogEntry(BaseModel):
 
     def __str__(self):
         return f"{self.user.get_full_name()} - {self.date} - {self.hours}h"
+    
     def clean(self):
         """validate log entry"""
         from django.core.exceptions import ValidationError
 
+        # Ensure end time is after start time
         if self.start_time and self.end_time and self.start_time >= self.end_time:
             raise ValidationError("End time must be after start time")
         
+        # Ensure date is not in future
         if self.date > timezone.now().date():
             raise ValidationError("Cannot log future dates")
         
+        # Ensure hours don't exceed 24
         if self.hours > 24:
             raise ValidationError("Hours cannot exceed 24 in a single day")
         
@@ -122,9 +132,6 @@ class LogEntry(BaseModel):
         self.save()
 
     def reject(self, reviewer, comments=""):
-        pass
-
-    def reject(self, reviewer, comments=""):
       """Reject this log entry"""
       self.status = self.Status.REJECTED
       self.reviewed_by = self.reviewer
@@ -133,18 +140,14 @@ class LogEntry(BaseModel):
       self.save()
 
     def submit(self):
-        pass
-    def submit(self):
         """Submit for view"""
         self.status = self.Status.SUBMITTED
         self.save()
 
-class LogAttachment(BaseModel):
-    pass
 
 class LogAttachment(BaseModel):
     """
-    Attachments for log entries
+    Attachments for log entries (screenshots, documents, etc.)
     """
     log_entry = models.ForeignKey(
         LogEntry,
@@ -163,24 +166,16 @@ class LogAttachment(BaseModel):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        pass
-    class Meta:
         ordering = ['uploaded_at']
-
-    def __str__(self):
-        pass
 
     def __str__(self):
         return f"{self.filename} for {self.log_entry}"
     
     def save(self, *args, **kwargs):
-        pass 
-    def save(self, *args, **kwargs):
-        if self.file:
-            pass
-    def save(self, *args, **kwargs):
         if self.file and not self.filename:
             self.filename = os.path.basename(self.file.name)
+        super().save(*args, **kwargs)
+        
 
 
 
