@@ -31,3 +31,5 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
     
 class WeeklyLogSerializer(serializers.ModelSerializer):
     class Meta:
+        model = WeeklyLog
+        fields = '__all__'
