@@ -206,6 +206,7 @@ class TimeOff(BaseModel):
     ) 
 
     start_date = models.DateField() 
+    end_date = models.DateField()
 
 
 
