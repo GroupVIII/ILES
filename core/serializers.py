@@ -54,3 +54,15 @@ class EvaluationSerializer(serializers.ModelSerializer):
             if data['score'] > data['criteria'].max_score:
                 raise serializers.ValidationError({"score": "Score exceeds maximum allowed for this criteria."})
             return data
+        
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        # Get the standard token
+        token = super().get_token(user)
+        
+        # Inject our custom data!
+        token['username'] = user.username
+        token['role'] = user.role
+        
+        return token
