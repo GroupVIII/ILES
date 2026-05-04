@@ -213,6 +213,7 @@ class TimeOff(BaseModel):
        help_text="Number of the days (e.g., 1.5 for 1.5 days)"
     )
 
+    reason = models.TextField()
 
 
 
