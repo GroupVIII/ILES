@@ -210,7 +210,7 @@ class TimeOff(BaseModel):
     days = models.DecimalField(
        max_digits=4,
        decimal_places=1,
-
+       help_text="Number of the days (e.g., 1.5 for 1.5 days)"
     )
 
 
