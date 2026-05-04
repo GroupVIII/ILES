@@ -181,7 +181,9 @@ class TimeOff(BaseModel):
     """
     Track intern time off (vacation, sick leave, etc.)
     """
-    
+
+    class TimeOffType(models.TextChoices):
+        VACATION = 'vacation', 'Vacation'
 
 
 
