@@ -35,3 +35,4 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['supervisor_comment'] if 'request' in globals() and getattr(request.user, 'role', '') == 'STUDENT' else []
         
+    def validate(self, data):
