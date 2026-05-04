@@ -192,6 +192,7 @@ class TimeOff(BaseModel):
     class Status(models.TextChoices):
         PENDING = 'pending', 'Pending'
         APPROVED = 'approved', 'Approved'
+        REJECTED = 'rejected', 'Rejected'
         
 
 
