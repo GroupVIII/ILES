@@ -26,3 +26,5 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
         fields = '__all__'
     def validate(self, data):
         if data['start_date'] >= data['end_date']:
+            raise serializers.ValidationError({"end_date": "End date must occur after start date."})
+        return data
