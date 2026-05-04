@@ -221,6 +221,15 @@ class TimeOff(BaseModel):
         db_index=True
     )
 
+    # Approval tracking
+    approved_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='approved_time_off' 
+    )
+
 
 
 
