@@ -36,3 +36,6 @@ class WeeklyLogSerializer(serializers.ModelSerializer):
         read_only_fields = ['supervisor_comment'] if 'request' in globals() and getattr(request.user, 'role', '') == 'STUDENT' else []
         
     def validate(self, data):
+        if self.instance and self.instance.status == 'APPROVED':
+            raise serializers.ValidationError("Cannot modify an approved log.")
+        return data
