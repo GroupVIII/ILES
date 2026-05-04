@@ -234,7 +234,10 @@ class TimeOff(BaseModel):
 
     class Meta:
         ordering = ['-created_at']
+        Indexes = [
+            models.Index(fields=['user','status']),
 
+        ]
 
 
 
