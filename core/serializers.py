@@ -50,7 +50,7 @@ class EvaluationSerializer(serializers.ModelSerializer):
         model = Evaluation
         fields = '__all__'
         
-def validate(self, data):
-        if data['score'] > data['criteria'].max_score:
-            raise serializers.ValidationError({"score": "Score exceeds maximum allowed for this criteria."})
-        return data
+    def validate(self, data):
+            if data['score'] > data['criteria'].max_score:
+                raise serializers.ValidationError({"score": "Score exceeds maximum allowed for this criteria."})
+            return data
