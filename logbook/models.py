@@ -232,6 +232,9 @@ class TimeOff(BaseModel):
     approved_at = models.DateTimeField(null=True, blank=True)
     rejection_reason = models.TextField(blank=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
 
 
 
