@@ -184,6 +184,8 @@ class TimeOff(BaseModel):
 
     class TimeOffType(models.TextChoices):
         VACATION = 'vacation', 'Vacation'
+        SICK = 'sick', 'Sick Leave'
+        
 
 
 
