@@ -19,4 +19,5 @@ class UserSerializer(serializers.ModelSerializer):
     
 class InternshipPlacementSerializer(serializers.ModelSerializer):
     student_name = serializers.ReadOnlyField(source='student.username')
+    total_score = serializers.ReadOnlyField(source='total_computed_score')
     
