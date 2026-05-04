@@ -186,7 +186,9 @@ class TimeOff(BaseModel):
         VACATION = 'vacation', 'Vacation'
         SICK = 'sick', 'Sick Leave'
         HOLIDAY = 'holiday', 'Holiday'
+        BEREAVEMENT = 'bereavement', 'Bereavement'
         
+
 
 
 
