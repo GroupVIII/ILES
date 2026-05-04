@@ -44,3 +44,8 @@ class EvaluationCriteriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = EvaluationCriteria
         fields = '__all__'
+        
+class EvaluationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Evaluation
+        fields = '__all__'
