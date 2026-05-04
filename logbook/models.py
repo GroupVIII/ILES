@@ -218,6 +218,7 @@ class TimeOff(BaseModel):
         max_length=20,
         choices=Status.choices,
         default=Status.PENDING,
+        db_index=True
     )
 
 
