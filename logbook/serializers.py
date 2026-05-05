@@ -68,7 +68,11 @@ class LogEntryUpdateSerializer(BaseModelSerializer):
         fields = [
             'start_time', 'end_time', 'hours', 'title', 'description',
              'category', 'tags', 'project_code', 'is_billable'        
-             ]
+        ]
+
+
+class LogEntryReviweSerializer(BaseModelSerializer):
+    """Serializer for reviewing log entries"""
         
 
 
