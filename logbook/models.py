@@ -239,6 +239,10 @@ class TimeOff(BaseModel):
             models.Index(fields=['start_date','end_date'])
         ]
 
+    def __str__(self):
+        return f"{self.user.get_full_name()} - {self.type} ({self.days} days)"
+    
+
 
 
 
