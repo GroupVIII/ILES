@@ -58,6 +58,12 @@ class LogEntryCreateSerializer(BaseModelSerializer):
         validated_data['user'] = self.context['request'].user
         validated_data['status'] = LogEntry.Status.DRAFT
         return super().create(validated_data)
+    
+
+class LogEntryUpdateSerializer(BaseModelSerializer):
+    """Serializer for updating log entries"""
+
+    
 
         
 
