@@ -17,3 +17,11 @@ def generate_random_password(length=10):
     characters = string.ascii_letters + string.digits + "!@#$%^&*"
     password = ''.join(random.choice(characters) for i in range(length))
     return password
+
+def validate_email(email):
+    """
+    Validate email format.
+    """
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
+
