@@ -101,7 +101,7 @@ class TimeOffSerializer(BaseModelSerializer):
             'id', 'user', 'user_name', 'type', 'type_display',
             'start_date', 'end_date', 'days', 'reason', 'status',
             'status_display', 'approved_by', 'approved_at'
-            'rejection_reason', 
+            'rejection_reason', 'created_at', 'updated_at'
              
         ]
 
