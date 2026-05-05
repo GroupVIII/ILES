@@ -11,4 +11,7 @@ from drf_yasg import openapi
 schema_view = get_schema_view(
     openapi.Info(
         title="Internship System API",
+        default_version='v1',
+        description="API for Internship Logging and Evaluation System",
+        contact=openapi.Contact(email="admin@example.com"),
 
