@@ -57,3 +57,9 @@ def calculate_hours_worked(start_time, end_time):
     """
     Calculate hours worked between two datetime objects.
     """
+    if not start_time or not end_time:
+        return 0
+    
+    delta = end_time - start_time
+    hours = delta.total_seconds() / 3600
+    return round(hours, 2)
