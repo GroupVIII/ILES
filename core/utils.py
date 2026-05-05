@@ -9,3 +9,8 @@ from django.conf import settings
 import logging
 
 logger = logging.getLogger(__name__)
+
+def generate_random_password(length=10):
+    """
+    Generate a secure random password.
+    """
