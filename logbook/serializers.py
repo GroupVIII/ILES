@@ -133,7 +133,9 @@ class TimeOffReviewSerializer(BaseModelSerializer):
     
     def update(self, instance, validated_data):
         validated_data['approved_by'] = self.context['request'].user
+        validated_data['approved_at'] = timezone.now()
         
+
 
         
         
