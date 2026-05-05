@@ -92,7 +92,9 @@ class LogEntryReviweSerializer(BaseModelSerializer):
 class TimeOffSerializer(BaseModelSerializer):
     """Serializer for time off requests"""
     user_name = serializers.CharField(source='user.get_full_name', read_only=True)
+    status_display = serializers.CharField(source='get_status_display', read_only=True)
     
+
 
 
 
