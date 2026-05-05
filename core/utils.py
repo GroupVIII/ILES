@@ -52,3 +52,8 @@ def get_date_range(days=7):
     end_date = timezone.now().date()
     start_date = end_date - timedelta(days=days)
     return start_date, end_date
+
+def calculate_hours_worked(start_time, end_time):
+    """
+    Calculate hours worked between two datetime objects.
+    """
