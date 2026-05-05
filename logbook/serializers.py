@@ -67,7 +67,7 @@ class LogEntryUpdateSerializer(BaseModelSerializer):
         model = LogEntry
         fields = [
             'start_time', 'end_time', 'hours', 'title', 'description',
-             
+             'category', 
         ]
         
 
