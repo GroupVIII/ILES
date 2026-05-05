@@ -253,6 +253,7 @@ class TimeOff(BaseModel):
         """Reject time off request"""
         self.status = self.Status.REJECTED
         self.approved_by = approver
+        self.approved_at = timezone.now()
 
 
 
