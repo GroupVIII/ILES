@@ -111,7 +111,7 @@ class TimeOffCreateSerializer(BaseModelSerializer):
 
     class Meta:
         model = TimeOff
-        fields = ['type', ]
+        fields = ['type', 'start_date', 'end_time', ]
 
 
 
