@@ -96,6 +96,7 @@ class TimeOffSerializer(BaseModelSerializer):
     type_display = serializers.CharField(source='get_type_display', read_only=True)
 
     class Meta:
+        model = TimeOff
 
 
 
