@@ -100,7 +100,8 @@ class TimeOffSerializer(BaseModelSerializer):
         fields = [
             'id', 'user', 'user_name', 'type', 'type_display',
             'start_date', 'end_date', 'days', 'reason', 'status',
-            'status_display', 
+            'status_display', 'approved_by', 'approved_at'
+             
         ]
 
 
