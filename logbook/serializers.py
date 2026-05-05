@@ -115,7 +115,9 @@ class TimeOffCreateSerializer(BaseModelSerializer):
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
+        validated_data['status'] = TimeOff.Status.PENDING
         
+
 
 
 
