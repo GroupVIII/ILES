@@ -104,7 +104,12 @@ class TimeOffSerializer(BaseModelSerializer):
             'rejection_reason', 'created_at', 'updated_at'
         ]
         read_only_fields = ['approved_by', 'approved_at', 'created_at', 'updated_at']
-        
+
+
+class TimeOffCreateSerializer(BaseModelSerializer):
+    """Serializer for creating time off requests"""
+    
+
 
 
 
