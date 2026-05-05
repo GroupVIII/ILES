@@ -54,8 +54,10 @@ class LogEntryCreateSerializer(BaseModelSerializer):
             'description', 'category', 'tags', 'project_code', 'is_billable'
         ]
 
-    def create(self, validated_date):
-        validated_date['user'] = self.context['request'].user
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        validated_data['status'] = LogEntry.Status.DRAFT
+
         
 
 
