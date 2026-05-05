@@ -84,7 +84,9 @@ class LogEntryReviweSerializer(BaseModelSerializer):
         return value
     
     def update(self, instance, validated_data):
+        validated_data['reviewed_by'] = self.context['request'].user
         
+
             
         
 
