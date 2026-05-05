@@ -14,3 +14,6 @@ def generate_random_password(length=10):
     """
     Generate a secure random password.
     """
+    characters = string.ascii_letters + string.digits + "!@#$%^&*"
+    password = ''.join(random.choice(characters) for i in range(length))
+    return password
