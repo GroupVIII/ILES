@@ -41,6 +41,7 @@ class LogEntrySerializer(BaseModelSerializer):
             'reviewed_by', 'reviewed_at' 'review_comments', 'project_code',
             'is_billable', 'attachments', 'created_at', 'updated_at' 
         ]
+        read_only_fields = ['reviewed_by', 'reviewed_at', 'created_at', 'updated_at']
 
 
 
