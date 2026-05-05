@@ -49,3 +49,6 @@ def get_date_range(days=7):
     Get start and end dates for a date range.
     Default: last 7 days including today.
     """
+    end_date = timezone.now().date()
+    start_date = end_date - timedelta(days=days)
+    return start_date, end_date
