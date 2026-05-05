@@ -49,6 +49,10 @@ class LogEntryCreateSerializer(BaseModelSerializer):
 
     class Meta:
         model = LogEntry
+        fields = [
+            'date', 'start_time', 'end_time', 'hours', 'title',
+            'description', 'category', 'tags', 'project_code', 'is_billable'
+        ]
 
         
 
