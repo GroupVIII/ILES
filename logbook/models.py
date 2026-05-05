@@ -236,7 +236,7 @@ class TimeOff(BaseModel):
         ordering = ['-created_at']
         Indexes = [
             models.Index(fields=['user','status']),
-
+            models.Index(fields=['start_date','end_date'])
         ]
 
 
