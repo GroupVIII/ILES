@@ -114,7 +114,9 @@ class TimeOffCreateSerializer(BaseModelSerializer):
         fields = ['type', 'start_date', 'end_time', 'days', 'reason']
 
     def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
         
+
 
 
 
