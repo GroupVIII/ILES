@@ -130,6 +130,9 @@ class TimeOffReviewSerializer(BaseModelSerializer):
         if value not in [TimeOff.Status.APPROVED, TimeOff.Status.REJECTED]:
             raise serializers.ValidationError("Status must be either 'approved' or 'rejected'")
         return value
+    
+    def update(self, instance, validated_data):
+
         
         
 
