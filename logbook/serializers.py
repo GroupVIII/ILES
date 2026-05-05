@@ -127,7 +127,8 @@ class TimeOffReviewSerializer(BaseModelSerializer):
         fields = ['status','rejection_reason']
 
     def validate_status(self, value):
-        
+        if value not in [TimeOff.Status.APPROVED, TimeOff.Status.REJECTED]:
+
 
 
 
