@@ -256,6 +256,7 @@ class TimeOff(BaseModel):
         self.approved_at = timezone.now()
         self.rejection_reason = reason
         self.save()
+        
 
 
 

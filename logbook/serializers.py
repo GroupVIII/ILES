@@ -1,8 +1,10 @@
+# logs/serializers.py
 from rest_framework import serializers
 from django.utils import timezone
 from .models import LogEntry, LogAttachment, TimeOff
 from accounts.serializers import UserSerializer
 from core.api import BaseModelSerializer
+
 
 class LogAttachmentSerializer(BaseModelSerializer):
     """Serializer for log attachments"""
@@ -10,13 +12,10 @@ class LogAttachmentSerializer(BaseModelSerializer):
 
     class Meta:
         model = LogAttachment
-        fields = ['log_entry']
-        fields +=['file']
-        fields +=['file_url']
-        fields +=['filename']
-        fields +=['file_size']
-        fields +=['content_type']
-        fields +=['uploaded_at']
+        fields = [
+            'id', log_entry', 'file', 'file_url', 'filename',
+            'file_size', 'content_type', 'uploaded_at'
+        ]
         read_only_fields = ['uploaded_at']
 
     def get_file_url(self, obj):
@@ -24,7 +23,9 @@ class LogAttachmentSerializer(BaseModelSerializer):
             return obj.file.url
         return None
     
+    
 class LogEntrySerializer(BaseModelSerializer):
+    """Serializers for log entries"""
     user_name = serializers.CharField(source='user.get_full_name', read_only=True)
     user_email = serializers.EmailField(source='user.email', read_only=True)
     attachments = LogAttachmentSerializer(many=True, read_only=True)
@@ -32,6 +33,14 @@ class LogEntrySerializer(BaseModelSerializer):
     category_display = serializers.CharField(source='get_category_display', read_only=True)
 
     class Meta:
+        model = LogEntry
+        fields = [
+            'id', 'user','user_name', 'user_email', 'date',
+            'start_time', 'end_time', 'hours', 'title', 'descrption',
+            'category', 'category_display', 'tags', 'status', 'status_display',
+            'reviewed_by', 'reviewed_at' 'review_comments', 'project_code',
+            'is_billable', 'attachments', 'created_at', 'updated_at' 
+        ]
 
 
 
