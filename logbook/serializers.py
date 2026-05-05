@@ -65,6 +65,9 @@ class LogEntryUpdateSerializer(BaseModelSerializer):
 
     class Meta:
         model = LogEntry
+        fields = [
+            'start_time',
+        ]
         
 
 
