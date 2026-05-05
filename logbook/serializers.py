@@ -55,7 +55,9 @@ class LogEntryCreateSerializer(BaseModelSerializer):
         ]
 
     def create(self, validated_date):
+        validated_date['user'] = self.context['request'].user
         
+
 
         
 
