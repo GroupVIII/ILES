@@ -43,3 +43,9 @@ def send_email_notification(subject, message, recipient_list, html_message=None)
     except Exception as e:
         logger.error(f"Failed to send email to {recipient_list}: {str(e)}")
         return False
+
+def get_date_range(days=7):
+    """
+    Get start and end dates for a date range.
+    Default: last 7 days including today.
+    """
