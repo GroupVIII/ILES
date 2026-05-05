@@ -245,7 +245,7 @@ class TimeOff(BaseModel):
     def approve(self, approver):
         """Approved time off request"""
         self.status = self.Status.APPROVED
-            
+        self.approved_by = approver   
 
 
 
