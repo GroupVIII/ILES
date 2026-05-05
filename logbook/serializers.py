@@ -78,7 +78,8 @@ class LogEntryReviweSerializer(BaseModelSerializer):
         model = LogEntry
         fields = ['status', 'review_comments']
 
-    
+    def validate_status(self, value):
+        
 
 
         
