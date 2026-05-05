@@ -63,7 +63,10 @@ class LogEntryCreateSerializer(BaseModelSerializer):
 class LogEntryUpdateSerializer(BaseModelSerializer):
     """Serializer for updating log entries"""
 
-    
+    class Meta:
+        
+
+
 
         
 
