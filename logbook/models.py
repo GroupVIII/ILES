@@ -252,7 +252,7 @@ class TimeOff(BaseModel):
     def reject(self, approver, reason=""):
         """Reject time off request"""
         self.status = self.Status.REJECTED
-
+        self.approved_by = approver
 
 
 
