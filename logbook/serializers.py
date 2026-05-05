@@ -124,7 +124,8 @@ class TimeOffReviewSerializer(BaseModelSerializer):
 
     class Meta:
         model = TimeOff
-        
+        fields = ['status', ]
+
 
 
 
