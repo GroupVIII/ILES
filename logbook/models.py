@@ -249,6 +249,11 @@ class TimeOff(BaseModel):
         self.approved_at = timezone.now()
         self.save()
 
+    def reject(self, approver, reason=""):
+        """Reject time off request"""
+        self.status = self.Status.REJECTED
+
+
 
 
 
