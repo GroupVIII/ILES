@@ -79,6 +79,8 @@ class LogEntryReviweSerializer(BaseModelSerializer):
         fields = ['status', 'review_comments']
 
     def validate_status(self, value):
+        if value not in [LogEntry.Status.APPROVED, LogEntry.Status.REJECTED]:
+            
         
 
 
