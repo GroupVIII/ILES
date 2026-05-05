@@ -75,7 +75,9 @@ class LogEntryReviweSerializer(BaseModelSerializer):
     """Serializer for reviewing log entries"""
 
     class Meta:
+        model = LogEntry
         
+
         
 
 
