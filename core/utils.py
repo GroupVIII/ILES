@@ -38,3 +38,8 @@ def send_email_notification(subject, message, recipient_list, html_message=None)
             html_message=html_message,
             fail_silently=False,
         )
+        logger.info(f"Email sent to {recipient_list}: {subject}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send email to {recipient_list}: {str(e)}")
+        return False
