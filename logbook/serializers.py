@@ -119,6 +119,8 @@ class TimeOffCreateSerializer(BaseModelSerializer):
         return super().create(validated_data)
     
 
+class TimeOffReviewSerializer(BaseModelSerializer):
+    """Serializer for reviewing time off requests"""
     
 
 
