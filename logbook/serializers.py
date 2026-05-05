@@ -89,10 +89,9 @@ class LogEntryReviweSerializer(BaseModelSerializer):
         return super().update(instance, validated_data)
 
             
-        
-
-
-        
+class TimeOffSerializer(BaseModelSerializer):
+    """Serializer for time off requests"""
+    
 
 
 
