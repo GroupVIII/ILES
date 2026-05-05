@@ -110,7 +110,9 @@ class TimeOffCreateSerializer(BaseModelSerializer):
     """Serializer for creating time off requests"""
 
     class Meta:
+        model = TimeOff
         
+
 
 
 
