@@ -123,6 +123,9 @@ class TimeOffReviewSerializer(BaseModelSerializer):
     """Serializer for reviewing time off requests"""
 
     class Meta:
+        model = TimeOff
+        
+
 
 
 
