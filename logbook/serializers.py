@@ -54,6 +54,9 @@ class LogEntryCreateSerializer(BaseModelSerializer):
             'description', 'category', 'tags', 'project_code', 'is_billable'
         ]
 
+    def create(self, validated_date):
+        
+
         
 
 
