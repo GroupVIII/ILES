@@ -86,6 +86,7 @@ class LogEntryReviweSerializer(BaseModelSerializer):
     def update(self, instance, validated_data):
         validated_data['reviewed_by'] = self.context['request'].user
         validated_data['reviewed_at'] = timezone.now()
+        return super().update(instance, validated_data)
 
             
         
