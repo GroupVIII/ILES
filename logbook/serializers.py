@@ -132,6 +132,8 @@ class TimeOffReviewSerializer(BaseModelSerializer):
         return value
     
     def update(self, instance, validated_data):
+        validated_data['approved_by'] = self.context['request'].user
+        
 
         
         
