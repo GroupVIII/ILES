@@ -80,6 +80,8 @@ class LogEntryReviweSerializer(BaseModelSerializer):
 
     def validate_status(self, value):
         if value not in [LogEntry.Status.APPROVED, LogEntry.Status.REJECTED]:
+            raise serializers.ValidationError("Status must be either 'approved' or 'rejected'")
+        
             
         
 
