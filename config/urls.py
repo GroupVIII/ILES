@@ -18,5 +18,14 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=[permissions.AllowAny],
 )
-
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/auth/', include('accounts.urls')),
+    path('api/accounts/', include('accounts.urls')),
+    path('api/logs/', include('logs.urls')),
+    path('api/reports/', include('reports.urls')),
+    path('api/evaluations/', include('evaluations.urls')),
+    path('api/notifications/', include('notifications.urls')),
+     path('api/placements/', include('placements.urls')),
+    
 
