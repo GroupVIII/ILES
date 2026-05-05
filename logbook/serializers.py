@@ -125,7 +125,10 @@ class TimeOffReviewSerializer(BaseModelSerializer):
     class Meta:
         model = TimeOff
         fields = ['status','rejection_reason']
+
+    def validate_status(self, value):
         
+
 
 
 
