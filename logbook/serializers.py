@@ -76,7 +76,9 @@ class LogEntryReviweSerializer(BaseModelSerializer):
 
     class Meta:
         model = LogEntry
-        fields = ['status', ]
+        fields = ['status', 'review_comments']
+
+    
 
 
         
