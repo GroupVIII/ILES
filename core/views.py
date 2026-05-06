@@ -88,3 +88,24 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
             print(f"🚨 ILES WORKFLOW: Log {updated_log.id} transitioning from {original_status} -> {updated_log.status}")
             if updated_log.status == 'APPROVED':
                 print(f"🔔 SIGNAL TRIGGERED: Firing notification for {updated_log.placement.student.username}")
+
+class EvaluationViewSet(viewsets.ModelViewSet):
+    queryset = Evaluation.objects.all()
+    serializer_class = EvaluationSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return Evaluation.objects.none()
+            
+        role = str(getattr(user, 'role', '')).upper()
+        
+        # --- THE GATEKEEPER FIX ---
+        if role == 'STUDENT':
+            # Allow the student to see grades linked to their placement
+            return Evaluation.objects.filter(placement__student=user)
+        elif role in ['ACADEMIC_SUPERVISOR', 'ACADEMIC_SUP']:
+            # Allow the supervisor to see the grades they authored
+            return Evaluation.objects.filter(evaluator=user)
+            
+        return Evaluation.objects.all()
