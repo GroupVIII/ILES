@@ -12,5 +12,6 @@ class LogAttachmentInline(admin.TabularInline):
 @admin.site.register(LogEntry)
 class LogEntryAdmin(admin.ModelAdmin):
     list_display = ('user', 'date', 'hours', 'category', 'status', 'created_at')
-    
+    list_filter = ('status', 'category', 'date', 'user_role')
+
 
