@@ -1,3 +1,15 @@
+# notifications/models.py
 from django.db import models
+from django.utils import timezone
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+from core.models import BaseModel
+from accounts.models import User
+import json
+import uuid
 
-# Create your models here.
+class Notification(BaseModel):
+    """
+    In-app notifications for users.
+    """
