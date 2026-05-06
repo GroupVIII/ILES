@@ -40,3 +40,10 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
         user = self.request.user
         if not user.is_authenticated:
             return InternshipPlacement.objects.none()
+        
+        # Standardise the role to uppercase to prevent sneaky mismatch bugs
+        role = str(getattr(user, 'role', '')).upper()
+        
+        # 🚨 DIAGNOSTIC TRACER: This will print directly to your Django server terminal!
+        print(f"--- ILES DIAGNOSTIC --- User: {user.username} | Role: {role}")
+        
