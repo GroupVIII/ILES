@@ -13,3 +13,8 @@ class Notification(BaseModel):
     """
     In-app notifications for users.
     """
+    class NotificationType(models.TextChoices):
+        INFO = 'info', 'Information'
+        SUCCESS = 'success', 'Success'
+        WARNING = 'warning', 'Warning'
+        ERROR = 'error', 'Error'
