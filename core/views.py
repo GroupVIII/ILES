@@ -47,3 +47,5 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
         # 🚨 DIAGNOSTIC TRACER: This will print directly to your Django server terminal!
         print(f"--- ILES DIAGNOSTIC --- User: {user.username} | Role: {role}")
         
+        if role == 'STUDENT':
+            return InternshipPlacement.objects.filter(student=user)
