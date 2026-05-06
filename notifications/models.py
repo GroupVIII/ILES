@@ -45,4 +45,10 @@ class Notification(BaseModel):
         PASSWORD_CHANGED = 'password_changed', 'Password Changed'
         SUPERVISOR_ASSIGNED = 'supervisor_assigned', 'Supervisor Assigned'
         SYSTEM_ALERT = 'system_alert', 'System Alert'
+
+        recipient = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='notifications'
+    )
         
