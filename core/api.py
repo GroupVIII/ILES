@@ -25,3 +25,7 @@ class MultiSerializerViewSet(viewsets.ModelViewSet):
         except (KeyError, AttributeError):
             return super().get_serializer_class()
 
+class ActionBasedPermission(permissions.BasePermission):
+    """
+    Permission that allows different permissions for different actions.
+    """
