@@ -57,4 +57,12 @@ class Notification(BaseModel):
         null=True,
         blank=True,
         related_name='sent_notifications'
+         )
+    
+    notification_type = models.CharField(
+        max_length=20,
+        choices=NotificationType.choices,
+        default=NotificationType.INFO
+
+
         
