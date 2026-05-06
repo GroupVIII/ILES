@@ -5,6 +5,7 @@ from . import views
 
 router = DefaultRouter()
 router.register(r'entries', views.LogEntryViewSet, basename='logentry')
+router.register(r'timeoff', views.TimeOffViewSet, basename='timeoff')
 
 
 
