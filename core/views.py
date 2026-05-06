@@ -51,4 +51,5 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
             return InternshipPlacement.objects.filter(student=user)
         elif role in ['WORKPLACE_SUPERVISOR', 'WORKPLACE_SUP']:
             return InternshipPlacement.objects.filter(workplace_supervisor=user)
-        
+        elif role in ['ACADEMIC_SUPERVISOR', 'ACADEMIC_SUP']:
+            return InternshipPlacement.objects.filter(academic_supervisor=user)
