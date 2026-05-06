@@ -81,6 +81,10 @@ class Notification(BaseModel):
 
     # Additional data (JSON for storing related object IDs, etc.)
     data = models.JSONField(default=dict, blank=True)
+
+     # Read status
+    is_read = models.BooleanField(default=False, db_index=True)
+    read_at = models.DateTimeField(null=True, blank=True)
     
     
 
