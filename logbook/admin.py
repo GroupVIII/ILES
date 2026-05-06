@@ -15,7 +15,10 @@ class LogEntryAdmin(admin.ModelAdmin):
     list_filter = ('status', 'category', 'date', 'user__role')
     search_fields = ('user__email', 'user__first_name', 'user__last_name', 'title', 'description')
     readonly_fields = ('created_at', 'updated_at')
+    inlines = [LogAttachmentInline]
+
     
+
 
 
 
