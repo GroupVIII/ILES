@@ -85,6 +85,10 @@ class Notification(BaseModel):
      # Read status
     is_read = models.BooleanField(default=False, db_index=True)
     read_at = models.DateTimeField(null=True, blank=True)
+
+    # Email status
+    email_sent = models.BooleanField(default=False)
+    email_sent_at = models.DateTimeField(null=True, blank=True)
     
     
 
