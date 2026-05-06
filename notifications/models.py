@@ -100,6 +100,10 @@ class Notification(BaseModel):
         ]
         verbose_name = 'Notification'
         verbose_name_plural = 'Notifications'
+
+    def __str__(self):
+        return f"{self.recipient.email} - {self.title[:50]}"
+    
     
     
 
