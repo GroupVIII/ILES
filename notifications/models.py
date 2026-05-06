@@ -104,6 +104,13 @@ class Notification(BaseModel):
     def __str__(self):
         return f"{self.recipient.email} - {self.title[:50]}"
     
+    def mark_as_read(self):
+        """Mark notification as read"""
+        if not self.is_read:
+            self.is_read = True
+            self.read_at = timezone.now()
+            self.save(update_fields=['is_read', 'read_at'])
+    
     
     
 
