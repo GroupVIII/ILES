@@ -32,4 +32,9 @@ class ActionBasedPermission(permissions.BasePermission):
     def has_permission(self, request, view):
         action_permissions = getattr(view, 'action_permissions', {})
         action = getattr(view, 'action', None)
+
+         if action in action_permissions:
+            permissions_classes = action_permissions[action]
+        else:
+            permissions_classes = view.permission_classes
         
