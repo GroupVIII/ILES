@@ -32,4 +32,11 @@ class Notification(BaseModel):
         REPORT_REJECTED = 'report_rejected', 'Report Rejected'
         REPORT_COMMENT = 'report_comment', 'Report Comment'
         REPORT_REMINDER = 'report_reminder', 'Report Reminder'
+
+        # Evaluations related
+        EVALUATION_CREATED = 'evaluation_created', 'Evaluation Created'
+        EVALUATION_COMPLETED = 'evaluation_completed', 'Evaluation Completed'
+        EVALUATION_ACKNOWLEDGED = 'evaluation_acknowledged', 'Evaluation Acknowledged'
+        EVALUATION_DISPUTED = 'evaluation_disputed', 'Evaluation Disputed'
+        EVALUATION_REMINDER = 'evaluation_reminder', 'Evaluation Reminder'
         
