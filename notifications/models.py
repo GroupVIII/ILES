@@ -18,3 +18,10 @@ class Notification(BaseModel):
         SUCCESS = 'success', 'Success'
         WARNING = 'warning', 'Warning'
         ERROR = 'error', 'Error'
+
+    class Category(models.TextChoices):
+        # Logs related
+        LOG_SUBMITTED = 'log_submitted', 'Log Submitted'
+        LOG_APPROVED = 'log_approved', 'Log Approved'
+        LOG_REJECTED = 'log_rejected', 'Log Rejected'
+        LOG_COMMENT = 'log_comment', 'Log Comment'
