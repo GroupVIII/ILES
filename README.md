@@ -27,17 +27,3 @@ The Internship Logging & Evaluation System (ILES) is a full-stack web applicatio
 * Physical supervision visit tracking.
 * Job-hunting boards or resume builders.
 
----
-
-## Tech Stack
-* **Frontend:** React (Vite), React Router, Axios, Recharts (Data Visualization), React-Toastify
-* **Backend:** Django, Django REST Framework (DRF), SimpleJWT (Authentication)
-* **Database:** PostgreSQL / SQLite (Local)
-
----
-
-## Local Installation & Setup
-
-### Prerequisites
-* Node.js (v18+)
-* Python (3.10+)
