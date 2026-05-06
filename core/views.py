@@ -6,6 +6,7 @@ from .models import CustomUser, InternshipPlacement, WeeklyLog, EvaluationCriter
 from .serializers import (UserSerializer, InternshipPlacementSerializer, WeeklyLogSerializer, EvaluationCriteriaSerializer, EvaluationSerializer, NotificationSerializer)
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomTokenObtainPairSerializer
+from rest_framework.views import APIView
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -26,9 +27,10 @@ class IsRole(permissions.BasePermission):
 
     def __call__(self):
         return self
-
+    
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_authenticated and request.user.role in self.allowed_roles)
+    
     
 class InternshipPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
@@ -44,27 +46,27 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
         
         # 🚨 DIAGNOSTIC TRACER: This will print directly to your Django server terminal!
         print(f"--- ILES DIAGNOSTIC --- User: {user.username} | Role: {role}")
-            
+        
         if role == 'STUDENT':
             return InternshipPlacement.objects.filter(student=user)
         elif role in ['WORKPLACE_SUPERVISOR', 'WORKPLACE_SUP']:
             return InternshipPlacement.objects.filter(workplace_supervisor=user)
         elif role in ['ACADEMIC_SUPERVISOR', 'ACADEMIC_SUP']:
             return InternshipPlacement.objects.filter(academic_supervisor=user)
-            
+        
         return InternshipPlacement.objects.all()
     
 class WeeklyLogViewSet(viewsets.ModelViewSet):
     queryset = WeeklyLog.objects.all()
     serializer_class = WeeklyLogSerializer
-
+    
     def get_queryset(self):
         user = self.request.user
         if not user.is_authenticated:
             return WeeklyLog.objects.none()
-
+        
         role = str(getattr(user, 'role', '')).upper()
-
+        
         if role == 'STUDENT':
             return WeeklyLog.objects.filter(placement__student=user)
         elif role in ['WORKPLACE_SUPERVISOR', 'WORKPLACE_SUP']:
@@ -72,15 +74,30 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
             
         return WeeklyLog.objects.all()
     
+    # --- THE WORKFLOW ENFORCER FIX (Defense Talking Point) ---
+    def perform_update(self, serializer):
+        # 1. Fetch the log's status BEFORE the supervisor's new changes are saved
+        original_log = self.get_object()
+        original_status = original_log.status
+        
+        # 2. Save the supervisor's changes (this is what triggers the post_save signal)
+        updated_log = serializer.save()
+        
+        # 3. Terminal Diagnostics: Prove to the panel the state transition is being tracked
+        if original_status != updated_log.status:
+            print(f"🚨 ILES WORKFLOW: Log {updated_log.id} transitioning from {original_status} -> {updated_log.status}")
+            if updated_log.status == 'APPROVED':
+                print(f"🔔 SIGNAL TRIGGERED: Firing notification for {updated_log.placement.student.username}")
+
 class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
-    
+
     def get_queryset(self):
         user = self.request.user
         if not user.is_authenticated:
             return Evaluation.objects.none()
-        
+            
         role = str(getattr(user, 'role', '')).upper()
         
         # --- THE GATEKEEPER FIX ---
@@ -92,12 +109,12 @@ class EvaluationViewSet(viewsets.ModelViewSet):
             return Evaluation.objects.filter(evaluator=user)
             
         return Evaluation.objects.all()
-        
+    
 class EvaluationCriteriaViewSet(viewsets.ModelViewSet):
     queryset = EvaluationCriteria.objects.all()
     serializer_class = EvaluationCriteriaSerializer
-    
-def get_queryset(self):
+
+    def get_queryset(self):
         # We want everyone (Students, Supervisors, Admins) to be able to see the 
         # grading criteria so they know the rules, so we return all of them safely.
         user = self.request.user
@@ -111,8 +128,16 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 class NotificationListView(generics.ListAPIView):
     serializer_class = NotificationSerializer
     permission_classes = [permissions.IsAuthenticated]
-    
+
     def get_queryset(self):
         # DEFENSE POINT: Notice how we filter by `self.request.user`!
         # This guarantees a student can NEVER see another student's notifications.
         return Notification.objects.filter(user=self.request.user, is_read=False)
+    
+class NotificationMarkReadView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        # Find all unread notifications for the logged-in user and flip them to True
+        updated_count = Notification.objects.filter(user=request.user, is_read=False).update(is_read=True)
+        return Response({"message": f"{updated_count} notifications marked as read."})
