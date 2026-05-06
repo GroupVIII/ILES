@@ -14,3 +14,38 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
+
+    
+    operations = [
+        migrations.CreateModel(
+            name='WeeklyReport',
+            fields=[
+                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
+                ('updated_at', models.DateTimeField(auto_now=True, db_index=True)),
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('is_deleted', models.BooleanField(db_index=True, default=False)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+                ('week_start_date', models.DateField(db_index=True)),
+                ('week_end_date', models.DateField(db_index=True)),
+                ('accomplishments', models.JSONField(default=list, help_text='List of accomplishments for the week')),
+                ('challenges', models.JSONField(default=list, help_text='List of challenges faced')),
+                ('learnings', models.JSONField(default=list, help_text='Key learnings from the week')),
+                ('next_week_goals', models.JSONField(default=list, help_text='Goals for next week')),
+                ('long_term_goals', models.TextField(blank=True, help_text='Long-term goals and career aspirations')),
+                ('feedback_for_supervisor', models.TextField(blank=True, help_text='Feedback or questions for supervisor')),
+                ('total_hours', models.DecimalField(decimal_places=2, default=0, max_digits=5, validators=[django.core.validators.MinValueValidator(0)])),
+                ('tasks_completed', models.IntegerField(default=0)),
+                ('status', models.CharField(choices=[('draft', 'Draft'), ('submitted', 'Submitted'), ('under_review', 'Under Review'), ('approved', 'Approved'), ('rejected', 'Rejected'), ('needs_revision', 'Needs Revision')], db_index=True, default='draft', max_length=20)),
+                ('reviewer_comments', models.TextField(blank=True)),
+                ('reviewer_rating', models.IntegerField(blank=True, help_text='Rating from 1-5', null=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(5)])),
+                ('reviewed_at', models.DateTimeField(blank=True, null=True)),
+                ('submitted_at', models.DateTimeField(blank=True, null=True)),
+                ('reviewed_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='reviewed_reports', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='weekly_reports', to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name': 'Weekly Report',
+                'verbose_name_plural': 'Weekly Reports',
+                'ordering': ['-week_start_date', '-created_at'],
+            },
+        ),
