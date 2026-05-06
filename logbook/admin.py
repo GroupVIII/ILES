@@ -10,3 +10,5 @@ class LogAttachmentInline(admin.TabularInline):
 
 
 @admin.site.register(LogEntry)
+class LogEntryAdmin(admin.ModelAdmin):
+
