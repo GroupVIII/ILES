@@ -78,6 +78,10 @@ class Notification(BaseModel):
     # Action link (where to go when clicked)
     action_url = models.CharField(max_length=500, blank=True)
     action_text = models.CharField(max_length=100, blank=True)
+
+    # Additional data (JSON for storing related object IDs, etc.)
+    data = models.JSONField(default=dict, blank=True)
+    
     
 
 
