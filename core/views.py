@@ -35,3 +35,5 @@ class IsRole(permissions.BasePermission):
 class InternshipPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
     serializer_class = InternshipPlacementSerializer
+    
+    
