@@ -63,6 +63,13 @@ class Notification(BaseModel):
         max_length=20,
         choices=NotificationType.choices,
         default=NotificationType.INFO
+         )
+    
+    category = models.CharField(
+        max_length=30,
+        choices=Category.choices,
+        db_index=True
+    )
 
 
         
