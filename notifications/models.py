@@ -110,6 +110,12 @@ class Notification(BaseModel):
             self.is_read = True
             self.read_at = timezone.now()
             self.save(update_fields=['is_read', 'read_at'])
+
+    def mark_as_unread(self):
+        """Mark notification as unread"""
+        self.is_read = False
+        self.read_at = None
+        self.save(update_fields=['is_read', 'read_at'])        
     
     
     
