@@ -73,3 +73,18 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
             return WeeklyLog.objects.filter(placement__workplace_supervisor=user)
             
         return WeeklyLog.objects.all()
+    
+    # --- THE WORKFLOW ENFORCER FIX (Defense Talking Point) ---
+    def perform_update(self, serializer):
+        # 1. Fetch the log's status BEFORE the supervisor's new changes are saved
+        original_log = self.get_object()
+        original_status = original_log.status
+        
+        # 2. Save the supervisor's changes (this is what triggers the post_save signal)
+        updated_log = serializer.save()
+        
+        # 3. Terminal Diagnostics: Prove to the panel the state transition is being tracked
+        if original_status != updated_log.status:
+            print(f"🚨 ILES WORKFLOW: Log {updated_log.id} transitioning from {original_status} -> {updated_log.status}")
+            if updated_log.status == 'APPROVED':
+                print(f"🔔 SIGNAL TRIGGERED: Firing notification for {updated_log.placement.student.username}")
