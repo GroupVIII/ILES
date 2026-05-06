@@ -89,6 +89,15 @@ class Notification(BaseModel):
     # Email status
     email_sent = models.BooleanField(default=False)
     email_sent_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['recipient', '-created_at']),
+            models.Index(fields=['recipient', 'is_read', '-created_at']),
+            models.Index(fields=['category', '-created_at']),
+            models.Index(fields=['email_sent', 'created_at']),
+        ]
     
     
 
