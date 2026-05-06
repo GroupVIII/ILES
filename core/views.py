@@ -24,3 +24,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class IsRole(permissions.BasePermission):
     def __init__(self, allowed_roles):
         self.allowed_roles = allowed_roles
+
+    def __call__(self):
+        return self
