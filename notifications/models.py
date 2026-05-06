@@ -98,6 +98,8 @@ class Notification(BaseModel):
             models.Index(fields=['category', '-created_at']),
             models.Index(fields=['email_sent', 'created_at']),
         ]
+        verbose_name = 'Notification'
+        verbose_name_plural = 'Notifications'
     
     
 
