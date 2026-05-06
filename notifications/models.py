@@ -51,4 +51,10 @@ class Notification(BaseModel):
         on_delete=models.CASCADE,
         related_name='notifications'
     )
+        sender = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='sent_notifications'
         
