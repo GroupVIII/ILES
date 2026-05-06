@@ -8,7 +8,5 @@ class LogAttachmentInline(admin.TabularInline):
     extra = 0
     readonly_fields = ('filename', 'file_size', 'context_type')
 
-    
 
-
-admin.site.register(LogEntry)
+@admin.site.register(LogEntry)
