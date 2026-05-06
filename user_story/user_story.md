@@ -248,3 +248,20 @@
 ### 4. Reliability
 * The system must maintain a 99.9% uptime during standard business hours.
 * Automated, encrypted backups of the database must occur daily at midnight. No logged hour can ever be lost to a server fault.
+
+---
+
+## WORKFLOW STATES
+
+### 1. Weekly Logs
+* **Draft:** The intern is still compiling their daily efforts.
+* **Submitted:** The log is locked by the intern and awaits the supervisor's review.
+* **Reviewed:** The supervisor has examined the log and attached feedback.
+* **Approved:** The hours are confirmed, justified, and permanently recorded.
+
+### 2. Evaluation
+* **Pending:** The evaluation period has opened, but no assessment has been done.
+* **Under Review:** The assessment is active. The supervisor is actively weighing the intern's merit against the rubric.
+* **On Hold:** Clarification or secondary approval is required before a verdict is rendered.
+* **Accepted:** The evaluation is finalised and logged into the system.
+* **Rejected:** The evaluation is sent back for structural correction or review.
