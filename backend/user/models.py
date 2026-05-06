@@ -20,14 +20,15 @@ class CustomUser(AbstractUser):
     class Role(models.TextChoices):
         ADMIN = 'admin', 'Admin'
         INTERN = 'intern', 'Intern'
-        SUPERVISOR = 'supervisor', 'Supervisor'
+        ACADEMIC_SUPERVISOR = 'academic_supervisor', 'Academic_Supervisor'
+        WORKPLACE_SUPERVISOR = 'workplace_supervisor', 'Workplace_Supervisor'
 
     class Gender(models.TextChoices):
         MALE = 'male', 'Male'
         FEMALE = 'female', 'Female'
         OTHER = 'other', 'Other'
         PREFER_NOT_TO_SAY = 'prefer_not_to_say', 'Prefer not to say'
-    # username = None  # Remove the username field from the default AbstractUser  
+    username = None  # Remove the username field from the default AbstractUser  
 
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)

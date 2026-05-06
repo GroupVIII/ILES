@@ -33,6 +33,7 @@ const Dashboard = () => {
                 </div>
             </nav>
 
+            
             <main className="dashboard-content">
                 <div className="view-container">
                     {role === 'WORKPLACE_SUP' || role === 'ADMIN' ? (
