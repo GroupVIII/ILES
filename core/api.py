@@ -29,3 +29,7 @@ class ActionBasedPermission(permissions.BasePermission):
     """
     Permission that allows different permissions for different actions.
     """
+    def has_permission(self, request, view):
+        action_permissions = getattr(view, 'action_permissions', {})
+        action = getattr(view, 'action', None)
+        
