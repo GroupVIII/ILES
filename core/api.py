@@ -6,3 +6,9 @@ from django.db import models
 import logging
 
 logger = logging.getLogger(__name__)
+
+class BaseModelSerializer(serializers.ModelSerializer):
+    """Base serializer with common fields"""
+    created_at = serializers.DateTimeField(read_only=True)
+    updated_at = serializers.DateTimeField(read_only=True)
+    id = serializers.UUIDField(read_only=True)
