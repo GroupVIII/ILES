@@ -25,3 +25,8 @@ class Notification(BaseModel):
         LOG_APPROVED = 'log_approved', 'Log Approved'
         LOG_REJECTED = 'log_rejected', 'Log Rejected'
         LOG_COMMENT = 'log_comment', 'Log Comment'
+
+        # Reports related
+        REPORT_SUBMITTED = 'report_submitted', 'Report Submitted'
+        REPORT_APPROVED = 'report_approved', 'Report Approved'
+        REPORT_REJECTED = 'report_rejected', 'Report Rejected'
