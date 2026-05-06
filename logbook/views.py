@@ -16,5 +16,8 @@ from core.api import MultiSerializerViewSet
 from notification.services import NoticationsService, NoticationTemplates
 import logging
 
+logger = logging.getLogger(__name__)
+
+
 
 
