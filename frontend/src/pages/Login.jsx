@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ const Login = ({ setToken }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoading(true);
+        
         try {
             // Precise endpoint alignment
             const res = await axios.post('http://127.0.0.1:8000/api/token/', { 
