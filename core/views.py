@@ -66,3 +66,10 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
             return WeeklyLog.objects.none()
         
         role = str(getattr(user, 'role', '')).upper()
+        
+        if role == 'STUDENT':
+            return WeeklyLog.objects.filter(placement__student=user)
+        elif role in ['WORKPLACE_SUPERVISOR', 'WORKPLACE_SUP']:
+            return WeeklyLog.objects.filter(placement__workplace_supervisor=user)
+            
+        return WeeklyLog.objects.all()
