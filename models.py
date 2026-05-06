@@ -69,5 +69,3 @@ class Issue(models.Model):
 
 
 
-
-
