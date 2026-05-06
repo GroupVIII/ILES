@@ -39,4 +39,10 @@ class Notification(BaseModel):
         EVALUATION_ACKNOWLEDGED = 'evaluation_acknowledged', 'Evaluation Acknowledged'
         EVALUATION_DISPUTED = 'evaluation_disputed', 'Evaluation Disputed'
         EVALUATION_REMINDER = 'evaluation_reminder', 'Evaluation Reminder'
+
+         #System related
+        ACCOUNT_CREATED = 'account_created', 'Account Created'
+        PASSWORD_CHANGED = 'password_changed', 'Password Changed'
+        SUPERVISOR_ASSIGNED = 'supervisor_assigned', 'Supervisor Assigned'
+        SYSTEM_ALERT = 'system_alert', 'System Alert'
         
