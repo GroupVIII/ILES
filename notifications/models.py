@@ -68,8 +68,12 @@ class Notification(BaseModel):
     category = models.CharField(
         max_length=30,
         choices=Category.choices,
+       
         db_index=True
     )
+
+    title = models.CharField(max_length=200)
+    message = models.TextField()
 
 
         
