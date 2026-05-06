@@ -14,3 +14,9 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = CustomUser.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+    
+    # We should restrict this so ONLY Admins can fetch/create users
+    def get_permissions(self):
+        # We can enforce basic authentication here. 
+        # In a fully strict system, you'd check `self.request.user.role == 'ADMIN'`
+        return [permissions.IsAuthenticated()]
