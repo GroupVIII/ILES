@@ -115,7 +115,16 @@ class Notification(BaseModel):
         """Mark notification as unread"""
         self.is_read = False
         self.read_at = None
-        self.save(update_fields=['is_read', 'read_at'])        
+        self.save(update_fields=['is_read', 'read_at']) 
+
+    @classmethod
+    def mark_all_as_read(cls, user):
+        """Mark all notifications for a user as read"""
+        cls.objects.filter(recipient=user, is_read=False).update(
+            is_read=True,
+            read_at=timezone.now()
+        )
+           
     
     
     
