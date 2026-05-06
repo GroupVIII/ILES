@@ -12,3 +12,8 @@ class BaseModelSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(read_only=True)
     updated_at = serializers.DateTimeField(read_only=True)
     id = serializers.UUIDField(read_only=True)
+
+class MultiSerializerViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet that allows different serializers for different actions.
+    """
