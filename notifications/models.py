@@ -75,5 +75,10 @@ class Notification(BaseModel):
     title = models.CharField(max_length=200)
     message = models.TextField()
 
+    # Action link (where to go when clicked)
+    action_url = models.CharField(max_length=500, blank=True)
+    action_text = models.CharField(max_length=100, blank=True)
+    
+
 
         
