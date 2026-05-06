@@ -55,3 +55,8 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
             return InternshipPlacement.objects.filter(academic_supervisor=user)
         
         return InternshipPlacement.objects.all()
+    
+class WeeklyLogViewSet(viewsets.ModelViewSet):
+    queryset = WeeklyLog.objects.all()
+    serializer_class = WeeklyLogSerializer
+    
