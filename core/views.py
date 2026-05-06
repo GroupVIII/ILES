@@ -60,3 +60,9 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
     queryset = WeeklyLog.objects.all()
     serializer_class = WeeklyLogSerializer
     
+    def get_queryset(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return WeeklyLog.objects.none()
+        
+    
