@@ -109,3 +109,35 @@ class EvaluationViewSet(viewsets.ModelViewSet):
             return Evaluation.objects.filter(evaluator=user)
             
         return Evaluation.objects.all()
+    
+class EvaluationCriteriaViewSet(viewsets.ModelViewSet):
+    queryset = EvaluationCriteria.objects.all()
+    serializer_class = EvaluationCriteriaSerializer
+
+    def get_queryset(self):
+        # We want everyone (Students, Supervisors, Admins) to be able to see the 
+        # grading criteria so they know the rules, so we return all of them safely.
+        user = self.request.user
+        if not user.is_authenticated:
+            return EvaluationCriteria.objects.none()
+        return EvaluationCriteria.objects.all()
+    
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
+    
+class NotificationListView(generics.ListAPIView):
+    serializer_class = NotificationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        # DEFENSE POINT: Notice how we filter by `self.request.user`!
+        # This guarantees a student can NEVER see another student's notifications.
+        return Notification.objects.filter(user=self.request.user, is_read=False)
+    
+class NotificationMarkReadView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        # Find all unread notifications for the logged-in user and flip them to True
+        updated_count = Notification.objects.filter(user=request.user, is_read=False).update(is_read=True)
+        return Response({"message": f"{updated_count} notifications marked as read."})
