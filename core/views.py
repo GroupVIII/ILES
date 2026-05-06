@@ -65,4 +65,4 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
         if not user.is_authenticated:
             return WeeklyLog.objects.none()
         
-    
+        role = str(getattr(user, 'role', '')).upper()
