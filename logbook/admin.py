@@ -6,6 +6,9 @@ from .models import LogEntry, LogAttachment, TimeOff
 class LogAttachmentInline(admin.TabularInline):
     model = LogAttachment
     extra = 0
+    readonly_fields = ('filename', 'file_size', 'context_type')
+
+    
 
 
 admin.site.register(LogEntry)
