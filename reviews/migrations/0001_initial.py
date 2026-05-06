@@ -81,3 +81,44 @@ class Migration(migrations.Migration):
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='report_reminders', to=settings.AUTH_USER_MODEL)),
             ],
         ),
+        migrations.CreateModel(
+            name='ReportComment',
+            fields=[
+                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
+                ('updated_at', models.DateTimeField(auto_now=True, db_index=True)),
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('is_deleted', models.BooleanField(db_index=True, default=False)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+                ('comment', models.TextField()),
+                ('report', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='reports.weeklyreport')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='report_comments', to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'ordering': ['created_at'],
+            },
+        ),
+        migrations.AddIndex(
+            model_name='weeklyreport',
+            index=models.Index(fields=['user', '-week_start_date'], name='reports_wee_user_id_b32ff3_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='weeklyreport',
+            index=models.Index(fields=['status', 'week_start_date'], name='reports_wee_status_cd03f5_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='weeklyreport',
+            index=models.Index(fields=['user', 'status'], name='reports_wee_user_id_d3cb0c_idx'),
+        ),
+        migrations.AlterUniqueTogether(
+            name='weeklyreport',
+            unique_together={('user', 'week_start_date')},
+        ),
+        migrations.AddIndex(
+            model_name='reporttemplate',
+            index=models.Index(fields=['is_active'], name='reports_rep_is_acti_4b0ce5_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='reportreminder',
+            index=models.Index(fields=['user', 'week_start_date'], name='reports_rep_user_id_6c5363_idx'),
+        ),
+    ]
