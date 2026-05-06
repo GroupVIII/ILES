@@ -30,3 +30,6 @@ class Notification(BaseModel):
         REPORT_SUBMITTED = 'report_submitted', 'Report Submitted'
         REPORT_APPROVED = 'report_approved', 'Report Approved'
         REPORT_REJECTED = 'report_rejected', 'Report Rejected'
+        REPORT_COMMENT = 'report_comment', 'Report Comment'
+        REPORT_REMINDER = 'report_reminder', 'Report Reminder'
+        
