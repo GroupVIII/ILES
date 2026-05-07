@@ -206,5 +206,35 @@ class ReportTemplate(BaseModel):
         default=dict,
         help_text="JSON defining report sections and questions"
     )
-            
+
+ # Sample structure:
+    # {
+    #     "sections": [
+    #         {
+    #             "name": "Accomplishments",
+    #             "type": "list",
+    #             "required": true,
+    #             "max_items": 10
+    #         },
+    #         {
+    #             "name": "Code Examples",
+    #             "type": "url_list",
+    #             "required": false
+    #         }
+    #     ]
+    # }
+    
+    is_active = models.BooleanField(default=True)
+    
+    # Applicability
+    applicable_departments = models.JSONField(default=list)
+    applicable_roles = models.JSONField(default=list)
+    
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='created_templates'
+    )
+                
     
