@@ -205,6 +205,28 @@ class TimeOffViewSet(MultiSerializerViewSet):
     """
     ViewSet for managing time off requests.
     """
+    queryset = TimeOff.objects.filter(is_deleted=False)
+    serializer_classes = {
+        'create': TimeOffCreateSerializer,
+        'list': TimeOffSerializer,
+        'retrieve': TimeOffSerializer,
+        'review': TimeOffReviewSerializer,
+    }
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        
+        if user.is_intern:
+            return TimeOff.objects.filter(user=user)
+        elif user.is_supervisor:
+            intern_ids = user.supervising_assignments.filter(
+                is_active=True
+            ).values_list('intern_id', flat=True)
+            return TimeOff.objects.filter(user__in=intern_ids)
+        
+        return TimeOff.objects.all()
+    
         
 
 
