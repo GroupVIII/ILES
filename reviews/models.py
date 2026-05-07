@@ -261,5 +261,24 @@ class ReportReminder(BaseModel):
         UPCOMING = 'upcoming', 'Upcoming Due Date'
         OVERDUE = 'overdue', 'Overdue Report'
         FOLLOW_UP = 'follow_up', 'Supervisor Follow-up'
-                
+
+    reminder_type = models.CharField(
+        max_length=20,
+        choices=ReminderType.choices
+    )
+    
+    sent_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='sent_reminders'
+    )
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['user', 'week_start_date']),
+        ]
+    
+    def __str__(self):
+        return f"{self.reminder_type} reminder for {self.user.email} - Week of {self.week_start_date}"            
     
