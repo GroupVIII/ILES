@@ -244,5 +244,22 @@ class ReportTemplate(BaseModel):
     
     def __str__(self):
         return self.name
-            
+class ReportReminder(BaseModel):
+    """
+    Track reminders sent for report submissions.
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='report_reminders'
+    )
+    week_start_date = models.DateField()
+    sent_at = models.DateTimeField(auto_now_add=True)
+    
+    # Reminder type
+    class ReminderType(models.TextChoices):
+        UPCOMING = 'upcoming', 'Upcoming Due Date'
+        OVERDUE = 'overdue', 'Overdue Report'
+        FOLLOW_UP = 'follow_up', 'Supervisor Follow-up'
+                
     
