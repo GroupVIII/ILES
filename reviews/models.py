@@ -43,3 +43,20 @@ class WeeklyReport(BaseModel):
         default=list,
         help_text="Key learnings from the week"
     )
+
+    # Goals
+    next_week_goals = models.JSONField(
+        default=list,
+        help_text="Goals for next week"
+    )
+    long_term_goals = models.TextField(
+        blank=True,
+        help_text="Long-term goals and career aspirations"
+    )
+    
+    # Feedback from intern
+    feedback_for_supervisor = models.TextField(
+        blank=True,
+        help_text="Feedback or questions for supervisor"
+    )
+    
