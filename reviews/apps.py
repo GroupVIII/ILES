@@ -1,4 +1,4 @@
-# reports/apps.py
+# reviews/apps.py
 from django.apps import AppConfig
 
 
