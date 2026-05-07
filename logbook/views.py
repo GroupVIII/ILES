@@ -23,5 +23,6 @@ class LogEntryViewSet(MultiSerializerViewSet):
     """
     ViewSet for managing log entries.
     """
+    queryset = LogEntry.Objects.filter(is_deleted=False)
     
 
