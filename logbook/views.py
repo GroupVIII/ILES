@@ -187,6 +187,16 @@ class LogEntryViewSet(MultiSerializerViewSet):
 
         if date_from and date_to:
             logs = logs.filter(date__gte=date_from, date__lte=date_to)
+
+        summary = {
+            'total_hours': logs.aggregate(Sum('hours'))['hours__sum'] or 0,
+            'total_entries': logs.count(),
+            'by_status': logs.values('status').annotate(count=models.Count('id')),
+            'by_category': logs.values('category').annotate(
+                count=models.Count('id'),
+                hours=models.Sum('hours')
+            ),
+        }
         
 
 
