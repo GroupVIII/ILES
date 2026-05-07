@@ -199,6 +199,12 @@ class LogEntryViewSet(MultiSerializerViewSet):
         }
 
         return Response(summary)
+    
+
+class TimeOffViewSet(MultiSerializerViewSet):
+    """
+    ViewSet for managing time off requests.
+    """
         
 
 
