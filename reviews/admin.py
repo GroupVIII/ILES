@@ -40,3 +40,9 @@ class WeeklyReportAdmin(admin.ModelAdmin):
             'fields': ('submitted_at', 'created_at', 'updated_at')
         }),
     )
+
+@admin.register(ReportComment)
+class ReportCommentAdmin(admin.ModelAdmin):
+    list_display = ('report', 'user', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('report__user__email', 'comment')
