@@ -95,6 +95,22 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 {'error': 'Only draft logs can be submitted'},
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
+        log.submit()
+
+        # Notify supervisor
+        asssignment = self.request.user.supervisor_assignments.filter(is_active=True).first()
+        if asssignment and asssignment.supervisor:
+            NotificationsService.send_notification(
+                recepient=asssignment.supervisor,
+                category='log_submitted'
+                title="New Log Submitted",
+                message=f"{self.request.user.get_full_name()} submitted a log for {log.date}.",
+                sender=self.request.user,
+                data={'log_id': str(log.id)},
+                action_url=f"/log/{log.id}",
+                action_text="Review Log"
+            )   
             
 
 
