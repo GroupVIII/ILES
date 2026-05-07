@@ -46,3 +46,9 @@ class ReportCommentAdmin(admin.ModelAdmin):
     list_display = ('report', 'user', 'created_at')
     list_filter = ('created_at',)
     search_fields = ('report__user__email', 'comment')
+
+@admin.register(ReportTemplate)
+class ReportTemplateAdmin(admin.ModelAdmin):
+    list_display = ('name', 'is_active', 'created_at')
+    list_filter = ('is_active',)
+    search_fields = ('name', 'description')
