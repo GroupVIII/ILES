@@ -151,4 +151,11 @@ class WeeklyReport(BaseModel):
             self.reviewer_rating = rating
         self.save()
     
+    def reject(self, reviewer, comments=""):
+        """Reject the report"""
+        self.status = self.Status.REJECTED
+        self.reviewed_by = reviewer
+        self.reviewed_at = timezone.now()
+        self.reviewer_comments = comments
+        self.save()
     
