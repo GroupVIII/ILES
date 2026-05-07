@@ -272,6 +272,43 @@ class NotificationPreference(BaseModel):
         max_length=30,
         choices=Notification.Category.choices,
         unique=True
+        )
+    
+    # Variables expected (for documentation)
+    expected_variables = models.JSONField(default=list, blank=True)
+    
+    is_active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ['name']
+    
+    def __str__(self):
+        return self.name
+    
+    def render_subject(self, context):
+        """Render subject with context"""
+        return self.subject_template.format(**context)
+    
+    def render_message(self, context):
+        """Render message with context"""
+        return self.message_template.format(**context)
+    
+    def render_html(self, context):
+        """Render HTML template with context"""
+        if self.html_template:
+            return self.html_template.format(**context)
+        return None
+
+
+class PushSubscription(BaseModel):
+    """
+    Web push notification subscriptions for browser notifications.
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='push_subscriptions'
+    )
     
 
     
