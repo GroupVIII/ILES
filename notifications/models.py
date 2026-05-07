@@ -146,6 +146,16 @@ class Notification(BaseModel):
         max_length=20,
         choices=EmailType.choices,
         db_index=True
+        )
+    
+    subject = models.CharField(max_length=255)
+    body = models.TextField()
+    html_body = models.TextField(blank=True)
+    
+    # Status
+    sent_at = models.DateTimeField(default=timezone.now)
+    is_delivered = models.BooleanField(default=True)
+    
            
     
     
