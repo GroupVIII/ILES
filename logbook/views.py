@@ -174,7 +174,20 @@ class LogEntryViewSet(MultiSerializerViewSet):
             status=status.HTTP_201_CREATED
         )
     
+    @action(detail=False, methods=['get'])
+    def summary(self, request):
+        """Get log summary for current user"""
+        user = request.user
+        
+        # Date range
+        date_from = request.query_params.get('date_from')
+        date_to = request.query_params.get('date_to')
+        
+        logs = self.get_queryset()
+
+        
     
+
 
 
         
