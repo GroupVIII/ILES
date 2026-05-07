@@ -254,6 +254,25 @@ class NotificationPreference(BaseModel):
             Notification.Category.SYSTEM_ALERT: self.in_app_system,
         }
         return category_map.get(category, True)
+    
+    class NotificationTemplate(BaseModel):
+    """
+    Templates for notifications and emails.
+    """
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+    
+    # Template content
+    subject_template = models.CharField(max_length=255)
+    message_template = models.TextField()
+    html_template = models.TextField(blank=True)
+    
+    # Which category this template is for
+    category = models.CharField(
+        max_length=30,
+        choices=Notification.Category.choices,
+        unique=True
+    
 
     
     
