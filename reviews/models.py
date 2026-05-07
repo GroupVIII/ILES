@@ -25,3 +25,21 @@ class WeeklyReport(BaseModel):
         on_delete=models.CASCADE, 
         related_name='weekly_reports'
     )
+
+    # Time period
+    week_start_date = models.DateField(db_index=True)
+    week_end_date = models.DateField(db_index=True)
+    
+    # Content sections (stored as JSON for flexibility)
+    accomplishments = models.JSONField(
+        default=list,
+        help_text="List of accomplishments for the week"
+    )
+    challenges = models.JSONField(
+        default=list,
+        help_text="List of challenges faced"
+    )
+    learnings = models.JSONField(
+        default=list,
+        help_text="Key learnings from the week"
+    )
