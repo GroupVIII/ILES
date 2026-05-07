@@ -36,7 +36,10 @@ class LogEntryViewSet(MultiSerializerViewSet):
 
     def get_queryset(self):
         user = self.request.user
-         
+
+        # Base queryset
+        self.queryset = LogEntry.objects.filters(is_deleted=False)
+
 
     
 
