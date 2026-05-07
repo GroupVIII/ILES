@@ -111,7 +111,7 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 action_url=f"/log/{log.id}",
                 action_text="Review Log"
             )   
-            
+        return Response(LogEntrySerializer(log).data)            
 
 
 
