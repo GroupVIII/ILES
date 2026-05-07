@@ -236,5 +236,13 @@ class ReportTemplate(BaseModel):
         null=True,
         related_name='created_templates'
     )
-                
+
+     class Meta:
+        indexes = [
+            models.Index(fields=['is_active']),
+        ]
+    
+    def __str__(self):
+        return self.name
+            
     
