@@ -169,7 +169,14 @@ class LogEntryViewSet(MultiSerializerViewSet):
             content_type=file.content_type
         )
 
-        
+        return Response(
+            LogAttachmentSerializer(attachment).data,
+            status=status.HTTP_201_CREATED
+        )
+    
+    
+
+
         
         
     
