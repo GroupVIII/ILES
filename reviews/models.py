@@ -192,5 +192,19 @@ class ReportComment(BaseModel):
         ordering = ['created_at']
     
     def __str__(self):
-        return f"Comment by {self.user.get_full_name()} on {self.report}"    
+        return f"Comment by {self.user.get_full_name()} on {self.report}"
+    
+class ReportTemplate(BaseModel):
+    """
+    Customizable report templates for different departments or intern types.
+    """
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    
+    # Template structure (JSON schema defining sections and questions)
+    structure = models.JSONField(
+        default=dict,
+        help_text="JSON defining report sections and questions"
+    )
+            
     
