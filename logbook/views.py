@@ -197,6 +197,8 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 hours=models.Sum('hours')
             ),
         }
+
+        return Response(summary)
         
 
 
