@@ -60,3 +60,11 @@ class WeeklyReport(BaseModel):
         help_text="Feedback or questions for supervisor"
     )
     
+    # Metrics (auto-calculated from logs)
+    total_hours = models.DecimalField(
+        max_digits=5, 
+        decimal_places=2, 
+        default=0,
+        validators=[MinValueValidator(0)]
+    )
+    tasks_completed = models.IntegerField(default=0)
