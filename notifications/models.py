@@ -201,6 +201,27 @@ class NotificationPreference(BaseModel):
     in_app_evaluations = models.BooleanField(default=True)
     in_app_reminders = models.BooleanField(default=True)
     in_app_system = models.BooleanField(default=True)
+
+     # Digest settings
+    digest_frequency = models.CharField(
+        max_length=10,
+        choices=[
+            ('instant', 'Instant'),
+            ('daily', 'Daily Digest'),
+            ('weekly', 'Weekly Digest'),
+            ('never', 'Never')
+        ],
+        default='instant'
+    )
+    
+    last_digest_sent = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        verbose_name = 'Notification Preference'
+        verbose_name_plural = 'Notification Preferences'
+    
+    def __str__(self):
+        return f"Preferences for {self.user.email}"
     
     
     
