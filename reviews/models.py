@@ -111,4 +111,15 @@ class WeeklyReport(BaseModel):
     def __str__(self):
         return f"{self.user.get_full_name()} - Week of {self.week_start_date}"
     
+    def save(self, *args, **kwargs):
+        # Auto-calculate week end date if not set
+        if not self.week_end_date and self.week_start_date:
+            self.week_end_date = self.week_start_date + timezone.timedelta(days=6)
+        
+        # Auto-calculate metrics from logs
+        if not self.pk:  # Only on creation
+            self.calculate_metrics()
+        
+        super().save(*args, **kwargs)
+    
     
