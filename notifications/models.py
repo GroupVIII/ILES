@@ -155,6 +155,29 @@ class Notification(BaseModel):
     # Status
     sent_at = models.DateTimeField(default=timezone.now)
     is_delivered = models.BooleanField(default=True)
+
+     # Error tracking
+    error_message = models.TextField(blank=True)
+    
+    # Related notification (if any)
+    notification = models.ForeignKey(
+        Notification,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='emails'
+    )
+    
+    class Meta:
+        ordering = ['-sent_at']
+        indexes = [
+            models.Index(fields=['recipient', '-sent_at']),
+            models.Index(fields=['email_type', '-sent_at']),
+        ]
+    
+    def __str__(self):
+        return f"{self.recipient.email} - {self.subject[:50]}"
+
     
            
     
