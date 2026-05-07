@@ -94,3 +94,21 @@ class WeeklyReport(BaseModel):
     )
     reviewed_at = models.DateTimeField(null=True, blank=True)
     
+    # Submission tracking
+    submitted_at = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        ordering = ['-week_start_date', '-created_at']
+        indexes = [
+            models.Index(fields=['user', '-week_start_date']),
+            models.Index(fields=['status', 'week_start_date']),
+            models.Index(fields=['user', 'status']),
+        ]
+        unique_together = [['user', 'week_start_date']]
+        verbose_name = 'Weekly Report'
+        verbose_name_plural = 'Weekly Reports'
+    
+    def __str__(self):
+        return f"{self.user.get_full_name()} - Week of {self.week_start_date}"
+    
+    
