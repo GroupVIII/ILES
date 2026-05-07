@@ -32,6 +32,7 @@ class LogEntryViewSet(MultiSerializerViewSet):
         'retrieve': LogEntrySerializer,
         'review': LogEntryReviewSerializer,
     }
-    
+    permission_classes = [permissions.IsAuthenticated]
+
     
 
