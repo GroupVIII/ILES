@@ -110,8 +110,18 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 data={'log_id': str(log.id)},
                 action_url=f"/log/{log.id}",
                 action_text="Review Log"
-            )   
-        return Response(LogEntrySerializer(log).data)            
+            )  
+
+        return Response(LogEntrySerializer(log).data)
+
+    @action(detail=True, methods=['post'])
+    def review(self, requset, pk=None):
+        """Review a log (approve/reject)"""
+        log = self.get_object()
+         
+    
+
+               
 
 
 
