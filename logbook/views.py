@@ -38,7 +38,20 @@ class LogEntryViewSet(MultiSerializerViewSet):
         user = self.request.user
 
         # Base queryset
-        self.queryset = LogEntry.objects.filters(is_deleted=False)
+        queryset = LogEntry.objects.filters(is_deleted=False)
+
+        # Filter by user role
+        if user.is_intern:
+            # Interns see only their own logs
+            queryset = queryset.filter(user=user)
+        elif user.is_supervisor:
+            # Supervisors see logs of their interns
+            Interns_ids = user.supervising_assignments.filter(
+                is_active=True
+            ).values_list('Intern_id', flat=True)
+            queryset = queryset.filter(user__in-Interns_ids)
+            
+
 
 
     
