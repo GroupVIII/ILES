@@ -1,5 +1,8 @@
+# reviews/apps.py
 from django.apps import AppConfig
 
 
-class ReviewsConfig(AppConfig):
-    name = 'reviews'
+class ReportsConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'reports'
+    verbose_name = 'Weekly Reports'
