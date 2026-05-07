@@ -1,0 +1,75 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, #root {
+    background-color: #0f172a !important; /* Dark aesthetic */
+    color: #f8fafc !important;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+/* Flexbox Horizontal Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Horizontal separation */
+    align-items: center;
+    padding: 1rem 5%;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Staccato spacing */
+}
+
+.logout-btn {
+    background: #ef4444; /* Alert color for exit */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Dashboard Content Container */
+.dashboard-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.view-container {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Login Card Styling */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-card {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid #334155;
+}
