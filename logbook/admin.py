@@ -17,7 +17,26 @@ class LogEntryAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
     inlines = [LogAttachmentInline]
 
+    fieldsets = (
+        ('User Information', {
+            'fields': ('user',)
+        }),
+        ('Time Information', {
+            'fields': ('date', 'start_time', 'end_time', 'hours')
+        }),
+        ('Content', {
+            'fields': ('title', 'description', 'category', 'tags')
+        }),
+        ('Status & Review', {
+            'fields': ('status', 'reviewed_by', 'reviewed_at', 'review_comments')
+        }),
+        ('Metadata', {
+            'fields': ('project_code', 'is_biilable', 'created_at', 'updated_at')
+        })
+    )
     
+
+
 
 
 
