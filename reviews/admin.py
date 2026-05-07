@@ -52,3 +52,9 @@ class ReportTemplateAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_active', 'created_at')
     list_filter = ('is_active',)
     search_fields = ('name', 'description')
+
+@admin.register(ReportReminder)
+class ReportReminderAdmin(admin.ModelAdmin):
+    list_display = ('user', 'reminder_type', 'week_start_date', 'sent_at')
+    list_filter = ('reminder_type', 'sent_at')
+    search_fields = ('user__email',)
