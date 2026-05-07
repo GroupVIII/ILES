@@ -135,4 +135,10 @@ class WeeklyReport(BaseModel):
         self.total_hours = sum(log.hours for log in logs)
         self.tasks_completed = logs.count()
     
+    def submit(self):
+        """Submit the report for review"""
+        self.status = self.Status.SUBMITTED
+        self.submitted_at = timezone.now()
+        self.save()
+    
     
