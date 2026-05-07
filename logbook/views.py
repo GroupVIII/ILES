@@ -149,6 +149,12 @@ class LogEntryViewSet(MultiSerializerViewSet):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    @action(detail=True, methods=['post'])
+    def add_attachment(self, request, pk=None):
+        """Add attachment to log entry"""
+        log = self.get_object()
+        
+    
               
 
     
