@@ -126,7 +126,10 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 status=status.HTTP_403_FORBIDDEN
             )
         
-        
+        serializer = self.get_serializer(log, data=request.data)
+        if serializer.is_valid():
+            reviewed_log = serializer.save()
+             
 
     
 
