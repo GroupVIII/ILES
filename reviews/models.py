@@ -68,3 +68,29 @@ class WeeklyReport(BaseModel):
         validators=[MinValueValidator(0)]
     )
     tasks_completed = models.IntegerField(default=0)
+
+    # Status workflow
+    status = models.CharField(
+        max_length=20, 
+        choices=Status.choices,
+        default=Status.DRAFT,
+        db_index=True
+    )
+    
+    # Review fields
+    reviewer_comments = models.TextField(blank=True)
+    reviewer_rating = models.IntegerField(
+        null=True, 
+        blank=True,
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        help_text="Rating from 1-5"
+    )
+    reviewed_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='reviewed_reports'
+    )
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    
