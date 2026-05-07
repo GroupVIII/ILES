@@ -171,5 +171,19 @@ class WeeklyReport(BaseModel):
     def week_display(self):
         """Return formatted week display"""
         return f"{self.week_start_date.strftime('%b %d')} - {self.week_end_date.strftime('%b %d, %Y')}"
-    
+class ReportComment(BaseModel):
+    """
+    Comments on reports (for discussions between intern and supervisor)
+    """
+    report = models.ForeignKey(
+        WeeklyReport,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='report_comments'
+    )
+    comment = models.TextField()    
     
