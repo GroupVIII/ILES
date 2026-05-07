@@ -177,6 +177,34 @@ class Notification(BaseModel):
     
     def __str__(self):
         return f"{self.recipient.email} - {self.subject[:50]}"
+    
+class NotificationPreference(BaseModel):
+    """
+    User preferences for notifications.
+    """
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='notification_preferences'
+    )
+    
+    # Email preferences
+    email_logs = models.BooleanField(default=True)
+    email_reports = models.BooleanField(default=True)
+    email_evaluations = models.BooleanField(default=True)
+    email_reminders = models.BooleanField(default=True)
+    email_system = models.BooleanField(default=True)
+    
+    # In-app preferences
+    in_app_logs = models.BooleanField(default=True)
+    in_app_reports = models.BooleanField(default=True)
+    in_app_evaluations = models.BooleanField(default=True)
+    in_app_reminders = models.BooleanField(default=True)
+    in_app_system = models.BooleanField(default=True)
+    
+    
+    
+
 
     
            
