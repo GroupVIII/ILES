@@ -158,4 +158,18 @@ class WeeklyReport(BaseModel):
         self.reviewed_at = timezone.now()
         self.reviewer_comments = comments
         self.save()
+
+    def request_revision(self, reviewer, comments=""):
+        """Request revisions to the report"""
+        self.status = self.Status.NEEDS_REVISION
+        self.reviewed_by = reviewer
+        self.reviewed_at = timezone.now()
+        self.reviewer_comments = comments
+        self.save()
+    
+    @property
+    def week_display(self):
+        """Return formatted week display"""
+        return f"{self.week_start_date.strftime('%b %d')} - {self.week_end_date.strftime('%b %d, %Y')}"
+    
     
