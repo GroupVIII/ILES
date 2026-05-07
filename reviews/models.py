@@ -123,3 +123,16 @@ class WeeklyReport(BaseModel):
         super().save(*args, **kwargs)
     
     
+    def calculate_metrics(self):
+        """Calculate metrics from associated log entries"""
+        logs = LogEntry.objects.filter(
+            user=self.user,
+            date__gte=self.week_start_date,
+            date__lte=self.week_end_date,
+            status=LogEntry.Status.APPROVED
+        )
+        
+        self.total_hours = sum(log.hours for log in logs)
+        self.tasks_completed = logs.count()
+    
+    
