@@ -1,3 +1,50 @@
+# logs/admin.py
 from django.contrib import admin
+from .models import LogEntry, LogAttachment, TimeOff
 
-# Register your models here.
+
+class LogAttachmentInline(admin.TabularInline):
+    model = LogAttachment
+    extra = 0
+    readonly_fields = ('filename', 'file_size', 'context_type')
+
+
+@admin.site.register(LogEntry)
+class LogEntryAdmin(admin.ModelAdmin):
+    list_display = ('user', 'date', 'hours', 'category', 'status', 'created_at')
+    list_filter = ('status', 'category', 'date', 'user__role')
+    search_fields = ('user__email', 'user__first_name', 'user__last_name', 'title', 'description')
+    readonly_fields = ('created_at', 'updated_at')
+    inlines = [LogAttachmentInline]
+
+    fieldsets = (
+        ('User Information', {
+            'fields': ('user',)
+        }),
+        ('Time Information', {
+            'fields': ('date', 'start_time', 'end_time', 'hours')
+        }),
+        ('Content', {
+            'fields': ('title', 'description', 'category', 'tags')
+        }),
+        ('Status & Review', {
+            'fields': ('status', 'reviewed_by', 'reviewed_at', 'review_comments')
+        }),
+        ('Metadata', {
+            'fields': ('project_code', 'is_biilable', 'created_at', 'updated_at')
+        })
+    )
+
+
+n.register(TimeOff)
+ TimeOffAdmin(admin.ModelAdmin):
+list_display = ('user', 'type', 'start_date', 'end_date', 'days', 'status')
+list_filter = ('type', 'status', 'start_date')
+search_fields = ('user__email', 'user__first_name', 'user__last_name', 'reason')
+    
+
+
+
+
+
+
