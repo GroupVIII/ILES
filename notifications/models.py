@@ -239,6 +239,23 @@ class NotificationPreference(BaseModel):
         }
         return category_map.get(category, True)
     
+    def should_send_in_app(self, category):
+        """Check if in-app notification should be created"""
+        category_map = {
+            Notification.Category.LOG_SUBMITTED: self.in_app_logs,
+            Notification.Category.LOG_APPROVED: self.in_app_logs,
+            Notification.Category.LOG_REJECTED: self.in_app_logs,
+            Notification.Category.REPORT_SUBMITTED: self.in_app_reports,
+            Notification.Category.REPORT_APPROVED: self.in_app_reports,
+            Notification.Category.EVALUATION_CREATED: self.in_app_evaluations,
+            Notification.Category.EVALUATION_COMPLETED: self.in_app_evaluations,
+            Notification.Category.REPORT_REMINDER: self.in_app_reminders,
+            Notification.Category.EVALUATION_REMINDER: self.in_app_reminders,
+            Notification.Category.SYSTEM_ALERT: self.in_app_system,
+        }
+        return category_map.get(category, True)
+
+    
     
     
 
