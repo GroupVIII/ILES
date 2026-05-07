@@ -145,6 +145,12 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 action_url=f"/logs/{reviewed_log.id}"
             )
 
+            return Response(LogEntrySerializer(reviewed_log).data)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+              
+
     
 
                
