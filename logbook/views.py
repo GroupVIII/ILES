@@ -161,6 +161,14 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
+        attachment = LogAttachment.objects.create(
+            log_entry=log,
+            file=file,
+            filename=file.name,
+            file_size=file.size,
+            content_type=file.content_type
+        )
+
         
         
         
