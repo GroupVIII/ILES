@@ -223,6 +223,22 @@ class NotificationPreference(BaseModel):
     def __str__(self):
         return f"Preferences for {self.user.email}"
     
+    def should_send_email(self, category):
+        """Check if email should be sent for this category"""
+        category_map = {
+            Notification.Category.LOG_SUBMITTED: self.email_logs,
+            Notification.Category.LOG_APPROVED: self.email_logs,
+            Notification.Category.LOG_REJECTED: self.email_logs,
+            Notification.Category.REPORT_SUBMITTED: self.email_reports,
+            Notification.Category.REPORT_APPROVED: self.email_reports,
+            Notification.Category.EVALUATION_CREATED: self.email_evaluations,
+            Notification.Category.EVALUATION_COMPLETED: self.email_evaluations,
+            Notification.Category.REPORT_REMINDER: self.email_reminders,
+            Notification.Category.EVALUATION_REMINDER: self.email_reminders,
+            Notification.Category.SYSTEM_ALERT: self.email_system,
+        }
+        return category_map.get(category, True)
+    
     
     
 
