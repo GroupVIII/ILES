@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Internship Logging & Evaluation System (ILES)
 
 ![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
@@ -26,4 +27,6 @@ The Internship Logging & Evaluation System (ILES) is a full-stack web applicatio
 * Native mobile application development.
 * Physical supervision visit tracking.
 * Job-hunting boards or resume builders.
+
+
 
