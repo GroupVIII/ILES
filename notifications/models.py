@@ -124,6 +124,24 @@ class Notification(BaseModel):
             is_read=True,
             read_at=timezone.now()
         )
+        class EmailNotification(BaseModel):
+    """
+    Track email notifications sent to users.
+    """
+    
+    class EmailType(models.TextChoices):
+        WELCOME = 'welcome', 'Welcome Email'
+        PASSWORD_RESET = 'password_reset', 'Password Reset'
+        REPORT_REMINDER = 'report_reminder', 'Report Reminder'
+        EVALUATION_NOTICE = 'evaluation_notice', 'Evaluation Notice'
+        WEEKLY_DIGEST = 'weekly_digest', 'Weekly Digest'
+        SYSTEM_ALERT = 'system_alert', 'System Alert'
+    
+    recipient = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='emails'
+    )
            
     
     
