@@ -309,6 +309,64 @@ class PushSubscription(BaseModel):
         on_delete=models.CASCADE,
         related_name='push_subscriptions'
     )
+    )
+    
+    # Variables expected (for documentation)
+    expected_variables = models.JSONField(default=list, blank=True)
+    
+    is_active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ['name']
+    
+    def __str__(self):
+        return self.name
+    
+    def render_subject(self, context):
+        """Render subject with context"""
+        return self.subject_template.format(**context)
+    
+    def render_message(self, context):
+        """Render message with context"""
+        return self.message_template.format(**context)
+    
+    def render_html(self, context):
+        """Render HTML template with context"""
+        if self.html_template:
+            return self.html_template.format(**context)
+        return None
+
+class PushSubscription(BaseModel):
+    """
+    Web push notification subscriptions for browser notifications.
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='push_subscriptions'
+    )
+    
+    endpoint = models.URLField(max_length=500)
+    auth_key = models.CharField(max_length=100)
+    p256dh_key = models.CharField(max_length=200)
+    
+    # Browser/device info
+    user_agent = models.TextField(blank=True)
+    
+    # Status
+    is_active = models.BooleanField(default=True)
+    last_used = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        unique_together = [['user', 'endpoint']]
+    
+    def __str__(self):
+        return f"Push subscription for {self.user.email}"
+    
+    
+    
+    
+
     
 
     
