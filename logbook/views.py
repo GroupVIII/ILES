@@ -34,5 +34,9 @@ class LogEntryViewSet(MultiSerializerViewSet):
     }
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_queryset(self):
+        user = self.request.user
+         
+
     
 
