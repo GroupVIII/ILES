@@ -134,7 +134,16 @@ class LogEntryViewSet(MultiSerializerViewSet):
             template = (NotificationTemplates.log_approved if reviewed_log.status == 'approved' 
                        else NotificationTemplates.log_rejected)
             
-             
+            NotificationService.send_notification(
+                recipient=reviewed_log.user,
+                category=f'log_{reviewed_log.status}',
+                title=f"Log {reviewed_log.status.title()}",
+                message=f"Your log for {reviewed_log.date} has been {reviewed_log.status}.",
+                sender=request.user,
+                notification_type='success' if reviewed_log.status == 'approved' else 'error',
+                data={'log_id': str(reviewed_log.id)},
+                action_url=f"/logs/{reviewed_log.id}"
+            )
 
     
 
