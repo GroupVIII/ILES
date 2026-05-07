@@ -129,6 +129,11 @@ class LogEntryViewSet(MultiSerializerViewSet):
         serializer = self.get_serializer(log, data=request.data)
         if serializer.is_valid():
             reviewed_log = serializer.save()
+
+            # Notify intern
+            template = (NotificationTemplates.log_approved if reviewed_log.status == 'approved' 
+                       else NotificationTemplates.log_rejected)
+            
              
 
     
