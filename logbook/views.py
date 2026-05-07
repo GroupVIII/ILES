@@ -118,7 +118,16 @@ class LogEntryViewSet(MultiSerializerViewSet):
     def review(self, requset, pk=None):
         """Review a log (approve/reject)"""
         log = self.get_object()
-         
+
+        # Check if user is supervisor
+        if not requset.user.is_supervisor:
+            return Response(
+                {'error': 'Only supervisors can review logs'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        
+
     
 
                
