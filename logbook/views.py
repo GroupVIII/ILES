@@ -19,5 +19,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-
+class LogEntryViewSet(MultiSerializerViewSet):
+    """
+    ViewSet for managing log entries.
+    """
+    
 
