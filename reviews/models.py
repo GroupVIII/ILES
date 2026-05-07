@@ -141,4 +141,14 @@ class WeeklyReport(BaseModel):
         self.submitted_at = timezone.now()
         self.save()
     
+     def approve(self, reviewer, comments="", rating=None):
+        """Approve the report"""
+        self.status = self.Status.APPROVED
+        self.reviewed_by = reviewer
+        self.reviewed_at = timezone.now()
+        self.reviewer_comments = comments
+        if rating:
+            self.reviewer_rating = rating
+        self.save()
+    
     
