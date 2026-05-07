@@ -89,6 +89,12 @@ class LogEntryViewSet(MultiSerializerViewSet):
     def submit(self, request, pk= None):
         """Submit log for review"""
         log = self.get_object()
+
+        if log.status != LogEntry.Status.DRAFT:
+            return Response(
+                {'error': 'Only draft logs can be submitted'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
             
 
 
