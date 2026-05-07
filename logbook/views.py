@@ -227,6 +227,36 @@ class TimeOffViewSet(MultiSerializerViewSet):
         
         return TimeOff.objects.all()
     
+    @action(detail=True, methods=['post'])
+    def review(self, request, pk=None):
+        """Review a time off request"""
+        time_off = self.get_object()
+        
+        if not request.user.is_supervisor:
+            return Response(
+                {'error': 'Only supervisors can review time off requests'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        serializer = self.get_serializer(time_off, data=request.data)
+        if serializer.is_valid():
+            reviewed = serializer.save()
+            
+            # Notify intern
+            NotificationService.send_notification(
+               recipient=reviewed.user,
+               category='time_off_reviewed',
+               title=f"Time Off Request {reviewed.status.title()}",
+               message=f"Your time off request for {reviewed.start_date} has been {reviewed.status}.",
+               sender=request.user,
+               notification_type='success' if reviewed.status == 'approved' else 'error',
+               data={'time_off_id': str(reviewed.id)}
+            )
+
+            return Response(TimeOffSerializer(reviewed).data)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
         
 
 
