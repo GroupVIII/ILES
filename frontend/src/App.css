@@ -1,0 +1,275 @@
+/* ROOT VARIABLES FOR DARK THEME */
+:root {
+  --bg-dark: #0b1121;
+  --panel-bg: rgba(15, 23, 42, 0.6);
+  --card-bg: rgba(30, 41, 59, 0.5);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary-blue: #3b82f6;
+  --success-green: #10b981;
+  --warning-yellow: #f59e0b;
+  --danger-red: #ef4444;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  /* Tech Grid Background */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* MAIN LAYOUT */
+.dark-dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 250px;
+  background: rgba(15, 23, 42, 0.8);
+  border-right: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 1.5rem 2rem;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--primary-blue);
+  letter-spacing: 1px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.nav-item:hover, .nav-item.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-blue);
+}
+
+/* MAIN CONTENT */
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome-text { color: var(--text-muted); font-size: 0.9rem; }
+.avatar { background: #334155; padding: 5px; border-radius: 50%; }
+
+.btn-logout {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.content-scroll {
+  padding: 2rem 4rem;
+  overflow-y: auto;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.section-block { margin-bottom: 2.5rem; }
+.section-title { font-size: 1.1rem; color: var(--text-main); margin-bottom: 1rem; }
+
+/* GLASS CARDS */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* PLACEMENT CARD */
+.placement-info { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem;}
+.company-name { margin: 0 0 0.2rem 0; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;}
+.date-text { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+.weeks-remaining { color: var(--text-muted); font-size: 0.9rem; }
+
+.progress-track { background: rgba(0,0,0,0.3); height: 6px; border-radius: 10px; overflow: hidden; }
+.progress-fill { background: var(--primary-blue); height: 100%; border-radius: 10px; }
+
+/* TIMELINE CARDS & GLOWS */
+.timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.timeline-card { position: relative; overflow: hidden; }
+.glow-green { background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 60%), var(--card-bg); }
+.glow-blue { background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 60%), var(--card-bg); }
+.glow-yellow { background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15), transparent 60%), var(--card-bg); }
+
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.card-header h4 { margin: 0; display: flex; align-items: center; gap: 8px; font-size: 1.05rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot-green { background: var(--success-green); box-shadow: 0 0 8px var(--success-green); }
+.dot-blue { background: var(--primary-blue); box-shadow: 0 0 8px var(--primary-blue); }
+.dot-yellow { background: var(--warning-yellow); box-shadow: 0 0 8px var(--warning-yellow); }
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+.bg-green { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.bg-blue { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+.bg-yellow { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+
+.card-footer { display: flex; justify-content: space-between; align-items: center; }
+.card-footer strong { color: var(--text-main); }
+
+/* FORM ELEMENTS */
+.form-row { display: flex; gap: 1.5rem; }
+.input-group { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.input-group label { color: var(--text-muted); font-size: 0.85rem; }
+.mt-4 { margin-top: 1rem; }
+
+.dark-input {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+.dark-input:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); }
+
+.date-display { display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+.textarea { min-height: 100px; resize: vertical; }
+
+.btn-submit {
+  width: 100%;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-submit:hover { background: #2563eb; }
+
+/* Red Warning Styles for Rejected Logs */
+.glow-red {
+  /* Added the missing radial gradient background! */
+  background: radial-gradient(circle at top right, rgba(239, 68, 68, 0.1) 0%, rgba(30, 41, 59, 0.5) 100%);
+}
+
+.bg-red {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+.dot-red {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+/* =========================================
+   ANIMATIONS & MOTION GRAPHICS
+   ========================================= */
+
+/* 1. The Dashboard Fade-In & Slide-Up */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply this to the main content area so switching tabs feels smooth */
+.content-scroll {
+  animation: slideUpFade 0.4s ease-out forwards;
+}
+
+
+/* 2. Animated, Glowing Progress Bars */
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  /* Add an inner shadow to give the track depth */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  /* The width will animate from 0 to its set value over 1.2 seconds */
+  transition: width 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  position: relative;
+}
+
+/* Add a bright, glowing "head" to the progress bar */
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8));
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 0 10px 2px currentColor;
+}
