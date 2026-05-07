@@ -185,5 +185,12 @@ class ReportComment(BaseModel):
         on_delete=models.CASCADE,
         related_name='report_comments'
     )
-    comment = models.TextField()    
+    comment = models.TextField()
+
+    
+    class Meta:
+        ordering = ['created_at']
+    
+    def __str__(self):
+        return f"Comment by {self.user.get_full_name()} on {self.report}"    
     
