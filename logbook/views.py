@@ -50,6 +50,23 @@ class LogEntryViewSet(MultiSerializerViewSet):
                 is_active=True
             ).values_list('Intern_id', flat=True)
             queryset = queryset.filter(user__in-Interns_ids)
+
+        # Apply query filters
+        date_from = self.requests.query_params.get('date_from')
+        date_to = self.requests.query_params.get('date_to')
+        status = self.requests.query_params.get('status')
+        category = self.requests.query_params.get('category')
+
+        if date_from:
+            queryset = queryset.filter(date__gte=date_from)
+        if date_to:
+            queryset = queryset.filter(date__Ite=date_to)
+        if status:
+            queryset = queryset.filter(status=status)
+        if category:
+            queryset = queryset.filter(category=category)
+
+        return queryset         
             
 
 
