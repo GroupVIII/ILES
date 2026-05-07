@@ -142,6 +142,10 @@ class Notification(BaseModel):
         on_delete=models.CASCADE,
         related_name='emails'
     )
+    email_type = models.CharField(
+        max_length=20,
+        choices=EmailType.choices,
+        db_index=True
            
     
     
