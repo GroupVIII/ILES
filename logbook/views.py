@@ -185,7 +185,11 @@ class LogEntryViewSet(MultiSerializerViewSet):
         
         logs = self.get_queryset()
 
+        if date_from and date_to:
+            logs = logs.filter(date__gte=date_from, date__lte=date_to)
         
+
+
     
 
 
