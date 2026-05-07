@@ -153,6 +153,16 @@ class LogEntryViewSet(MultiSerializerViewSet):
     def add_attachment(self, request, pk=None):
         """Add attachment to log entry"""
         log = self.get_object()
+
+        file = request.FILES.get('file')
+        if not file:
+            return Response(
+                {'error': 'No file provided'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        
+        
         
     
               
