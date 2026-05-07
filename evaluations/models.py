@@ -421,5 +421,5 @@ class EvaluationRubric(BaseModel):
 
             
                         
-            }
-        )
+        
+        

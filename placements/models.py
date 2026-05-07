@@ -101,6 +101,139 @@ class Department(BaseModel):
             blank=True
         )
 
+        #notes
+        notes = models.TextField(blank=True)
+
+        #MetaData
+        created_by = models.ForeignKey(
+            User,
+            on_delete=models.SET_NULL,
+            null=True,
+            related_name='created_placements'
+        )
+
+        class Meta:
+            ordering = ['-start_date', '-created_at']
+            indexes = [
+                models.Index(fields=['intern', 'status']),
+                models.Index(fields=['departments', 'status']),
+                models.Index(fields=['start_date', 'end_date']),
+            ]
+            unique_together = [('intern', 'start_date')]
+
+        def __str__(self):
+            return f"{self.intern.get_full_name()} - {self.department.name} ({self.start_date})"
+        
+        @property
+        def duration_days(self):
+            """Calculate the duration of the placement in days."""
+            if self.end_date and self.start_date:
+                return (self.end_date - self.start_date).days
+            return None
+         
+        @property
+        def is_active(self):
+            """Check if the placement is currently active."""
+            today = timezone.now().date()
+            return self.status == self.Status.ACTIVE and self.start_date <= self.end_date
+        
+        @property
+        def days_remaining(self):
+            """Calculates days remaining in placement"""
+            if self.is_active and self.end_date:
+                today = timezone.now().date()
+                remaining = (self.end_date - today).days
+                return max(0, remaining)
+            return None
+        
+        def complete(self):
+            """Mark the placement as completed."""
+            self.status = self.Status.COMPLETED
+            self.save()
+
+        def extend(self, new_end_date):
+            """Extend the placement end_date"""
+            self.status = self.Status.EXTENDED
+            self.expected_end_date = self.end_date
+            self.end_date = new_end_date
+            self.save()
+
+        class PlacementHistory(BaseModel):
+            """Tracks changes in placements(history/audit log)"""
+            placement = models.ForeignKey(
+                Placement,
+                on_delete=models.CASCADE,
+                related_name='history'
+            )
+
+            changed_by = models.ForeignKey(
+                User,
+                on_delete=models.SET_NULL,
+                null=True,
+            )
+
+            field_name = models.CharField(max_length=50)
+            old_value = models.TextField(blank=True)
+            new_value = models.TextField(blank=True)    
+
+            changed_at = models.DateTimeField(auto_now_add=True)
+
+            class Meta:
+                ordering = ['-changed_at']
+                indexes = [
+                    models.Index(fields=['placement', '-changed_at']),
+                ]
+
+            def __str__(self):
+                return f"{self.placement} - {self.field_name} changed at {self.changed_at}"
+            
+        class Rotation(BaseModel):
+            """Tracks intern rotations through different departments."""
+            intern = models.ForeignKey(
+                User,
+                on_delete=models.CASCADE,
+                related_name='rotations',
+                limit_choices_to={'role':User.Roles.INTERN}
+            )
+
+            from Department = models.ForeignKey(
+                Department,
+                on_delete=models.PROTECT,
+                related_name='rotation_from'
+            )
+            to_department = models.ForeignKey(
+                Department,
+                on_delete=models.PROTECT,
+                related_name='rotation_to'
+            )
+            rotation_date = models.DateField()
+            reason = models.TextField(blank=True)
+
+            approved_by = models.ForeignKey(
+                User,
+                on_delete=models.SET_NULL,
+                null=True,
+                related_name='approved_rotations'
+            )
+            class Meta:
+                ordering = ['-rotation_date']
+                indexes = [
+                    models.Index(fields=['intern', '-rotation_date']),
+                ]
+
+            def __str__(self):
+                return f"{self.intern.get_full_name()}: {self.from_department.code} -> {self.to_department.code}"
+
+
+
+
+                
+                
+                
+        
+        
+        
+
 
             
  
