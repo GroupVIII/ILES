@@ -66,7 +66,29 @@ class LogEntryViewSet(MultiSerializerViewSet):
         if category:
             queryset = queryset.filter(category=category)
 
-        return queryset         
+        return queryset    
+
+    def perform_create(self, serializer):
+        log = serializer.save() 
+
+        # Notify supervisor
+        asssignment = self.request.user.supervisor_assignments.filter(is_active=True).first()
+        if asssignment and asssignment.supervisor:
+            NotificationsService.send_notification(
+                recepient=asssignment.supervisor,
+                category='log_submitted'
+                title="New Log Submitted",
+                message=f"{self.request.user.get_full_name()} submitted a log for {log.date}.",
+                sender=self.request.user,
+                data={'log_id': str(log.id)},
+                action_url=f"/log/{log.id}",
+                action_text="Review Log"
+            )   
+
+    @action(detail=True, methods=['post'])
+    def submit(self, request, pk= None):
+        """Submit log for review"""
+        log = self.get_object()
             
 
 
