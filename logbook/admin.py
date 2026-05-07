@@ -34,6 +34,13 @@ class LogEntryAdmin(admin.ModelAdmin):
             'fields': ('project_code', 'is_biilable', 'created_at', 'updated_at')
         })
     )
+
+
+n.register(TimeOff)
+ TimeOffAdmin(admin.ModelAdmin):
+list_display = ('user', 'type', 'start_date', 'end_date', 'days', 'status')
+list_filter = ('type', 'status', 'start_date')
+search_fields = ('user__email', 'user__first_name', 'user__last_name', 'reason')
     
 
 
