@@ -1,20 +1,26 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Install Python dependencies first!
+# 1. Install Python dependencies
 pip install -r requirements.txt
 
-# Build frontend
+# 2. Build frontend
 cd ../frontend
 npm install
 npm run build
 
-# Copy build files to a directory Django knows
-cp -r dist/* ../backend/staticfiles/
-cp dist/index.html ../backend/templates/ 
+# 3. Ensure the directories exist using -p (prevents errors if it exists)
+mkdir -p ../backend/staticfiles
+mkdir -p ../backend/templates
+
+# 4. Copy build files to the correct Django locations
+# Copy all assets (CSS, JS) to staticfiles
+cp -r dist/assets/* ../backend/staticfiles/
+# Copy index.html to the templates directory
+cp dist/index.html ../backend/templates/
 
 cd ../backend
 
-# Collect static files
+# 5. Collect static files and migrate
 python manage.py collectstatic --no-input
 python manage.py migrate
