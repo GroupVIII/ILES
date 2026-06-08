@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from django.conf import settings # Add this
+from django.conf.urls.static import static # Add this
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from api.serializers import CustomTokenObtainPairSerializer
 from rest_framework.routers import DefaultRouter
@@ -28,5 +30,10 @@ urlpatterns = [
     path('api/notifications/mark-read/', views.NotificationMarkReadView.as_view(), name='notification-mark-read'),
     
     path('', include('api.urls')),
+    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += [
     re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
 ]

@@ -15,7 +15,7 @@ mkdir -p ../backend/templates
 
 # 4. Copy build files to the correct Django locations
 # Copy all assets (CSS, JS) to staticfiles
-cp -r dist/assets/* ../backend/staticfiles/
+cp -r ../frontend/dist/* ../backend/staticfiles/
 # Copy index.html to the templates directory
 cp dist/index.html ../backend/templates/
 
