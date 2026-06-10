@@ -46,8 +46,7 @@ ROOT_URLCONF = 'iles_core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # Add the 'staticfiles' directory here so Django can find index.html
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], 
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # Must match the build.sh path
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
