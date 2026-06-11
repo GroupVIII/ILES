@@ -103,7 +103,7 @@ class UserProfileUpdateSerializer(BaseModelSerializer):
         fields = [
             'emergency_contact_name', 'emergency_contact_phone',
             'emergency_contact_relation', 'address_line1', 'address_line2',
-            'city', 'state', 'country', 'postal_code', 'skills',
+            'city','country', 'postal_code', 'skills',
             'interests', 'certifications', 'linkedin_url', 'github_url',
             'portfolio_url'
         ]
