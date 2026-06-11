@@ -380,10 +380,6 @@ class UserProfile(BaseModel):
     interests = models.JSONField(default=list, blank=True)
     certifications = models.JSONField(default=list, blank=True)
     
-    # Social Links
-    linkedin_url = models.URLField(max_length=500, blank=True)
-    github_url = models.URLField(max_length=500, blank=True)
-    portfolio_url = models.URLField(max_length=500, blank=True)
     
     # Documents
     resume = models.FileField(
