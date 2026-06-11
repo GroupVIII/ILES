@@ -41,7 +41,7 @@ import logging
       elif user.is_supervisor:
          #supervisors see evaluations they created
          return Evaluation.objects.filter(evaluator=user)
-        else:
+      else:
          #interns see their own evaluations
          return EValuation.objecs.filter(intern=user)
       
