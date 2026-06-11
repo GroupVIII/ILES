@@ -84,3 +84,8 @@ class EvaluationSkillAdmin(admin.ModelAdmin):
     list_filter = ('skill_category', 'current_level')
     search_fields = ('intern__email', 'skill_name')
 
+@admin.register(EvaluationReminder)
+class EvaluationReminderAdmin(admin.ModelAdmin):
+    list_display = ('intern', 'evaluator', 'reminder_type', 'due_date', 'sent_at', 'is_acknowledged')
+    list_filter = ('reminder_type', 'is_acknowledged', 'sent_at')
+    search_fields = ('intern__email', 'evaluator__email')
