@@ -116,6 +116,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://projectilessystem.netlify.app",
+    "http://localhost:5173",
+]
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
