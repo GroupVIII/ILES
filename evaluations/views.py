@@ -81,7 +81,7 @@ import logging
       else:
          return EvaluationSkill.objects.filter(intern=user)
       
-class EvaluationReminderViewSet(viewsets.ModelViewSet):
+ class EvaluationReminderViewSet(viewsets.ModelViewSet):
    """ViewSet for managing evaluation reminders"""
    queryset = EvaluationReminder.objects.all()
    serializer_class = EvaluationReminderSerializer
