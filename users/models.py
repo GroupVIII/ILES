@@ -371,7 +371,6 @@ class UserProfile(BaseModel):
     address_line1 = models.CharField(max_length=255, blank=True)
     address_line2 = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=100, blank=True)
-    state = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, blank=True)
     
     # Skills & Interests
