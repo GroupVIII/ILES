@@ -28,7 +28,7 @@ import logging
           return EvaluationRubric.objects.all()
        return EvaluationRubric.objects.filter(is_active=True)
     
-class EvaluationViewSet(viewsets.ModelViewSet):
+ class EvaluationViewSet(viewsets.ModelViewSet):
    """ViewSet for managing evaluations."""
    queryset = Evaluation.objects.all()
    serializer_class = EvaluationSerializer
