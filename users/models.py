@@ -373,7 +373,6 @@ class UserProfile(BaseModel):
     city = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, blank=True)
-    postal_code = models.CharField(max_length=20, blank=True)
     
     # Skills & Interests
     skills = models.JSONField(default=list, blank=True)
