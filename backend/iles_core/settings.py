@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from datetime import timedelta
 import dj_database_url
+import urllib.parse
 from dotenv import load_dotenv
 
 load_dotenv() 
@@ -57,9 +58,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'iles_core.wsgi.application'
 
+password = "130595/095"
+encoded_password = urllib.parse.quote_plus(password)
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'postgres://joshuassenyonjo:130595/095@localhost:5432/iles_db'),
+        default=f'postgres://joshuassenyonjo:{encoded_password}@localhost:5432/iles_db',
         conn_max_age=600,
         conn_health_checks=True,
     )
