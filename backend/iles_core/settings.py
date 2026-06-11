@@ -58,7 +58,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'iles_core.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost/iles_db', conn_max_age=600)
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL', 'postgres://joshuassenyonjo:130595/095@localhost:5432/iles_db'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 AUTH_USER_MODEL = 'api.CustomUser'
