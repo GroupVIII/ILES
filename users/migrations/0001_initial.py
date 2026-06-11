@@ -88,7 +88,6 @@ class Migration(migrations.Migration):
                 ('address_line1', models.CharField(blank=True, max_length=255)),
                 ('address_line2', models.CharField(blank=True, max_length=255)),
                 ('city', models.CharField(blank=True, max_length=100)),
-                ('state', models.CharField(blank=True, max_length=100)),
                 ('country', models.CharField(blank=True, max_length=100)),
                 ('postal_code', models.CharField(blank=True, max_length=20)),
                 ('skills', models.JSONField(blank=True, default=list)),
