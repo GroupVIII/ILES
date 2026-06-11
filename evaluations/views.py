@@ -62,7 +62,7 @@ import logging
             # Interns see goals for their own evaluations
             return EvaluationGoal.objects.filter(evaluation__intern=user)
         
-class EvaluationSkillViewSet(viewsets.ModelViewSet):
+ class EvaluationSkillViewSet(viewsets.ModelViewSet):
    """ViewSet for managing skills"""
    queryset = EvaluationSkill.object.all()
    serializer_class = EvaluationSkillSerializer
