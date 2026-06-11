@@ -22,20 +22,6 @@
 
 # logger = logging.getLogger(__name__)
 
-
-# class UserViewSet(MultiSerializerViewSet):
-#     """
-#     ViewSet for managing users.
-#     """
-#     queryset = User.objects.filter(is_deleted=False)
-#     serializer_classes = {
-#         'create': UserCreateSerializer,
-#         'update': UserUpdateSerializer,
-#         'partial_update': UserUpdateSerializer,
-#         'list': UserSerializer,
-#         'retrieve': UserSerializer,
-#         'profile': UserProfileUpdateSerializer,
-#     }
 #     permission_classes = [permissions.IsAuthenticated]
     
 #     def get_queryset(self):
