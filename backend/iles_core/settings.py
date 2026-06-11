@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from datetime import timedelta
 import dj_database_url
-import urllib.parse
 from dotenv import load_dotenv
 
 load_dotenv() 
@@ -32,7 +31,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # CSRF Middleware removed to allow decoupled API requests
+    # CSRF Middleware remains removed for decoupled JWT API
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -40,10 +39,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'iles_core.urls'
 
+# FORCE TRAILING SLASHES: This acts as a safety net against 405 errors
+APPEND_SLASH = True
+
+# Minimal templates config for Django Admin only (Decoupled from React)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -58,12 +61,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'iles_core.wsgi.application'
 
-password = "130595/095"
-encoded_password = urllib.parse.quote_plus(password)
-
 DATABASES = {
     'default': dj_database_url.config(
-        default=f'postgres://joshuassenyonjo:{encoded_password}@localhost:5432/iles_db',
+        default='postgres://joshuassenyonjo:admin123@localhost:5432/iles_db',
         conn_max_age=600,
         conn_health_checks=True,
     )

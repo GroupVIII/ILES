@@ -1,6 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include, re_path
-from django.views.generic import TemplateView
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -21,19 +20,19 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    
+    # Token Endpoints
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+    # Notification Endpoints
     path('api/notifications/', views.NotificationListView.as_view(), name='notification-list'),
     path('api/notifications/mark-read/', views.NotificationMarkReadView.as_view(), name='notification-mark-read'),
-    path('', include('api.urls')),
 ]
 
-# This serves static files in development. 
-# WhiteNoise handles them in production automatically.
+# This serves Django's static files (like Admin panel CSS)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# THE CATCH-ALL MUST BE LAST
-urlpatterns += [
-    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
-]
+# NOTE: The React TemplateView catch-all route has been deleted.
+# Your Django backend is now a 100% pure API!
