@@ -125,9 +125,7 @@ class Notification(BaseModel):
             read_at=timezone.now()
         )
         class EmailNotification(BaseModel):
-    """
-        Track email notifications sent to users.
-    """
+    
     
     class EmailType(models.TextChoices):
         WELCOME = 'welcome', 'Welcome Email'
