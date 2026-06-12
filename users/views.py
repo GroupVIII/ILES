@@ -1,16 +1,6 @@
 
  
 
-# from core.api import MultiSerializerViewSet, ActionBasedPermission
-# from notifications.services import NotificationService
-# import logging
-# import uuid
-
-
-#     def get_queryset(self):
-#         """Filter queryset based on user role"""
-#         user = self.request.user
-        
 #         if user.is_admin_or_hr:
 #             return User.objects.all()
 #         elif user.is_supervisor:
