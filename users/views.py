@@ -7,17 +7,6 @@
   
 
 
-
-# 
-            
-#         except User.DoesNotExist:
-#             # Don't reveal that user doesn't exist
-#             return Response({
-#                 'message': 'If an account exists with this email, you will receive password reset instructions.'
-#             })
-
-
-#Views.py
 from rest_framework import viewsets, permissions, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
