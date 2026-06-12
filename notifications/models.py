@@ -305,7 +305,7 @@ class PushSubscription(BaseModel):
         on_delete=models.CASCADE,
         related_name='push_subscriptions'
     )
-    )
+    
     
     # Variables expected (for documentation)
     expected_variables = models.JSONField(default=list, blank=True)
