@@ -1,19 +1,7 @@
 
  
 
-            
-#             logger.info(f"Supervisor {supervisor.email} assigned to intern {intern.email}")
-            
-#             return Response({
-#                 'message': 'Supervisor assigned successfully',
-#                 'assignment': SupervisorAssignmentSerializer(assignment).data
-#             })
-            
-#         except User.DoesNotExist:
-#             return Response(
-#                 {'error': 'Supervisor not found'},
-#                 status=status.HTTP_404_NOT_FOUND
-#             )
+
 
 
 # class SupervisorAssignmentViewSet(viewsets.ModelViewSet):
