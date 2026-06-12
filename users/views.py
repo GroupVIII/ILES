@@ -2,16 +2,7 @@
  
 
 
-#     @action(detail=True, methods=['get', 'put', 'patch'])
-#     def profile(self, request, pk=None):
-#         """Get or update user profile"""
-#         user = self.get_object()
-#         profile, _ = UserProfile.objects.get_or_create(user=user)
-        
-#         if request.method == 'GET':
-#             serializer = UserProfileUpdateSerializer(profile)
-#             return Response(serializer.data)
-        
+# 
 #         serializer = UserProfileUpdateSerializer(
 #             profile,
 #             data=request.data,
