@@ -1,19 +1,7 @@
 
  
 
-#         if user.is_admin_or_hr:
-#             return User.objects.all()
-#         elif user.is_supervisor:
-#             # Supervisors see their interns
-#             intern_ids = user.supervising_assignments.filter(
-#                 is_active=True
-#             ).values_list('intern_id', flat=True)
-#             return User.objects.filter(
-#                 Q(id__in=intern_ids) | Q(id=user.id)
-#             )
-#         else:
-#             # Interns only see themselves
-#             return User.objects.filter(id=user.id)
+# 
     
 #     @action(detail=False, methods=['get'])
 #     def me(self, request):
