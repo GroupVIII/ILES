@@ -26,8 +26,3 @@ class PlacementAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
 
 
-@admin.register(Rotation)
-class RotationAdmin(admin.ModelAdmin):
-    list_display = ('intern', 'from_department', 'to_department', 'rotation_date')
-    list_filter = ('rotation_date',)
-    search_fields = ('intern__email', 'reason')
