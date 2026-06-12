@@ -256,10 +256,8 @@ class NotificationPreference(BaseModel):
         return category_map.get(category, True)
     
     class NotificationTemplate(BaseModel):
-"""
-    Templates for notifications and emails.
-"""
-    name = models.CharField(max_length=100, unique=True)
+
+     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     
     # Template content
