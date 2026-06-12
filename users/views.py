@@ -1,17 +1,6 @@
 
  
 
-
-#
-        
-#         supervisor_id = request.data.get('supervisor_id')
-        
-#         try:
-#             supervisor = User.objects.get(
-#                 id=supervisor_id,
-#                 role=User.Roles.SUPERVISOR
-#             )
-            
 #             # End any active assignments
 #             SupervisorAssignment.objects.filter(
 #                 intern=intern,
