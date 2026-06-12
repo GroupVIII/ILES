@@ -129,7 +129,6 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True, db_index=True)),
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('is_deleted', models.BooleanField(db_index=True, default=False)),
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
                 ('assigned_at', models.DateTimeField(auto_now_add=True)),
                 ('ended_at', models.DateTimeField(blank=True, null=True)),
                 ('is_active', models.BooleanField(db_index=True, default=True)),
