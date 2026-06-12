@@ -1,7 +1,6 @@
 
  
-#     LoginSerializer, ChangePasswordSerializer
-# )
+
 # from core.api import MultiSerializerViewSet, ActionBasedPermission
 # from notifications.services import NotificationService
 # import logging
