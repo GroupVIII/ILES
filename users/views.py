@@ -1,10 +1,5 @@
 
-# from django.db.models import Q
-# from .models import User, SupervisorAssignment, Invitation, UserProfile
-# from .serializers import (
-#     UserSerializer, UserCreateSerializer, UserUpdateSerializer,
-#     UserProfileUpdateSerializer, SupervisorAssignmentSerializer,
-#     InvitationSerializer, CustomTokenObtainPairSerializer,
+   InvitationSerializer, CustomTokenObtainPairSerializer,
 #     LoginSerializer, ChangePasswordSerializer
 # )
 # from core.api import MultiSerializerViewSet, ActionBasedPermission
