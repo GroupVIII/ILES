@@ -35,7 +35,6 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(db_index=True, error_messages={'invalid': 'Enter a valid email address.', 'unique': 'A user with this email already exists.'}, max_length=254, unique=True, validators=[django.core.validators.EmailValidator(message='Enter a valid email address.')])),
                 ('first_name', models.CharField(max_length=150)),
                 ('last_name', models.CharField(max_length=150)),
-                ('middle_name', models.CharField(blank=True, max_length=150)),
                 ('phone_number', models.CharField(blank=True, help_text='Contact phone number', max_length=15, validators=[django.core.validators.RegexValidator(message="Phone number must be entered in format: '+999999999'. Up to 15 digits allowed.", regex='^\\+?1?\\d{9,15}$')])),
                 ('gender', models.CharField(blank=True, choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other'), ('prefer_not_to_say', 'Prefer Not to Say')], default='prefer_not_to_say', max_length=20)),
                 ('date_of_birth', models.DateField(blank=True, null=True)),
