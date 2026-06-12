@@ -7,23 +7,6 @@
   
 
 #
-#             # Record login
-#             ip_address = request.META.get('REMOTE_ADDR')
-#             user.record_login(ip_address)
-            
-#             # Generate tokens
-#             refresh = RefreshToken.for_user(user)
-            
-#             # Log the user in (for session auth)
-#             login(request, user)
-            
-#             logger.info(f"User logged in: {user.email}")
-            
-#             return Response({
-#                 'refresh': str(refresh),
-#                 'access': str(refresh.access_token),
-#                 'user': UserSerializer(user).data
-#             })
         
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
