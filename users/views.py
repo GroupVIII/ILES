@@ -1,5 +1,5 @@
 
-   InvitationSerializer, CustomTokenObtainPairSerializer,
+ 
 #     LoginSerializer, ChangePasswordSerializer
 # )
 # from core.api import MultiSerializerViewSet, ActionBasedPermission
