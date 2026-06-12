@@ -8,20 +8,7 @@
 
 
 
-#     def post(self, request):
-#         email = request.data.get('email')
-        
-#         try:
-#             user = User.objects.get(email=email)
-            
-#             # Generate password reset token (implement your logic)
-#             # Send email with reset link
-            
-#             logger.info(f"Password reset requested for: {email}")
-            
-#             return Response({
-#                 'message': 'If an account exists with this email, you will receive password reset instructions.'
-#             })
+# 
             
 #         except User.DoesNotExist:
 #             # Don't reveal that user doesn't exist
