@@ -8,30 +8,6 @@
 
 
 
-#             # Set new password
-#             user.set_password(serializer.validated_data['new_password'])
-#             user.save()
-            
-#             logger.info(f"Password changed for user: {user.email}")
-            
-#             # Send notification
-#             NotificationService.send_notification(
-#                 recipient=user,
-#                 category='password_changed',
-#                 title="Password Changed",
-#                 message="Your password has been successfully changed.",
-#                 notification_type='success'
-#             )
-            
-#             return Response({'message': 'Password changed successfully'})
-        
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# class ForgotPasswordView(APIView):
-#     """Forgot password - send reset email"""
-#     permission_classes = [permissions.AllowAny]
-    
 #     def post(self, request):
 #         email = request.data.get('email')
         
