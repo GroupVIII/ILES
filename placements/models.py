@@ -112,7 +112,18 @@ class Department(BaseModel):
             related_name='created_placements'
         )
 
-       
+        class Meta:
+            ordering = ['-start_date', '-created_at']
+            indexes = [
+                models.Index(fields=['intern', 'status']),
+                models.Index(fields=['departments', 'status']),
+                models.Index(fields=['start_date', 'end_date']),
+            ]
+            unique_together = [('intern', 'start_date')]
+
+        def __str__(self):
+            return f"{self.intern.get_full_name()} - {self.department.name} ({self.start_date})"
+        
         @property
         def duration_days(self):
             """Calculate the duration of the placement in days."""
