@@ -2,17 +2,6 @@
  
 
 
-# 
-#         serializer = UserProfileUpdateSerializer(
-#             profile,
-#             data=request.data,
-#             partial=request.method == 'PATCH'
-#         )
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
 #     @action(detail=True, methods=['post'])
 #     def assign_supervisor(self, request, pk=None):
 #         """Assign a supervisor to this intern"""
