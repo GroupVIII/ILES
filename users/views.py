@@ -1,19 +1,7 @@
 
  
 
-#         serializer = self.get_serializer(interns, many=True)
-#         return Response(serializer.data)
-    
-#     @action(detail=False, methods=['get'])
-#     def supervisors(self, request):
-#         """Get all supervisors"""
-#         supervisors = User.objects.filter(
-#             role=User.Roles.SUPERVISOR,
-#             is_deleted=False
-#         )
-#         serializer = self.get_serializer(supervisors, many=True)
-#         return Response(serializer.data)
-    
+
 #     @action(detail=True, methods=['get', 'put', 'patch'])
 #     def profile(self, request, pk=None):
 #         """Get or update user profile"""
