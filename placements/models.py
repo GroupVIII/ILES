@@ -196,7 +196,7 @@ class Department(BaseModel):
                 limit_choices_to={'role':User.Roles.INTERN}
             )
 
-            from Department = models.ForeignKey(
+            from Department  models.ForeignKey(
                 Department,
                 on_delete=models.PROTECT,
                 related_name='rotation_from'
