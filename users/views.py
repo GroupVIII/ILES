@@ -20,10 +20,7 @@
 # import logging
 # import uuid
 
-# logger = logging.getLogger(__name__)
 
-#     permission_classes = [permissions.IsAuthenticated]
-    
 #     def get_queryset(self):
 #         """Filter queryset based on user role"""
 #         user = self.request.user
