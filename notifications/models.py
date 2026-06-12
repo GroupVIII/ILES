@@ -126,7 +126,7 @@ class Notification(BaseModel):
         )
         class EmailNotification(BaseModel):
     """
-    Track email notifications sent to users.
+        Track email notifications sent to users.
     """
     
     class EmailType(models.TextChoices):
