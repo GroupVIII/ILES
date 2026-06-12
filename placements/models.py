@@ -41,12 +41,7 @@ class Department(BaseModel):
     class Placement(BaseModel):
         """Tracks intern placements within deapartments."""
 
-        class Status(models.TextChoices):
-            PENDING = 'pending', 'Pending'
-            ACTIVE = 'active', 'Active'
-            COMPLETED = 'completed', 'Completed'
-            EXTENDED = 'extended', 'Extended'
-            TERMINATED = 'terminated', 'Terminated'
+       
 
         intern = models.foreignKey(
             User,
