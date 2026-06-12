@@ -4,19 +4,7 @@
 
 
 
-    
-#     def get_queryset(self):
-#         if self.request.user.is_admin_or_hr:
-#             return Invitation.objects.all()
-#         return Invitation.objects.filter(invited_by=self.request.user)
-    
-#     def perform_create(self, serializer):
-#         serializer.save(
-#             invited_by=self.request.user,
-#             token=uuid.uuid4().hex,
-#             expires_at=timezone.now() + timezone.timedelta(days=7)
-#         )
-
+  
 
 # class CustomTokenObtainPairView(TokenObtainPairView):
 #     """Custom token obtain view"""
