@@ -7,21 +7,6 @@
   
 
 #
-        
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# class LogoutView(APIView):
-#     """User logout view"""
-#     permission_classes = [permissions.IsAuthenticated]
-    
-#     def post(self, request):
-#         try:
-#             refresh_token = request.data.get('refresh')
-#             if refresh_token:
-#                 token = RefreshToken(refresh_token)
-#                 token.blacklist()
-            
 #             logout(request)
             
 #             logger.info(f"User logged out: {request.user.email}")
