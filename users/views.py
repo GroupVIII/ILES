@@ -6,21 +6,7 @@
 
   
 
-# class CustomTokenObtainPairView(TokenObtainPairView):
-#     """Custom token obtain view"""
-#     serializer_class = CustomTokenObtainPairSerializer
-
-
-# class LoginView(APIView):
-#     """User login view"""
-#     permission_classes = [permissions.AllowAny]
-    
-#     def post(self, request):
-#         serializer = LoginSerializer(data=request.data, context={'request': request})
-        
-#         if serializer.is_valid():
-#             user = serializer.validated_data['user']
-            
+#
 #             # Record login
 #             ip_address = request.META.get('REMOTE_ADDR')
 #             user.record_login(ip_address)
