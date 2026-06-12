@@ -149,6 +149,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True, db_index=True)),
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('is_deleted', models.BooleanField(db_index=True, default=False)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
                 ('email', models.EmailField(max_length=254)),
                 ('role', models.CharField(choices=[('intern', 'Intern'), ('supervisor', 'Supervisor'), ('admin', 'Administrator'), ('hr', 'Human Resources')], max_length=20)),
                 ('token', models.CharField(max_length=100, unique=True)),
