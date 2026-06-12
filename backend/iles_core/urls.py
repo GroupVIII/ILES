@@ -6,6 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from api.serializers import CustomTokenObtainPairSerializer
 from rest_framework.routers import DefaultRouter
 from api import views
+from django.http import JsonResponse
 
 router = DefaultRouter()
 router.register(r'placements', views.InternshipPlacementViewSet)
@@ -16,8 +17,12 @@ router.register(r'users', views.UserViewSet, basename='user')
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    
+def api_root(request):
+    return JsonResponse({"message": "ILES Backend API is live and running."})
 
 urlpatterns = [
+    path('', api_root),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     
