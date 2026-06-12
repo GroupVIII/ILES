@@ -4,21 +4,7 @@
 
 
 
-# class SupervisorAssignmentViewSet(viewsets.ModelViewSet):
-#     """ViewSet for managing supervisor assignments"""
-#     serializer_class = SupervisorAssignmentSerializer
-#     permission_classes = [permissions.IsAuthenticated]
-    
-#     def get_queryset(self):
-#         user = self.request.user
-        
-#         if user.is_admin_or_hr:
-#             return SupervisorAssignment.objects.all()
-#         elif user.is_supervisor:
-#             return SupervisorAssignment.objects.filter(supervisor=user)
-#         else:
-#             return SupervisorAssignment.objects.filter(intern=user)
-    
+
 #     @action(detail=True, methods=['post'])
 #     def end(self, request, pk=None):
 #         """End a supervisor assignment"""
