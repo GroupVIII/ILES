@@ -2,16 +2,7 @@
  
 
 
-#     @action(detail=True, methods=['post'])
-#     def assign_supervisor(self, request, pk=None):
-#         """Assign a supervisor to this intern"""
-#         intern = self.get_object()
-        
-#         if not intern.is_intern:
-#             return Response(
-#                 {'error': 'User is not an intern'},
-#                 status=status.HTTP_400_BAD_REQUEST
-#             )
+#
         
 #         supervisor_id = request.data.get('supervisor_id')
         
