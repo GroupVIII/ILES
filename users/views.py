@@ -1,29 +1,6 @@
 
  
 
-# 
-    
-#     @action(detail=False, methods=['get'])
-#     def me(self, request):
-#         """Get current user details"""
-#         serializer = UserSerializer(request.user)
-#         return Response(serializer.data)
-    
-#     @action(detail=False, methods=['get'])
-#     def interns(self, request):
-#         """Get all interns"""
-#         interns = User.objects.filter(
-#             role=User.Roles.INTERN,
-#             is_deleted=False
-#         )
-        
-#         # Filter by supervisor if not admin
-#         if request.user.is_supervisor:
-#             intern_ids = request.user.supervising_assignments.filter(
-#                 is_active=True
-#             ).values_list('intern_id', flat=True)
-#             interns = interns.filter(id__in=intern_ids)
-        
 #         serializer = self.get_serializer(interns, many=True)
 #         return Response(serializer.data)
     
