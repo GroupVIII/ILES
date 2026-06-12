@@ -124,9 +124,7 @@ class Notification(BaseModel):
             is_read=True,
             read_at=timezone.now()
         )
-        class EmailNotification(BaseModel):
-    
-    
+        
     class EmailType(models.TextChoices):
         WELCOME = 'welcome', 'Welcome Email'
         PASSWORD_RESET = 'password_reset', 'Password Reset'
