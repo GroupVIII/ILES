@@ -4,19 +4,8 @@
 
 
 
+git add .
 
-#     @action(detail=True, methods=['post'])
-#     def end(self, request, pk=None):
-#         """End a supervisor assignment"""
-#         assignment = self.get_object()
-        
-#         if not assignment.is_active:
-#             return Response(
-#                 {'error': 'Assignment is already inactive'},
-#                 status=status.HTTP_400_BAD_REQUEST
-#             )
-        
-#         assignment.end_assignment()
         
 #         return Response({
 #             'message': 'Assignment ended successfully',
