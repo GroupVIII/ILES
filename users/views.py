@@ -1,19 +1,6 @@
 
  
 
-#                 assigned_by=request.user
-#             )
-            
-#             # Send notification
-#             NotificationService.send_notification(
-#                 recipient=intern,
-#                 category='supervisor_assigned',
-#                 title="Supervisor Assigned",
-#                 message=f"{supervisor.get_full_name()} has been assigned as your supervisor.",
-#                 sender=request.user,
-#                 notification_type='success',
-#                 data={'assignment_id': str(assignment.id)}
-#             )
             
 #             logger.info(f"Supervisor {supervisor.email} assigned to intern {intern.email}")
             
