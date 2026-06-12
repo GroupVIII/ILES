@@ -4,19 +4,6 @@
 
 
 
-git add .
-
-        
-#         return Response({
-#             'message': 'Assignment ended successfully',
-#             'assignment': self.get_serializer(assignment).data
-#         })
-
-
-# class InvitationViewSet(viewsets.ModelViewSet):
-#     """ViewSet for managing invitations"""
-#     serializer_class = InvitationSerializer
-#     permission_classes = [permissions.IsAuthenticated]
     
 #     def get_queryset(self):
 #         if self.request.user.is_admin_or_hr:
