@@ -6,19 +6,6 @@
 
   
 
-#
-#             logout(request)
-            
-#             logger.info(f"User logged out: {request.user.email}")
-            
-#             return Response({'message': 'Successfully logged out'})
-#         except Exception as e:
-#             logger.error(f"Logout error: {str(e)}")
-#             return Response(
-#                 {'error': 'Error during logout'},
-#                 status=status.HTTP_400_BAD_REQUEST
-#             )
-
 
 # class ChangePasswordView(APIView):
 #     """Change user password"""
