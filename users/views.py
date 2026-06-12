@@ -1,19 +1,6 @@
 
  
 
-#             # End any active assignments
-#             SupervisorAssignment.objects.filter(
-#                 intern=intern,
-#                 is_active=True
-#             ).update(
-#                 is_active=False,
-#                 ended_at=timezone.now()
-#             )
-            
-#             # Create new assignment
-#             assignment = SupervisorAssignment.objects.create(
-#                 supervisor=supervisor,
-#                 intern=intern,
 #                 assigned_by=request.user
 #             )
             
